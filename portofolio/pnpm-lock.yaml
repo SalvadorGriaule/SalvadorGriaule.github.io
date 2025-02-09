@@ -11,6 +11,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.0.4
         version: 4.0.4(vite@6.1.0(jiti@2.4.2)(lightningcss@1.29.1))
+      animejs:
+        specifier: ^3.2.2
+        version: 3.2.2
       flowbite:
         specifier: ^3.1.2
         version: 3.1.2(rollup@4.34.6)
@@ -453,6 +456,9 @@ packages:
     resolution: {integrity: sha512-cl669nCJTZBsL97OF4kUQm5g5hC2uihk0NxY3WENAC0TYdILVkAyHymAntgxGkl7K+t0cXIrH5siy5S4XkFycA==}
     engines: {node: '>=0.4.0'}
     hasBin: true
+
+  animejs@3.2.2:
+    resolution: {integrity: sha512-Ao95qWLpDPXXM+WrmwcKbl6uNlC5tjnowlaRYtuVDHHoygjtIPfDUoK9NthrlZsQSKjZXlmji2TrBUAVbiH0LQ==}
 
   apexcharts@3.54.1:
     resolution: {integrity: sha512-E4et0h/J1U3r3EwS/WlqJCQIbepKbp6wGUmaAwJOMjHUP4Ci0gxanLa7FR3okx6p9coi4st6J853/Cb1NP0vpA==}
@@ -1082,6 +1088,8 @@ snapshots:
       acorn: 8.14.0
 
   acorn@8.14.0: {}
+
+  animejs@3.2.2: {}
 
   apexcharts@3.54.1:
     dependencies:

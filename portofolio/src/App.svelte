@@ -1,7 +1,12 @@
 <script lang="ts">
+  import Laptop from "flowbite-svelte/Laptop.svelte";
+  import onglet from "./assets/onglet.svg";
+  import Onglet from "./assets/componants/Onglet.svelte";
   import svelteLogo from "./assets/svelte.svg";
-  import viteLogo from "/vite.svg";
-  import { DeviceMockup } from "flowbite-svelte";
+  import viteLogo from "./assets/vite.svg";
+  import DefaultMockup from "flowbite-svelte/DefaultMockup.svelte";
+
+  let svgOnglet: SVGElement | HTMLImageElement;
 </script>
 
 <div class="bg-linear-to-br from-slate-600 to-slate-900">
@@ -20,19 +25,42 @@
     <div
       class="card w-11/12 p-2 bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md mx-2 backdrop-blur-md"
     >
-      <h2 class="text-4xl">SoMuchWater</h2>
-      <div class="flex items-end relative">
-        <div class="z-20">
-          <DeviceMockup>
-            <img src="/img/SoMuchWaterPhone.png" alt="" />
-          </DeviceMockup>
-        </div>
-        <div class="z-10">
-          <DeviceMockup device="laptop">
-            <img src="/img/SoMuchWaterDesktop.png" alt="" />
-          </DeviceMockup>
+      <h2 class="text-4xl mb-4">SoMuchWater</h2>
+      <ul class="hidden md:flex">
+        <li>
+          <Onglet />
+        </li>
+      </ul>
+      <div class="bg-slate-900 rounded-r-xl rounded-bl-xl">
+        <div
+          class="flex justify-center relative w-full h-[420px] xl:h-[460px]"
+        >
+          <div
+            class="z-20 mr-[70%] mt-[1.5%] absolute min-w-[180px] w-1/6 xl:w-2/13"
+          >
+            <DefaultMockup
+              slot="rounded-[2rem] overflow-hidden w-full h-full bg-white dark:bg-gray-800"
+              div="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-full w-full"
+              top="h-1/7 w-[3px] bg-gray-800 dark:bg-gray-800 absolute -left-[17px] top-[10%] rounded-l-lg"
+              leftTop="h-1/7 w-[3px] bg-gray-800 dark:bg-gray-800 absolute -left-[17px] top-[27%] rounded-l-lg"
+              leftBot="h-1/7 w-[3px] bg-gray-800 dark:bg-gray-800 absolute -left-[17px] top-[45%] rounded-l-lg"
+              right="h-1/7 w-[3px] bg-gray-800 dark:bg-gray-800 absolute -right-[17px] top-[45%] rounded-r-lg"
+            >
+              <img src="/img/SoMuchWaterPhone.png" alt="" />
+            </DefaultMockup>
+          </div>
+          <div class="z-10 absolute self-center w-4/5">
+            <Laptop
+              bot="relative mx-auto bg-gray-900 dark:bg-gray-700 rounded-b-xl rounded-t-sm  h-[21px] max-w-full"
+              inner="rounded-lg overflow-hidden h-full bg-white dark:bg-gray-800"
+              div="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[8px] rounded-t-xl h-full max-w-7/8"
+            >
+              <img src="/img/SoMuchWaterDesktop.png" alt="" />
+            </Laptop>
+          </div>
         </div>
       </div>
+      <h3 class="text-3xl">Description</h3>
     </div>
   </main>
   <div>
