@@ -14,6 +14,9 @@
   import vueLogo from "./assets/vue.svg"
   import tailwindcssLogo from "./assets/tailwind.svg";
   import tsLogo from "./assets/typescript.svg"
+  // import img
+  import SMWPhone from "./assets/img/SoMuchWaterPhone.png"
+  import SMWLaptop from "./assets/img/SoMuchWaterDesktop.png"
 
   let carousel: HTMLDivElement;
   let svgOnglet: SVGElement | HTMLImageElement;
@@ -77,7 +80,7 @@
               leftBot="h-1/7 w-[3px] bg-gray-800 dark:bg-gray-800 absolute -left-[17px] top-[45%] rounded-l-lg"
               right="h-1/7 w-[3px] bg-gray-800 dark:bg-gray-800 absolute -right-[17px] top-[45%] rounded-r-lg"
             >
-              <img src="/img/SoMuchWaterPhone.png" alt="" />
+              <img src={SMWPhone} alt="" />
             </DefaultMockup>
           </div>
           <div
@@ -88,7 +91,7 @@
               inner="rounded-lg overflow-hidden h-full bg-white dark:bg-gray-800"
               div="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[8px] rounded-t-xl h-full max-w-7/8"
             >
-              <img src="/img/SoMuchWaterDesktop.png" alt="" />
+              <img src={SMWLaptop} alt="" />
             </Laptop>
           </div>
         </div>
