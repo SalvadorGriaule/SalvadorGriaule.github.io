@@ -1,22 +1,23 @@
 <script lang="ts">
   // import componants
-  import Onglet from "./assets/componants/Onglet.svelte";
-  import { currentKey } from "./assets/componants/Onglet.svelte";
+  import Onglet from "./Onglet.svelte";
+  import { currentKey } from "./Onglet.svelte";
   // import svelte
   import { onMount } from "svelte";
   // import flowbit
+  import { Popover } from "flowbite-svelte";
   import Laptop from "flowbite-svelte/Laptop.svelte";
   import DefaultMockup from "flowbite-svelte/DefaultMockup.svelte";
   // import svg
-  import svelteLogo from "./assets/svelte.svg";
-  import viteLogo from "./assets/vite.svg";
-  import fastapiLogo from "./assets/fastapi.svg";
-  import vueLogo from "./assets/vue.svg"
-  import tailwindcssLogo from "./assets/tailwind.svg";
-  import tsLogo from "./assets/typescript.svg"
+  import svelteLogo from "../../assets/svelte.svg";
+  import viteLogo from "../../assets/vite.svg";
+  import fastapiLogo from "../../assets/fastapi.svg";
+  import vueLogo from "../../assets/vue.svg"
+  import tailwindcssLogo from "../../assets/tailwind.svg";
+  import tsLogo from "../../assets/typescript.svg"
   // import img
-  import SMWPhone from "./assets/img/SoMuchWaterPhone.png"
-  import SMWLaptop from "./assets/img/SoMuchWaterDesktop.png"
+  import SMWPhone from "../../../public/img/SoMuchWaterPhone.png"
+  import SMWLaptop from "../../../public/img/SoMuchWaterDesktop.png"
 
   let carousel: HTMLDivElement;
   let svgOnglet: SVGElement | HTMLImageElement;
@@ -30,6 +31,9 @@
       tabElem[0].classList.remove("-translate-x-180");
     }
   };
+
+  const nom = "MORALES"
+  const prenom = "QUENTIN"
 
   onMount(() => {
     let elemCarousel = carousel.children;
@@ -51,7 +55,18 @@
     </nav>
   </header>
   <main class="flex flex-col items-center">
-    <h1 class="text-6xl my-10 duration-150 sm:text-7xl">Morales Quentin</h1>
+    <div class="flex flex-col items-center justify-center my-10 sm:space-x-6 sm:flex-row">
+      <div class="flex space-x-[3px]">
+        {#each nom as letter}
+          <p class="text-7xl font-bold text-[#00809d] duration-100 lg:text-8xl xl:text-9xl block inset">{letter}</p>
+        {/each}
+      </div>
+      <div class="flex space-x-[3px]">
+        {#each prenom as letter}
+          <p class="text-7xl font-bold text-[#00809d] duration-100 lg:text-8xl xl:text-9xl block inset">{letter}</p>
+        {/each}
+      </div>
+    </div>
     <div
       class="card w-11/12 p-2 bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md mx-2 backdrop-blur-md relative"
     >
@@ -80,7 +95,7 @@
               leftBot="h-1/7 w-[3px] bg-gray-800 dark:bg-gray-800 absolute -left-[17px] top-[45%] rounded-l-lg"
               right="h-1/7 w-[3px] bg-gray-800 dark:bg-gray-800 absolute -right-[17px] top-[45%] rounded-r-lg"
             >
-              <img src={SMWPhone} alt="" />
+              <img src={SMWPhone.src} alt="" />
             </DefaultMockup>
           </div>
           <div
@@ -91,7 +106,7 @@
               inner="rounded-lg overflow-hidden h-full bg-white dark:bg-gray-800"
               div="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[8px] rounded-t-xl h-full max-w-7/8"
             >
-              <img src={SMWLaptop} alt="" />
+              <img src={SMWLaptop.src} alt="" />
             </Laptop>
           </div>
         </div>
@@ -104,19 +119,19 @@
           <h3 class="text-3xl mb-2">Technologie utilisé</h3>
           <div class="flex flex-wrap space-x-2 space-y-2">
             <a href="https://vite.dev" target="_blank" rel="noreferrer">
-              <img src={viteLogo} class="logo" alt="Vite Logo" />
+              <img src={viteLogo.src} id="Vite" class="logo" alt="Vite Logo" />
             </a>
             <a href="https://vuejs.org" target="_blank" rel="noreferrer">
-              <img src={vueLogo} class="logo vuejs" alt="vuejs logo">
+              <img src={vueLogo.src} class="logo vuejs" alt="vuejs logo">
             </a>
             <a href="https://fastapi.tiangolo.com" target="_blank" rel="noreferrer">
-              <img src={fastapiLogo} class="logo fastapi" alt="fastapi logo">
+              <img src={fastapiLogo.src} class="logo fastapi" alt="fastapi logo">
             </a>
             <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
-              <img src={tailwindcssLogo} class="logo tailwindcss" alt="logo tailwindcss">
+              <img src={tailwindcssLogo.src} class="logo tailwindcss" alt="logo tailwindcss">
             </a>
             <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer">
-              <img src={tsLogo} class="logo ts" alt="typescript logo">
+              <img src={tsLogo.src} class="logo ts" alt="typescript logo">
             </a>
           </div>
         </div>
@@ -131,6 +146,12 @@
     padding: 1.5em;
     will-change: filter;
     transition: filter 300ms;
+  }
+  .block{
+    text-shadow: 0 1px 0 #00566a, 0 2px 0 #00566a, 0 3px 0 #00566a, 0 4px 0 #00566a, 0 5px 0 #00566a, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+  }
+  .inset:hover{
+    text-shadow: #00404e 2px 2px 0;
   }
   .logo:hover {
     filter: drop-shadow(0 0 2em #646cffaa);

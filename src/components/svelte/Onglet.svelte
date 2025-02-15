@@ -1,11 +1,11 @@
-<script module>
+<script module lang="ts">
    let current: SVGElement | undefined;
    export const currentKey = $state({ currentKey: 0 });
 </script>
 
 <script lang="ts">
    import { onMount } from "svelte";
-   import { fillSVG } from "../js/svgFunc";
+   import { fillSVG } from "../../assets/ts/svgFunc.ts";
    import type { MouseEventHandler } from "svelte/elements";
    let svgOnglet: SVGElement;
 
