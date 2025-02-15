@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https//salvadorgriaule.github.io',
+  site: 'https://salvadorgriaule.github.io/',
   integrations: [svelte()],
 
   vite: {
