@@ -3,6 +3,7 @@
   import Onglet from "./Onglet.svelte";
   import { currentKey } from "./Onglet.svelte";
   import LogoLib from "./LogoLib.svelte";
+  import SliderPerpetuel from "./SliderPerpetuel.svelte";
   // import svelte
   import { onMount } from "svelte";
   // import flowbit
@@ -26,6 +27,7 @@
 
   const nom = "MORALES"
   const prenom = "QUENTIN"
+  const techLogo = ["vite","svelte","vuejs","fastapi","ts","tailwindcss","django","julia"]
 
   onMount(() => {
     let elemCarousel = carousel.children;
@@ -60,16 +62,12 @@
           {/each}
         </div>
       </div>
-      <!-- <div>
-        <div class="w-84 h-84 rounded-xl bg-zinc-500/20">
-          <div><img src="" alt=""></div>
-        </div>
-      </div> -->
+      <SliderPerpetuel tabSrc={techLogo}/>
     </section>
     <div
       class="card w-11/12 p-2 bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md mx-2 backdrop-blur-md relative"
     >
-      <h2 class="text-4xl duration-150 mb-4 md:-mb-6">SoMuchWater</h2>
+      <h2 class="text-5xl duration-150 mb-4 md:-mb-6">SoMuchWater</h2>
       <ul
         class="px-[14px] flex relative space-x-8 ease-out duration-150 translate-y-0 z-10 md:translate-y-10"
       >
@@ -122,6 +120,7 @@
           <LogoLib name="fastapi" />
           <LogoLib name="tailwindcss" />
           <LogoLib name="ts" />
+          <LogoLib name="julia"/>
           </div>
         </div>
       </div>

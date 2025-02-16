@@ -1,10 +1,12 @@
 <script lang="ts">
+    import djangoLogo from "../../assets/django.svg"
     import svelteLogo from "../../assets/svelte.svg";
     import viteLogo from "../../assets/vite.svg";
     import fastapiLogo from "../../assets/fastapi.svg";
     import vueLogo from "../../assets/vue.svg";
     import tailwindcssLogo from "../../assets/tailwind.svg";
     import tsLogo from "../../assets/typescript.svg";
+    import juliaLogo from '../../assets/julia.svg'
 
     class Logo {
         name: string;
@@ -44,7 +46,9 @@
             "https://www.typescriptlang.org/",
             tsLogo.src,
             "#3178c6",
-        ),
+        ),new Logo("svelte","https://svelte.dev/",svelteLogo.src,"#fb3c00"),
+        new Logo("django","https://www.djangoproject.com/",djangoLogo.src,"#0f3e2e"),
+        new Logo("julia","https://julialang.org/",juliaLogo.src,"#ffffff")
     ];
 
     const getByNameClass = (name: string, tabClass: Logo[]) => {
@@ -63,7 +67,7 @@
     const chosenLogo: Logo = getByNameClass(name, logo);
 </script>
 
-<a href={chosenLogo.link}
+<a href={chosenLogo.link} class=""
     ><img src={chosenLogo.svg} class="logo {classL}" style="--color: {chosenLogo.shadowColor}" alt="" /></a
 >
 
