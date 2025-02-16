@@ -2,25 +2,17 @@
   // import componants
   import Onglet from "./Onglet.svelte";
   import { currentKey } from "./Onglet.svelte";
+  import LogoLib from "./LogoLib.svelte";
   // import svelte
   import { onMount } from "svelte";
   // import flowbit
-  import { Popover } from "flowbite-svelte";
   import Laptop from "flowbite-svelte/Laptop.svelte";
   import DefaultMockup from "flowbite-svelte/DefaultMockup.svelte";
-  // import svg
-  import svelteLogo from "../../assets/svelte.svg";
-  import viteLogo from "../../assets/vite.svg";
-  import fastapiLogo from "../../assets/fastapi.svg";
-  import vueLogo from "../../assets/vue.svg"
-  import tailwindcssLogo from "../../assets/tailwind.svg";
-  import tsLogo from "../../assets/typescript.svg"
   // import img
   import SMWPhone from "../../../public/img/SoMuchWaterPhone.png"
   import SMWLaptop from "../../../public/img/SoMuchWaterDesktop.png"
 
   let carousel: HTMLDivElement;
-  let svgOnglet: SVGElement | HTMLImageElement;
 
   let changingKey = (key: number, tabElem: HTMLCollection) => {
     if (currentKey.currentKey == 1) {
@@ -55,18 +47,25 @@
     </nav>
   </header>
   <main class="flex flex-col items-center">
-    <div class="flex flex-col items-center justify-center my-10 sm:space-x-6 sm:flex-row">
-      <div class="flex space-x-[3px]">
-        {#each nom as letter}
-          <p class="text-7xl font-bold text-[#00809d] duration-100 lg:text-8xl xl:text-9xl block inset">{letter}</p>
-        {/each}
+    <section>
+      <div class="flex flex-col items-center justify-center my-10 sm:space-x-6 sm:flex-row">
+        <div class="flex space-x-[3px]">
+          {#each nom as letter}
+            <p class="text-7xl font-bold text-[#00809d] duration-100 lg:text-8xl xl:text-9xl block inset">{letter}</p>
+          {/each}
+        </div>
+        <div class="flex space-x-[3px]">
+          {#each prenom as letter}
+            <p class="text-7xl font-bold text-[#00809d] duration-100 lg:text-8xl xl:text-9xl block inset">{letter}</p>
+          {/each}
+        </div>
       </div>
-      <div class="flex space-x-[3px]">
-        {#each prenom as letter}
-          <p class="text-7xl font-bold text-[#00809d] duration-100 lg:text-8xl xl:text-9xl block inset">{letter}</p>
-        {/each}
-      </div>
-    </div>
+      <!-- <div>
+        <div class="w-84 h-84 rounded-xl bg-zinc-500/20">
+          <div><img src="" alt=""></div>
+        </div>
+      </div> -->
+    </section>
     <div
       class="card w-11/12 p-2 bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md mx-2 backdrop-blur-md relative"
     >
@@ -118,21 +117,11 @@
         <div class="p-2 lg:w-2/5 lg:border-l-2 border-black">
           <h3 class="text-3xl mb-2">Technologie utilisé</h3>
           <div class="flex flex-wrap space-x-2 space-y-2">
-            <a href="https://vite.dev" target="_blank" rel="noreferrer">
-              <img src={viteLogo.src} id="Vite" class="logo" alt="Vite Logo" />
-            </a>
-            <a href="https://vuejs.org" target="_blank" rel="noreferrer">
-              <img src={vueLogo.src} class="logo vuejs" alt="vuejs logo">
-            </a>
-            <a href="https://fastapi.tiangolo.com" target="_blank" rel="noreferrer">
-              <img src={fastapiLogo.src} class="logo fastapi" alt="fastapi logo">
-            </a>
-            <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
-              <img src={tailwindcssLogo.src} class="logo tailwindcss" alt="logo tailwindcss">
-            </a>
-            <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer">
-              <img src={tsLogo.src} class="logo ts" alt="typescript logo">
-            </a>
+          <LogoLib name="vite" />
+          <LogoLib name="vuejs" />
+          <LogoLib name="fastapi" />
+          <LogoLib name="tailwindcss" />
+          <LogoLib name="ts" />
           </div>
         </div>
       </div>
@@ -141,34 +130,10 @@
 </div>
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
   .block{
     text-shadow: 0 1px 0 #00566a, 0 2px 0 #00566a, 0 3px 0 #00566a, 0 4px 0 #00566a, 0 5px 0 #00566a, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
   }
   .inset:hover{
     text-shadow: #00404e 2px 2px 0;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .logo.fastapi:hover {
-    filter: drop-shadow(0 0 2em #009486)
-  }
-  .logo.vuejs:hover {
-    filter: drop-shadow(0 0 2em #41b883);
-  }
-  .logo.tailwindcss:hover {
-    filter: drop-shadow(0 0 2em #44a8b3);
-  }
-  .logo.ts:hover {
-    filter: drop-shadow(0 0 2em #3178c6);
   }
 </style>

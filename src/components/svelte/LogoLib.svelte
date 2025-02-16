@@ -1,0 +1,78 @@
+<script lang="ts">
+    import svelteLogo from "../../assets/svelte.svg";
+    import viteLogo from "../../assets/vite.svg";
+    import fastapiLogo from "../../assets/fastapi.svg";
+    import vueLogo from "../../assets/vue.svg";
+    import tailwindcssLogo from "../../assets/tailwind.svg";
+    import tsLogo from "../../assets/typescript.svg";
+
+    class Logo {
+        name: string;
+        link: string;
+        svg: string;
+        shadowColor: string;
+        constructor(
+            name: string,
+            link: string,
+            svg: string,
+            shadowColor: string,
+        ) {
+            this.name = name;
+            this.link = link;
+            this.svg = svg;
+            this.shadowColor = shadowColor;
+        }
+    }
+
+    const logo: Logo[] = [
+        new Logo("vite", "https://vite.dev", viteLogo.src, "#646cffaa"),
+        new Logo("vuejs", "https://vuejs.org", vueLogo.src, "#41b883"),
+        new Logo(
+            "fastapi",
+            "https://fastapi.tiangolo.com",
+            fastapiLogo.src,
+            "#009486",
+        ),
+        new Logo(
+            "tailwindcss",
+            "https://tailwindcss.com/",
+            tailwindcssLogo.src,
+            "#44a8b3",
+        ),
+        new Logo(
+            "ts",
+            "https://www.typescriptlang.org/",
+            tsLogo.src,
+            "#3178c6",
+        ),
+    ];
+
+    const getByNameClass = (name: string, tabClass: Logo[]) => {
+        if (tabClass[0].name == name) {
+            return tabClass[0];
+        } else {
+            return getByNameClass(name, tabClass.slice(1));
+        }
+    };
+
+    const {
+        name,
+        classL = "h-[6em] p-[1.5em]",
+    }: { name: string; classL: string } = $props();
+
+    const chosenLogo: Logo = getByNameClass(name, logo);
+</script>
+
+<a href={chosenLogo.link}
+    ><img src={chosenLogo.svg} class="logo {classL}" style="--color: {chosenLogo.shadowColor}" alt="" /></a
+>
+
+<style>
+    .logo {
+        will-change: filter;
+        transition: filter 300ms;
+    }
+    .logo:hover {
+        filter: drop-shadow(0 0 2em var(--color, #ddd));
+    }
+</style>
