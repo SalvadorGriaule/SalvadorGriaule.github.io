@@ -23,6 +23,9 @@ importers:
       flowbite-svelte:
         specifier: ^0.47.4
         version: 0.47.4(rollup@4.34.7)(svelte@5.20.1)
+      runed:
+        specifier: ^0.23.4
+        version: 0.23.4(svelte@5.20.1)
       svelte:
         specifier: ^5.20.1
         version: 5.20.1
@@ -1515,6 +1518,11 @@ packages:
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
+
+  runed@0.23.4:
+    resolution: {integrity: sha512-9q8oUiBYeXIDLWNK5DfCWlkL0EW3oGbk845VdKlPeia28l751VpfesaB/+7pI6rnbx1I6rqoZ2fZxptOJLxILA==}
+    peerDependencies:
+      svelte: ^5.7.0
 
   semver@7.7.1:
     resolution: {integrity: sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==}
@@ -3612,6 +3620,11 @@ snapshots:
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
+
+  runed@0.23.4(svelte@5.20.1):
+    dependencies:
+      esm-env: 1.2.2
+      svelte: 5.20.1
 
   semver@7.7.1: {}
 

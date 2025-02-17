@@ -3,11 +3,13 @@
   import HeaderNav from "./HeaderNav.svelte";
   import SliderPerpetuel from "./SliderPerpetuel.svelte";
   import CardProject from "./CardProject.svelte";
+  import Footer from "./Footer.svelte";
   // import componants image
   import SMWPhone from "../../../public/img/SoMuchWaterPhone.png";
   import SMWLaptop from "../../../public/img/SoMuchWaterDesktop.png";
-  import LecteurPhone from "../../../public/img/LecteurV2.png"
-  import LecteurDesktop from "../../../public/img/LecteurV2Desktop.png"
+  import LecteurPhone from "../../../public/img/LecteurV2.png";
+  import LecteurDesktop from "../../../public/img/LecteurV2Desktop.png";
+  // import type
   import { Device, LinkType, type LinkSlice } from "./type.ts";
 
   const nom = "MORALES";
@@ -20,17 +22,32 @@
     "ts",
     "tailwindcss",
     "django",
-    "julia"
+    "julia",
   ];
-  const techSMW = ["vite","vuejs","fastapi","ts","tailwindcss","julia"]
-  const linkSMW:LinkSlice[] = [{link:"https://github.com/SalvadorGriaule/SoMuchWater", type:LinkType.GitHub}]
-  const techLec = ["js"]
-  const linkLec:LinkSlice[] = [{link:"https://github.com/SalvadorGriaule/LecteurV2", type:LinkType.GitHub}]
+
+  // variable projet
+  const techSMW = ["vite", "vuejs", "fastapi", "ts", "tailwindcss", "julia"];
+  const linkSMW: LinkSlice[] = [
+    {
+      link: "https://github.com/SalvadorGriaule/SoMuchWater",
+      type: LinkType.GitHub,
+    },
+  ];
+  const techLec = ["js"];
+  const linkLec: LinkSlice[] = [
+    {
+      link: "https://github.com/SalvadorGriaule/LecteurV2",
+      type: LinkType.GitHub,
+    },
+  ];
   let y: number;
+  let height:number;
+  
 </script>
 
+
 <svelte:window bind:scrollY={y} />
-<div class="bg-linear-to-br from-slate-600 to-slate-900">
+<div class="relative bg-linear-to-br from-slate-600 to-slate-900">
   <HeaderNav />
   <main class="flex flex-col items-center">
     <section>
@@ -64,11 +81,28 @@
       class="relative z-20 w-full flex flex-col items-center justify-center"
       style="transform: translateY({-1.1 * y}px)"
     >
-      <CardProject titre="SoMuchWater" desktopSrc={SMWLaptop.src} phoneSrc={SMWPhone.src} lien={linkSMW} description="ici" devices={[Device.SmartPhone,Device.Laptop]} techUse={techSMW}/>
-      <CardProject titre="Lecteur" desktopSrc={LecteurDesktop.src} phoneSrc={LecteurPhone.src} lien={linkLec} description="ici" devices={[Device.SmartPhone,Device.Laptop]} techUse={techLec}/>
+      <CardProject
+        titre="SoMuchWater"
+        desktopSrc={SMWLaptop.src}
+        phoneSrc={SMWPhone.src}
+        lien={linkSMW}
+        description="ici"
+        devices={[Device.SmartPhone, Device.Laptop]}
+        techUse={techSMW}
+      />
+      <CardProject
+        titre="Lecteur"
+        desktopSrc={LecteurDesktop.src}
+        phoneSrc={LecteurPhone.src}
+        lien={linkLec}
+        description="ici"
+        devices={[Device.SmartPhone, Device.Laptop]}
+        techUse={techLec}
+      />
       <!-- <CardProject titre="Sneakers"/> -->
     </div>
   </main>
+  <Footer />
 </div>
 
 <style>
