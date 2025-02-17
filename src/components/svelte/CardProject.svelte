@@ -5,7 +5,7 @@
     import LinkBox from "./LinkBox.svelte";
     import LogoLib from "./LogoLib.svelte";
     // import type
-    import { type LinkSlice} from "./type";
+    import { type LinkSlice} from "./type.ts";
     // import Svelte
     import { onMount } from "svelte";
     // import componants flowbit-svelte

@@ -1,7 +1,7 @@
 <script lang="ts">
     import GitHubSvg from "../../assets/github.svg";
     import PlaySvg from "../../assets/controller.svg";
-    import { LinkType,type LinkSlice } from "./type";
+    import { LinkType, type LinkSlice } from "./type.ts";
     
     const addSvg = (type: LinkType): string => {
         switch (type) {

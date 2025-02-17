@@ -8,7 +8,7 @@
   import SMWLaptop from "../../../public/img/SoMuchWaterDesktop.png";
   import LecteurPhone from "../../../public/img/LecteurV2.png"
   import LecteurDesktop from "../../../public/img/LecteurV2Desktop.png"
-  import { LinkType, type LinkSlice } from "./type";
+  import { LinkType, type LinkSlice } from "./type.ts";
 
   const nom = "MORALES";
   const prenom = "QUENTIN";
