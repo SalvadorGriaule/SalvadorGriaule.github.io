@@ -30,7 +30,6 @@
     onMount(() => {
         const resize = () => {
             anime.remove(slider);
-            console.log(wSlide);
             slider.style.transform = "";
             valueX = wSlide;
             incremTranslateX();

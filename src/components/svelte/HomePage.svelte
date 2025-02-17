@@ -8,7 +8,7 @@
   import SMWLaptop from "../../../public/img/SoMuchWaterDesktop.png";
   import LecteurPhone from "../../../public/img/LecteurV2.png"
   import LecteurDesktop from "../../../public/img/LecteurV2Desktop.png"
-  import { LinkType, type LinkSlice } from "./type.ts";
+  import { Device, LinkType, type LinkSlice } from "./type.ts";
 
   const nom = "MORALES";
   const prenom = "QUENTIN";
@@ -64,8 +64,8 @@
       class="relative z-20 w-full flex flex-col items-center justify-center"
       style="transform: translateY({-1.1 * y}px)"
     >
-      <CardProject titre="SoMuchWater" desktopSrc={SMWLaptop.src} phoneSrc={SMWPhone.src} lien={linkSMW} description="ici" techUse={techSMW}/>
-      <CardProject titre="Lecteur" desktopSrc={LecteurDesktop.src} phoneSrc={LecteurPhone.src} lien={linkLec} description="ici" techUse={techLec}/>
+      <CardProject titre="SoMuchWater" desktopSrc={SMWLaptop.src} phoneSrc={SMWPhone.src} lien={linkSMW} description="ici" devices={[Device.SmartPhone,Device.Laptop]} techUse={techSMW}/>
+      <CardProject titre="Lecteur" desktopSrc={LecteurDesktop.src} phoneSrc={LecteurPhone.src} lien={linkLec} description="ici" devices={[Device.SmartPhone,Device.Laptop]} techUse={techLec}/>
       <!-- <CardProject titre="Sneakers"/> -->
     </div>
   </main>

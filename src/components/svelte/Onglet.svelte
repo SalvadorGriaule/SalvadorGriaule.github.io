@@ -1,37 +1,32 @@
-<script module lang="ts">
-   let current: SVGElement | undefined;
-   export const currentKey = $state({ currentKey: 0 });
-</script>
-
 <script lang="ts">
    import { onMount } from "svelte";
    import { fillSVG } from "../../assets/ts/svgFunc.ts";
    import type { MouseEventHandler } from "svelte/elements";
    let svgOnglet: SVGElement;
 
-   let { key, titre }: { key: number; titre: string } = $props();
+   let {
+      current = $bindable(),
+      key,
+      func,
+      titre,
+   }: {
+      current: number;
+      key: number;
+      func: Function;
+      titre: string;
+   } = $props();
 
-   const click: MouseEventHandler<HTMLElement|SVGPathElement> = (e) => {
-      if (current != undefined) {
-         fillSVG(current, "#314158");
-         fillSVG(svgOnglet, "#0f172b");
-         current = svgOnglet;
-         currentKey.currentKey = key;
-      } else {
-         fillSVG(svgOnglet, "#0f172b");
-         current = svgOnglet;
-         currentKey.currentKey = key
-      }
+   const click: MouseEventHandler<EventTarget> = (e) => {
+      current = key;
+      func()
    };
 
    onMount(() => {
-
       if (key == 0) {
          fillSVG(svgOnglet, "#0f172b");
-         current = svgOnglet
-      }  else {
+      } else {
          fillSVG(svgOnglet, "#314158");
-      } 
+      }
    });
 </script>
 
