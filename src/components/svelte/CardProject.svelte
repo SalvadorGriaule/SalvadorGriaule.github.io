@@ -75,7 +75,7 @@
         <NavOnglet tabOnglet={onglet} />
     </ul>
     <div
-        class="bg-slate-900 relative rounded-r-xl rounded-bl-xl overflow-hidden z-20"
+        class="bg-blue-950 relative rounded-r-xl rounded-bl-xl overflow-hidden z-20"
     >
         <div
             bind:this={carousel}

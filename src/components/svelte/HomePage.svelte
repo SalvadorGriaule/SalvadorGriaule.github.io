@@ -1,4 +1,6 @@
 <script lang="ts">
+  // import from lib
+  import { OverlayScrollbars } from "overlayscrollbars";
   // import componants
   import HeaderNav from "./HeaderNav.svelte";
   import SliderPerpetuel from "./SliderPerpetuel.svelte";
@@ -11,6 +13,8 @@
   import LecteurDesktop from "../../../public/img/LecteurV2Desktop.png";
   // import type
   import { Device, LinkType, type LinkSlice } from "./type.ts";
+  import { onMount } from "svelte";
+  import { currentY } from "./context.ts";
 
   const nom = "MORALES";
   const prenom = "QUENTIN";
@@ -40,14 +44,18 @@
       type: LinkType.GitHub,
     },
   ];
-  let y: number;
-  let height:number;
+  let y = $state<number>(0);
+  let bodySvelte = $state<HTMLDivElement | null>(null);
   
+  onMount(() => {
+    const osInstance = OverlayScrollbars(document.body, {
+      scrollbars: { theme: "" },
+    });
+  });
 </script>
 
-
 <svelte:window bind:scrollY={y} />
-<div class="relative bg-linear-to-br from-slate-600 to-slate-900">
+<div bind:this={bodySvelte} class="bg-linear-to-br from-slate-600 to-slate-900">
   <HeaderNav />
   <main class="flex flex-col items-center">
     <section>

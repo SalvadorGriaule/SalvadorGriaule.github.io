@@ -23,7 +23,7 @@
 
    onMount(() => {
       if (key == 0) {
-         fillSVG(svgOnglet, "#0f172b");
+         fillSVG(svgOnglet, "#162456");
       } else {
          fillSVG(svgOnglet, "#314158");
       }

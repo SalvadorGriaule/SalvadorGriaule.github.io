@@ -1,10 +1,19 @@
 <script lang="ts">
+    //import lib
+    import Bowser from "bowser";
+    // import svelte
     import { onMount } from "svelte";
+
     let footer = $state<HTMLElement | null>(null);
     let y = $state<number>(0);
+    let bowser = $state<Bowser.Parser.Parser | null>(null);
 
     onMount(() => {
-        window.addEventListener("scroll", (e) => {
+        bowser = Bowser.getParser(window.navigator.userAgent);
+        let behaviorBrowser: ScrollBehavior =
+        bowser.getEngineName() == "Blink" ? "instant" : "smooth";
+        
+        window.addEventListener("scroll", () => {
             console.log(y);
 
             if (
@@ -14,8 +23,14 @@
                     footer?.getBoundingClientRect().bottom -
                         window.visualViewport?.height
             ) {
-                e.preventDefault();
-                window.scroll({ left: 0, top: y + (footer?.getBoundingClientRect().bottom - window.visualViewport.height), behavior: "smooth" });
+                window.scroll({
+                    left: 0,
+                    top:
+                        y +
+                        (footer?.getBoundingClientRect().bottom -
+                            window.visualViewport.height),
+                    behavior: behaviorBrowser,
+                });
             }
         });
     });
@@ -28,4 +43,5 @@
     style="transform: translateY({-1.1 * y}px)"
 >
     <p>test</p>
+    <p>{bowser?.getEngineName()}</p>
 </footer>

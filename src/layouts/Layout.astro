@@ -1,5 +1,6 @@
 ---
-import "../styles/global.css"
+import "../styles/global.css";
+import "overlayscrollbars/overlayscrollbars.css";
 ---
 
 <!doctype html>
@@ -16,11 +17,19 @@ import "../styles/global.css"
 	</body>
 </html>
 
-<style>
+<style is:inline>
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+	}
+	.os-scrollbar {
+		--os-size: 10px;
+		--os-handle-bg: #0b1220c0;
+		--os-handle-bg-active: #0b1220c0;
+		--os-handle-bg-hover: #0b1220c0;
+		--os-padding-perpendicular: 2.15px;
+		--os-handle-border-radius: 500px;
 	}
 </style>

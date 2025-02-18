@@ -10,9 +10,9 @@
     
     const active = (tabElem:Element[],activ:number) => {
         if (tabElem[0] == navbar.children[activ]){
-            fillSVG(tabElem[0].getElementsByTagName("svg")[0], "#0f172b");
+            fillSVG(tabElem[0].getElementsByTagName("svg")[0], "#162456");
         } else {
-            fillSVG(tabElem[0].getElementsByTagName("svg")[0], "#314158");
+            fillSVG(tabElem[0].getElementsByTagName("svg")[0], "#2e4bb4");
         }
         if(tabElem.length != 1) return active(tabElem.slice(1),activ)
     }
