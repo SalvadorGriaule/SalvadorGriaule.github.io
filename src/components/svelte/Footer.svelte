@@ -13,6 +13,14 @@
         let behaviorBrowser: ScrollBehavior =
         bowser.getEngineName() == "Blink" ? "instant" : "smooth";
         
+        document.addEventListener("wheel",(e) => {
+            if(window.visualViewport?.height && footer?.getBoundingClientRect().bottom) {
+                //e.preventDefault();
+                //y = y + e.deltaY * window.visualViewport?.height / footer?.getBoundingClientRect().bottom
+                if (0 > footer?.getBoundingClientRect().bottom - window.visualViewport?.height) e.preventDefault()
+                console.log(e.deltaY * window.visualViewport?.height / footer?.getBoundingClientRect().bottom)
+            }
+        })
         window.addEventListener("scroll", () => {
             console.log(y);
 

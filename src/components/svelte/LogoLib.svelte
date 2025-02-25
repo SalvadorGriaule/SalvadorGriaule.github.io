@@ -8,6 +8,7 @@
     import tsLogo from "../../assets/typescript.svg";
     import juliaLogo from '../../assets/julia.svg'
     import jsLogo from "../../assets/javascript.svg"
+    import laravelLogo from "../../assets/laravel.svg"
 
     class Logo {
         name: string;
@@ -50,7 +51,8 @@
         ),new Logo("svelte","https://svelte.dev/",svelteLogo.src,"#fb3c00"),
         new Logo("django","https://www.djangoproject.com/",djangoLogo.src,"#0f3e2e"),
         new Logo("julia","https://julialang.org/",juliaLogo.src,"#ffffff"),
-        new Logo("js","https://developer.mozilla.org/fr/docs/Web/JavaScript",jsLogo.src,"#f7e018")
+        new Logo("js","https://developer.mozilla.org/fr/docs/Web/JavaScript",jsLogo.src,"#f7e018"),
+        new Logo("laravel","https://laravel.com/",laravelLogo.src,"#f53003")
     ];
 
     const getByNameClass = (name: string, tabClass: Logo[]) => {
