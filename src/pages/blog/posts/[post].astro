@@ -1,0 +1,27 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import PostPage from "../../../components/svelte/Page/PostPage.svelte";
+
+export function getStaticPaths() {
+  const posts = Object.values(
+    import.meta.glob("./md/*.md", { eager: true })
+  );
+  
+  const lim = posts.length;
+  let arrPost: { params: { post: string } }[] = [];
+  for (let i = 0; i < lim; i++) {
+    arrPost.push({ params: { post: posts[i].url.slice(posts[i].url.lastIndexOf("/") + 1) } });
+  }
+  return arrPost;
+}
+
+const { post } = Astro.params;
+
+let currentMd = await import(`./md/${post}.md`).then((obj) => {
+  return obj;
+});
+---
+
+<Layout>
+  <PostPage client:load post={currentMd} />
+</Layout>
