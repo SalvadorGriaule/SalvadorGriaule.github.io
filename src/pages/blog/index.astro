@@ -1,0 +1,10 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BlogPage from "../../components/svelte/Page/BlogPage.svelte";
+
+const posts = Object.values(import.meta.glob("./posts/*.md", { eager: true }));
+---
+
+<Layout>
+  <BlogPage client:load posts={posts} />
+</Layout>

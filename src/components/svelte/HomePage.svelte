@@ -30,7 +30,7 @@
   ];
 
   // variable projet
-  const techSMW = ["vite", "vuejs", "fastapi", "ts", "tailwindcss", "julia"];
+  const techSMW = ["nuxt", "fastapi", "ts", "tailwindcss", "julia"];
   const linkSMW: LinkSlice[] = [
     {
       link: "https://github.com/SalvadorGriaule/SoMuchWater",

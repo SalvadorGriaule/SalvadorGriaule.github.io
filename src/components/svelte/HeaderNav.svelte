@@ -7,7 +7,7 @@ class="sticky top-0 z-50 backdrop-blur-sm flex justify-between py-2 px-3 bg-line
 <h1>Morales Quentin</h1>
 <nav>
   <ul class="flex space-x-2">
-    <li>blog</li>
+    <a href="/blog"><li>blog</li></a>
   </ul>
 </nav>
 </header>

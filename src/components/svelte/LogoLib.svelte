@@ -9,6 +9,7 @@
     import juliaLogo from '../../assets/julia.svg'
     import jsLogo from "../../assets/javascript.svg"
     import laravelLogo from "../../assets/laravel.svg"
+    import nuxtLogo from "../../assets/nuxt.svg"
 
     class Logo {
         name: string;
@@ -52,7 +53,8 @@
         new Logo("django","https://www.djangoproject.com/",djangoLogo.src,"#0f3e2e"),
         new Logo("julia","https://julialang.org/",juliaLogo.src,"#ffffff"),
         new Logo("js","https://developer.mozilla.org/fr/docs/Web/JavaScript",jsLogo.src,"#f7e018"),
-        new Logo("laravel","https://laravel.com/",laravelLogo.src,"#f53003")
+        new Logo("laravel","https://laravel.com/",laravelLogo.src,"#f53003"),
+        new Logo("nuxt","https://nuxt.com/",nuxtLogo.src,"#00dc82")
     ];
 
     const getByNameClass = (name: string, tabClass: Logo[]) => {
