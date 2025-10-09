@@ -21,21 +21,23 @@
     monthSort: Map<number, idAndDate[]> = new Map(),
   ) => {
     let currentIter = yearMap[Symbol.iterator]().next().value
-    console.log(currentIter);
     
-    if (currentIter) {
+    
+    if (currentIter && yearMap.size != 0) {
+        console.log(yearMap.size);
+        
       monthSort.has(currentIter[1][0].date.getMonth())
         ? monthSort.get(currentIter[1][0].date.getMonth())?.push(currentIter[1][0])
         : monthSort.set(currentIter[1][0].date.getMonth(), [currentIter[1][0]]);
       sorted.set(currentIter[0], monthSort);
-      console.log(currentIter[0],sorted,"sorted",monthSort.entries());
+      console.log(monthSort);
       if (currentIter[1].length > 1) {
         yearMap.set(currentIter[0],yearMap.get(currentIter[0]).slice(1))
         return sortByMonth(yearMap, sorted, monthSort);
       }   
         monthSort.clear()
         yearMap.delete(currentIter[0])
-        console.log(sorted,"sorted");
+        
         
         return sortByMonth(yearMap, sorted, monthSort);
     }
