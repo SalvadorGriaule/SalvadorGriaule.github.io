@@ -7,21 +7,27 @@ export function getStaticPaths() {
     import.meta.glob("./md/*.md", { eager: true })
   );
   
-  const lim = posts.length;
   let arrPost: { params: { post: string } }[] = [];
-  for (let i = 0; i < lim; i++) {
+  for (let i = 0; i < posts.length; i++) {
     arrPost.push({ params: { post: posts[i].url.slice(posts[i].url.lastIndexOf("/") + 1) } });
   }
   return arrPost;
 }
+
+const posts = Object.values(
+    import.meta.glob("./md/*.md", { eager: true })
+);
 
 const { post } = Astro.params;
 
 let currentMd = await import(`./md/${post}.md`).then((obj) => {
   return obj;
 });
+
+let content = await currentMd.compiledContent()
+
 ---
 
 <Layout>
-  <PostPage client:load post={currentMd} />
+  <PostPage client:load post={currentMd} content={content} listPost={posts}/>
 </Layout>
