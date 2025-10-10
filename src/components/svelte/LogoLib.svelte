@@ -68,7 +68,7 @@
     const {
         name,
         classL = "h-[6em] p-[1.5em]",
-    }: { name: string; classL: string } = $props();
+    }: { name: string; classL?: string } = $props();
 
     const chosenLogo: Logo = getByNameClass(name, logo);
 </script>
