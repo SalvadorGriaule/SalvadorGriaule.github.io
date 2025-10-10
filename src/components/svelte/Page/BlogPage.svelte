@@ -2,11 +2,14 @@
   import { OverlayScrollbars } from "overlayscrollbars";
   // import componants
   import HeaderNav from "../HeaderNav.svelte";
+  import PostList from "../PostList.svelte";
+  import DisplayMarkDown from "../DisplayMarkDown.svelte";
   import { onMount } from "svelte";
 
   let bodySvelte: null | HTMLDivElement = $state(null);
 
-  const { posts } = $props();
+  const { posts, content } = $props();
+  console.log(content);
 
   onMount(() => {
     const osInstance = OverlayScrollbars(document.body, {
@@ -17,11 +20,14 @@
 
 <div bind:this={bodySvelte} class="bg-linear-to-br from-slate-600 to-slate-900">
   <HeaderNav />
-  <main>
-    {#each posts as post, i}
-      <div class="text-white text-2xl font-semibold px-2.5">
-        <a href="blog/posts/{i + 1}"> {post.frontmatter.title}</a>
-      </div>
-    {/each}
+  <main class="flex">
+    <section>
+      {#each content as post}
+        <DisplayMarkDown {post} />
+      {/each}
+    </section>
+    <aside>
+      <PostList listPost={posts} />
+    </aside>
   </main>
 </div>
