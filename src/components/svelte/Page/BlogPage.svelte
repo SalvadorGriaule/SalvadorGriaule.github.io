@@ -20,7 +20,7 @@
 
 <div bind:this={bodySvelte} class="bg-linear-to-br from-slate-600 to-slate-900">
   <HeaderNav />
-  <main class="flex">
+  <main class="mx-20 mt-10 flex justify-between">
     <section>
       {#each content as post}
         <DisplayMarkDown {post} />

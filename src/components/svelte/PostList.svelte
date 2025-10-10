@@ -96,7 +96,7 @@
           <button
             onclick={() => {
               clickMonth(mk);
-            }}>{mk}</button
+            }}>{new Intl.DateTimeFormat("fr-FR",{month:"long"}).format(mk)}</button
           >
           <ul style:display={currentDate.month == mk ? "block" : "none"}>
             {#each mv as post}

@@ -9,7 +9,8 @@
   </a>
   <nav>
     <ul class="flex space-x-2">
-      <a href="/blog"><li>blog</li></a>
+      <a href="/blog"><li>Blog</li></a>
+      <a href="/library"><li>Componenthéque</li></a>
     </ul>
   </nav>
 </header>
