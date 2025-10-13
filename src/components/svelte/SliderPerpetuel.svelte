@@ -46,7 +46,7 @@
                 id={"slide" + i}
                 class="w-32 min-w-32 h-32 mx-2 rounded-xl bg-zinc-500/20 flex justify-center items-center duration-150 md:w-84 md:min-w-84 md:h-84"
             >
-                <LogoLib name={slide} classL="w-24 duration-150 md:w-46" />
+                <LogoLib name={slide} classL="w-24 duration-150 md:w-46" mode="no-link" />
             </div>
         {/each}
     </div>
