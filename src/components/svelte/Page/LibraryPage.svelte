@@ -37,7 +37,7 @@
         onclick={() => {
           clickLib(0);
         }}
-        class="p-2 w-72 bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md m-2 backdrop-blur-md"
+        class="p-2 w-96 bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md m-2 backdrop-blur-md"
       >
         <h3 class="text-2xl font-semibold">{lib[0].titre}</h3>
         <div class="w-20">
@@ -50,10 +50,10 @@
         class="h-fit bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md m-2 p-2 backdrop-blur-md"
       >
         <h3 class="text-2xl font-semibold">{lib[selectLib].titre}</h3>
-        <div class="flex justify-center items-center">
-          <div>
+        <div class="flex justify-center items-center w-full bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md p-10">
+          <div class="m-2">
             <CircleCarousel urlArr={imgHolder} {currentImg} dim={500} />
-            <div class="flex space-x-2 justify-center">
+            <div class="mt-4 flex space-x-2 justify-center">
               <button
                 onclick={() => onclickCircle(0)}
                 class="p-2 bg-linear-to-l from-blue-300/30 to-blue-400/30 rounded-2xl"
@@ -72,7 +72,11 @@
           </div>
         </div>
         <div class="flex">
-          <p>description</p>
+          <p>
+            Le composant gère automatiquement le passage d'une image à l'autre
+            avec un effet de fondu circulaire, en ajustant les dimensions et la
+            position des images.
+          </p>
           <div class="w-20">
             <LogoLib name={lib[selectLib].logo[0]} mode="no-link" />
           </div>

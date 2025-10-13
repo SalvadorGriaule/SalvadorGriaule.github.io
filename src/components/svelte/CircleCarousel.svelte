@@ -25,8 +25,7 @@
   let sense: boolean = $state(false);
   let previouse: "back" | "front" | null = $state(null);
   let activ: boolean = $state(false);
-  let wScreen = $state(0);
-
+  
   let { rapport, newWidth } = $derived(calcWidth(urlArr[currentImg]));
 
   let lastRapport = $state({ rapport, newWidth });
@@ -64,8 +63,6 @@
     }
   });
 </script>
-
-<svelte:window bind:innerWidth={wScreen} />
 
 <div
   class="relative justify-center items-center flex-none rounded-full outline-4 outline-white outline-offset-8 bg-white overflow-hidden"
