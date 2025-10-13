@@ -50,7 +50,9 @@
         class="h-fit bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md m-2 p-2 backdrop-blur-md"
       >
         <h3 class="text-2xl font-semibold">{lib[selectLib].titre}</h3>
-        <div class="flex justify-center items-center w-full bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md p-10">
+        <div
+          class="flex justify-center items-center w-full bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md p-10"
+        >
           <div class="m-2">
             <CircleCarousel urlArr={imgHolder} {currentImg} dim={500} />
             <div class="mt-4 flex space-x-2 justify-center">
@@ -71,14 +73,19 @@
             </div>
           </div>
         </div>
-        <div class="flex">
-          <p>
+        <div class="flex items-center">
+          <p class="text-lg font-semibold w-3/5">
             Le composant gère automatiquement le passage d'une image à l'autre
             avec un effet de fondu circulaire, en ajustant les dimensions et la
             position des images.
           </p>
-          <div class="w-20">
-            <LogoLib name={lib[selectLib].logo[0]} mode="no-link" />
+          <div
+            class="p-2 rounded-xl bg-indigo-950 w-1/5 flex flex-col items-start"
+          >
+            <h5 class="text-xl text-white">Compatible avec</h5>
+            <div class="w-20">
+              <LogoLib name={lib[selectLib].logo[0]} mode="no-link" />
+            </div>
           </div>
         </div>
       </section>
