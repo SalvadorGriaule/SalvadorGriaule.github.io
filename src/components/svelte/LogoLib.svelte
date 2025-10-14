@@ -95,7 +95,7 @@
         /></a
     >
 {:else}
-    <div class="w-full h-full flex justify-center items-center">
+    <div class="w-fit h-full flex justify-center items-center">
         <img
             src={chosenLogo.svg}
             class="logo {classL}"
