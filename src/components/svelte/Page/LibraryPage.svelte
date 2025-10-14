@@ -20,7 +20,11 @@
       logo: ["svelte"],
       description:
         "Le composant gère automatiquement le passage d'une image à l'autre avec un effet de fondu circulaire, en ajustant les dimensions et la position des images.",
-    },
+    },{
+      titre: "Uploader en Drag and Drop",
+      logo: ["svelte","vuejs"]
+      
+    }
   ];
   let currentSelect: number | null = $state(null);
   
