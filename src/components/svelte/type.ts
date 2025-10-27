@@ -22,6 +22,7 @@ interface LibInfo {
   titre: string;
   logo: string[];
   description: string;
+  linkBox: LinkSlice[]
 }
 
 export { LinkType, Device };

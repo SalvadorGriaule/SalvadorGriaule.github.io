@@ -9,9 +9,9 @@
     children,
   }: {
     titre: string;
-    logo: "svelte" | "vuejs";
+    logo: ("svelte" | "vuejs" | "react")[];
     currentSelect: number | null;
-    id:number;
+    id: number;
     children: any;
   } = $props();
 
@@ -29,16 +29,14 @@
   <div class="flex justify-between items-center">
     <h3 class="text-2xl font-semibold">{titre}</h3>
     <div class="w-18">
-      <LogoLib
-        name={logo}
-        mode="no-link"
-        classL={"h-[1.75em] px-1"}
-      />
+      {#each logo as elem}
+        <LogoLib name={elem} mode="no-link" classL={"h-[1.75em] px-1"} />
+      {/each}
     </div>
   </div>
   <div
     class="flex justify-center my-2 bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md p-2"
   >
-   {@render children()}
+    {@render children()}
   </div>
 </button>

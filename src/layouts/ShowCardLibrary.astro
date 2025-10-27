@@ -6,12 +6,11 @@ import LinkBox from "../components/svelte/LinkBox.svelte"
 interface Props {
   title: string;
   description: string;
-  fw: "svelte" | "vuejs" | "react";
+  fw: ("svelte" | "vuejs" | "react")[];
   linkSlice: LinkSlice[];
-  children: any;
 }
 
-const { title, description, fw, linkSlice, children } = Astro.props;
+const { title, description, fw, linkSlice } = Astro.props;
 ---
 
 <section
@@ -32,8 +31,10 @@ const { title, description, fw, linkSlice, children } = Astro.props;
     >
       <h5 class="text-2xl">Compatible avec</h5>
       <div class="flex items-center my-3">
-        <LogoLib name={fw} mode="no-link" classL={"h-[2.5em] mx-2.5"} />
-        <LinkBox tabLink={linkSlice} spanLink={false} />
+        {fw.map((item,i) => {
+            <LogoLib name={item} mode="no-link" classL={"h-[2.5em] mx-2.5"} />
+            <LinkBox tabLink={linkSlice[i]} spanLink={false} />
+        })}
       </div>
     </div>
   </div>

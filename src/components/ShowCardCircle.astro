@@ -1,0 +1,54 @@
+---
+import ShowCardLibrary from "../layouts/ShowCardLibrary.astro";
+
+import CircleCarousel from "../components/svelte/CircleCarousel.svelte";
+
+import ImgHolder1 from "../../../../public/img/imgHolder.jpg";
+import ImgHolder2 from "../../../../public/img/imgHolder2.jpg";
+import ImgHolder3 from "../../../../public/img/imgHolder3.jpg";
+
+const imgHolder = [ImgHolder1, ImgHolder2, ImgHolder3];
+
+import { LinkType } from "./svelte/type";
+
+const lib = {
+  titre: "Carousel en cercle",
+  logo: ["svelte", "react"],
+  description:
+    "Le composant gère automatiquement le passage d'une image à l'autre avec un effet de fondu circulaire, en ajustant les dimensions et la position des images.",
+  linkBox: [
+    {
+      type: LinkType.GitHub,
+      link: "https://github.com/SalvadorGriaule/CarouselCircle",
+    },
+    {
+      type: LinkType.GitHub,
+      link: "https://github.com/SalvadorGriaule/CircleCarouselReact",
+    },
+  ],
+};
+---
+<script >
+    let currentImg
+</script>
+
+<ShowCardLibrary title={lib.titre} description={lib.description} fw={lib.logo} linkSlice={lib.linkBox}>
+    <CircleCarousel urlArr={imgHolder} currentImg={currentImg} dim={500} />
+        <div class="mt-4 flex space-x-2 justify-center">
+          <button
+            onclick={() => onclickCircle(0)}
+            class="p-2 bg-linear-to-l from-blue-300/30 to-blue-400/30 rounded-2xl"
+            >1</button
+          ><button
+            onclick={() => onclickCircle(1)}
+            class="p-2 bg-linear-to-l from-blue-400/30 to-blue-500/30 rounded-2xl"
+            >2</button
+          >
+          <button
+            onclick={() => onclickCircle(2)}
+            class="p-2 bg-linear-to-l from-blue-500/30 to-blue-600/30 rounded-2xl"
+            >3</button
+          >
+        </div>
+</ShowCardLibrary>
+
