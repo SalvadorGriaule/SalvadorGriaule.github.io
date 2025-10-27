@@ -1,8 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import DownloadSvg from "../../assets/download.svg";
+  import DownloadSvg from "../../static/download.svg";
   import { colorRandomizerByChildren } from "../../assets/ts/colorRandomizer";
   import Dropzone from "dropzone";
+
+  type FileType = "image" | "audio" | "vidéo" | "text";
 
   let {
     type = "all",
@@ -11,7 +13,7 @@
     maxFile = 1,
     fileDz = $bindable([]),
   }: {
-    type?: "all" | "image";
+    type?: "all" | FileType[];
     souple?: boolean;
     defaultVal?: string;
     maxFile?: number;
@@ -24,11 +26,39 @@
 
   let fileDiv = $state();
 
+  const testFile = (type: FileType[]) => {
+    let res = "";
+    for (let elem of type) {
+      switch (elem) {
+        case "image":
+          res += "image/*";
+          break;
+        case "audio":
+          res += res.length > 0 ? ",audio/*" : "audio/*";
+          break;
+        case "vidéo":
+          res += res.length > 0 ? ",vidéo/*" : "vidéo/*";
+          break;
+        case "text":
+          res +=
+            res.length > 0
+              ? ",.doc,.docx,.odt,.rtf,.txt,.pages"
+              : ".doc,.docx,.odt,.rtf,.txt,.pages";
+      }
+    }
+    return res;
+  };
+
+  const firstMaj = (str: string) => {
+    return str.replace(str[0], str[0].toLocaleUpperCase());
+  };
+
   const upload: Function = (form_data: FormData) => {
     if (fileDz != null && fileDz?.length > 0) {
       for (let i = 0; i < fileDz?.length; i++) {
         form_data.append(
-          (type == "image" ? "Image" : "File") + `${i}`,
+          (Array.isArray(type) && type.length == 1 ? firstMaj(type[0]) : "File") +
+            `${i}`,
           fileDz[i]
         );
       }
@@ -48,12 +78,7 @@
   };
 
   onMount(() => {
-    if (type) {
-      switch (type) {
-        case "image":
-          typeMode = "image/*";
-      }
-    }
+    if (Array.isArray(type)) typeMode = testFile(type);
 
     const dropzone = new Dropzone("#dropImg", {
       maxFiles: maxFile,

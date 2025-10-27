@@ -14,18 +14,8 @@
 
   const imgHolder = [ImgHolder1, ImgHolder2, ImgHolder3];
   let currentImg = $state(0);
-  const lib = [
-    {
-      titre: "Carousel en cercle",
-      logo: ["svelte"],
-      description:
-        "Le composant gère automatiquement le passage d'une image à l'autre avec un effet de fondu circulaire, en ajustant les dimensions et la position des images.",
-    },{
-      titre: "Uploader en Drag and Drop",
-      logo: ["svelte","vuejs"]
-      
-    }
-  ];
+ 
+
   let currentSelect: number | null = $state(null);
   
   const onclickCircle = (num: number) => {

@@ -1,22 +1,28 @@
 enum LinkType {
-    GitHub,
-    PlayIt,
+  GitHub,
+  PlayIt,
 }
 
 enum Device {
-    SmartPhone = "SmartPhone",
-    Laptop = "Laptop"
+  SmartPhone = "SmartPhone",
+  Laptop = "Laptop",
 }
 
 interface LinkSlice {
-    type: LinkType;
-    link: string;
+  type: LinkType;
+  link: string;
 }
 
 interface OngletFunc {
-    fn:Function;
-    titre:string;
+  fn: Function;
+  titre: string;
 }
 
-export { LinkType , Device};
-export type { LinkSlice, OngletFunc };
+interface LibInfo {
+  titre: string;
+  logo: string[];
+  description: string;
+}
+
+export { LinkType, Device };
+export type { LinkSlice, OngletFunc, LibInfo };

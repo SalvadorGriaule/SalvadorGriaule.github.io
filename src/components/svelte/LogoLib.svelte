@@ -10,6 +10,7 @@
     import jsLogo from "../../assets/javascript.svg";
     import laravelLogo from "../../assets/laravel.svg";
     import nuxtLogo from "../../assets/nuxt.svg";
+    import reactLogo from "../../assets/logo_dark.svg"
 
     class Logo {
         name: string;
@@ -66,6 +67,7 @@
         ),
         new Logo("laravel", "https://laravel.com/", laravelLogo.src, "#f53003"),
         new Logo("nuxt", "https://nuxt.com/", nuxtLogo.src, "#00dc82"),
+        new Logo("react","https://react.dev/", reactLogo.src,"#61dafb")
     ];
 
     const getByNameClass = (name: string, tabClass: Logo[]) => {
