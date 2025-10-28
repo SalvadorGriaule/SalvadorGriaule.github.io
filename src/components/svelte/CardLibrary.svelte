@@ -1,10 +1,11 @@
 <script lang="ts">
   import LogoLib from "./LogoLib.svelte";
+  import { currentSelect } from "../../assets/ts/nano";
 
   let {
     titre,
     logo,
-    currentSelect = $bindable(null),
+    
     id,
     children,
   }: {
@@ -16,7 +17,9 @@
   } = $props();
 
   const clickLib = (num: number) => {
-    currentSelect == num ? (currentSelect = null) : (currentSelect = num);
+    currentSelect.get() == num ? (currentSelect.set(null)) : (currentSelect.set(num));
+    console.log(currentSelect.get());
+    
   };
 </script>
 

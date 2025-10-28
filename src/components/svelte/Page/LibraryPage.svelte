@@ -3,20 +3,15 @@
   import LogoLib from "../LogoLib.svelte"; 
   import CardLibrary from "../CardLibrary.svelte";
   // import module
-  import { LinkType, type LibInfo } from "../type";
-  import { setSelect } from "../../../assets/ts/nano";
+  import { type LibInfo } from "../type";
+  
   // import img
   import CarouselGif from "../../../../public/img/CircleCarCut.webm";
 
-
-  
   let currentSelect: number | null = $state(null);
 
   let { lib }: { lib: LibInfo[] } = $props();
 
-  const onclickCircle = (num: number) => {
-    setSelect(num)
-  };
 </script>
 
 <div class="bg-linear-to-br from-slate-600 to-slate-900">

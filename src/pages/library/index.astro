@@ -3,10 +3,9 @@ import Layout from "../../layouts/Layout.astro";
 import ShowCardLibrary from "../../layouts/ShowCardLibrary.astro";
 // import Svelte
 import LibraryPage from "../../components/svelte/Page/LibraryPage.svelte";
-import CircleCarousel from "../../components/svelte/CircleCarousel.svelte";
+import CircleCard from "../../components/svelte/CardLibrary/CircleCard.svelte";
 // import module
 import { LinkType, type LibInfo } from "../../components/svelte/type";
-
 
 const lib: LibInfo[] = [
   {
@@ -42,28 +41,32 @@ const lib: LibInfo[] = [
 
 <Layout>
   <LibraryPage client:load lib={lib} />
-  <ShowCardLibrary
-    title={lib[0].titre}
-    description={lib[0].description}
-    fw={lib[0].logo}
-    linkSlice={lib[0].linkBox}
-  >
-    <CircleCarousel urlArr={imgHolder} {currentImg} dim={500} />
-    <div class="mt-4 flex space-x-2 justify-center">
-      <button
-        onclick={() => onclickCircle(0)}
-        class="p-2 bg-linear-to-l from-blue-300/30 to-blue-400/30 rounded-2xl"
-        >1</button
-      ><button
-        onclick={() => onclickCircle(1)}
-        class="p-2 bg-linear-to-l from-blue-400/30 to-blue-500/30 rounded-2xl"
-        >2</button
-      >
-      <button
-        onclick={() => onclickCircle(2)}
-        class="p-2 bg-linear-to-l from-blue-500/30 to-blue-600/30 rounded-2xl"
-        >3</button
-      >
-    </div>
-  </ShowCardLibrary>
+  <div id="0" class="w-screen hidden">
+    <ShowCardLibrary
+      title={lib[0].titre}
+      description={lib[0].description}
+      fw={lib[0].logo}
+      linkSlice={lib[0].linkBox}
+    >
+      <CircleCard />
+    </ShowCardLibrary>
+  </div>
+
+  <script>
+    import { currentSelect } from "../../assets/ts/nano";
+
+    const makeVisible = (bool: boolean, div: HTMLElement | null) => {
+      if (div && bool) {
+        div.classList.add("block");
+        div.classList.remove("hidden");
+      } else if (div) {
+        div.classList.add("hidden");
+        div.classList.remove("block");
+      }
+    };
+
+    currentSelect.subscribe((val) => {
+      if (val == 0) makeVisible(true, document.getElementById("0"));
+    });
+  </script>
 </Layout>
