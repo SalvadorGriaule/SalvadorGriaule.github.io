@@ -14,14 +14,19 @@ const lib: LibInfo[] = [
     description:
       "Le composant gère automatiquement le passage d'une image à l'autre avec un effet de fondu circulaire, en ajustant les dimensions et la position des images.",
     linkBox: [
-      {
-        type: LinkType.GitHub,
-        link: "https://github.com/SalvadorGriaule/CarouselCircle",
-      },
-      {
-        type: LinkType.GitHub,
-        link: "https://github.com/SalvadorGriaule/CircleCarouselReact",
-      },
+      [
+        {
+          type: LinkType.GitHub,
+          link: "https://github.com/SalvadorGriaule/CarouselCircle",
+        },
+      ],
+
+      [
+        {
+          type: LinkType.GitHub,
+          link: "https://github.com/SalvadorGriaule/CircleCarouselReact",
+        },
+      ],
     ],
   },
   {
@@ -30,10 +35,12 @@ const lib: LibInfo[] = [
     description:
       "Ce composant est un Dropzone personnalisé permettant le téléchargement de fichiers avec plusieurs fonctionnalités avancées.",
     linkBox: [
-      {
-        type: LinkType.GitHub,
-        link: "https://github.com/SalvadorGriaule/FileUploader",
-      },
+      [
+        {
+          type: LinkType.GitHub,
+          link: "https://github.com/SalvadorGriaule/FileUploader",
+        },
+      ],
     ],
   },
 ];
@@ -43,12 +50,13 @@ const lib: LibInfo[] = [
   <LibraryPage client:load lib={lib} />
   <div id="0" class="w-screen hidden">
     <ShowCardLibrary
+      client:load
       title={lib[0].titre}
       description={lib[0].description}
       fw={lib[0].logo}
       linkSlice={lib[0].linkBox}
     >
-      <CircleCard />
+      <CircleCard client:load />
     </ShowCardLibrary>
   </div>
 

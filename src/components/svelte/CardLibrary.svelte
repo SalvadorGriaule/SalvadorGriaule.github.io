@@ -31,9 +31,9 @@
 >
   <div class="flex justify-between items-center">
     <h3 class="text-2xl font-semibold">{titre}</h3>
-    <div class="w-18">
+    <div class="w-18 flex ">
       {#each logo as elem}
-        <LogoLib name={elem} mode="no-link" classL={"h-[1.75em] px-1"} />
+        <LogoLib name={elem} mode="no-link" classL={"h-[1.75em] w-[2.5em] px-1"} />
       {/each}
     </div>
   </div>

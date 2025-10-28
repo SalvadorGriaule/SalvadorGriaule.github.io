@@ -11,6 +11,7 @@ interface Props {
 }
 
 const { title, description, fw, linkSlice } = Astro.props;
+
 ---
 
 <section
@@ -30,11 +31,13 @@ const { title, description, fw, linkSlice } = Astro.props;
       class="p-2 mt-2 w-2/5 flex flex-col items-start border-s-2 border-black"
     >
       <h5 class="text-2xl">Compatible avec</h5>
-      <div class="flex items-center my-3">
-        {fw.map((item,i) => {
-            <LogoLib name={item} mode="no-link" classL={"h-[2.5em] mx-2.5"} />
+      <div class="flex flex-col justify-center my-3 space-y-2">
+        {fw.map((item,i) => (
+          <div class="flex items-center space-x-2">
+            <LogoLib name={item} mode="no-link" classL={"h-[2.5em] w-[2.5em] mx-2.5"} />
             <LinkBox tabLink={linkSlice[i]} spanLink={false} />
-        })}
+          </div>
+        ))}
       </div>
     </div>
   </div>
