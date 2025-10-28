@@ -9,44 +9,51 @@ import CircleCard from "../../components/svelte/CardLibrary/CircleCard.svelte";
 import { LinkType, type LibInfo } from "../../components/svelte/type";
 // import media
 import CarouselGif from "../../../../public/img/CircleCarCut.webm";
-const lib: LibInfo[] = [
-  {
-    titre: "Carousel en cercle",
-    logo: ["svelte", "react"],
-    description:
-      "Le composant gère automatiquement le passage d'une image à l'autre avec un effet de fondu circulaire, en ajustant les dimensions et la position des images.",
-    linkBox: [
-      [
-        {
-          type: LinkType.GitHub,
-          link: "https://github.com/SalvadorGriaule/CarouselCircle",
-        },
-      ],
+const lib = new Map<number, LibInfo>([
+  [
+    0,
+    {
+      titre: "Carousel en cercle",
+      logo: ["svelte", "react"],
+      description:
+        "Le composant gère automatiquement le passage d'une image à l'autre avec un effet de fondu circulaire, en ajustant les dimensions et la position des images.",
+      linkBox: [
+        [
+          {
+            type: LinkType.GitHub,
+            link: "https://github.com/SalvadorGriaule/CarouselCircle",
+          },
+        ],
 
-      [
-        {
-          type: LinkType.GitHub,
-          link: "https://github.com/SalvadorGriaule/CircleCarouselReact",
-        },
+        [
+          {
+            type: LinkType.GitHub,
+            link: "https://github.com/SalvadorGriaule/CircleCarouselReact",
+          },
+        ],
       ],
-    ],
-    media: { type: "vidéo", link: CarouselGif },
-  },
-  {
-    titre: "Uploader en Drag and Drop",
-    logo: ["svelte", "vuejs"],
-    description:
-      "Ce composant est un Dropzone personnalisé permettant le téléchargement de fichiers avec plusieurs fonctionnalités avancées.",
-    linkBox: [
-      [
-        {
-          type: LinkType.GitHub,
-          link: "https://github.com/SalvadorGriaule/FileUploader",
-        },
+      media: { type: "vidéo", link: CarouselGif },
+    },
+  ],
+  [
+    1,
+    {
+      titre: "Uploader en Drag and Drop",
+      logo: ["svelte", "vuejs"],
+      description:
+        "Ce composant est un Dropzone personnalisé permettant le téléchargement de fichiers avec plusieurs fonctionnalités avancées.",
+      linkBox: [
+        [
+          {
+            type: LinkType.GitHub,
+            link: "https://github.com/SalvadorGriaule/FileUploader",
+          },
+        ],
       ],
-    ],
-  },
-];
+      media: { type: "image", link: "" },
+    },
+  ],
+]);
 ---
 
 <Layout>
@@ -56,10 +63,10 @@ const lib: LibInfo[] = [
     <div id="0" class="showcard w-screen hidden">
       <ShowCardLibrary
         client:load
-        title={lib[0].titre}
-        description={lib[0].description}
-        fw={lib[0].logo}
-        linkSlice={lib[0].linkBox}
+        title={lib.get(0)!.titre}
+        description={lib.get(0)!.description}
+        fw={lib.get(0)!.logo}
+        linkSlice={lib.get(0)!.linkBox}
       >
         <CircleCard client:load />
       </ShowCardLibrary>

@@ -6,9 +6,8 @@
   import { currentSelect, currentTags } from "../../../assets/ts/nano";
 
   // import img
-  
 
-  let { lib }: { lib: LibInfo[] } = $props();
+  let { lib }: { lib: Map<number, LibInfo> } = $props();
   let stateSelect: number | null = $state(null);
   let stateTags: fwf = $state("all");
 
@@ -25,7 +24,14 @@
     <NavLibrary />
     <section class="flex">
       {#if stateTags == "all"}
-        <CardLibrary titre={lib[0].titre} logo={lib[0].logo} id={0} media={lib[0].media} />
+        {#each lib as [k,elem]}
+          <CardLibrary
+            titre={elem.titre}
+            logo={elem.logo}
+            id={k}
+            media={elem.media}
+          />
+        {/each}
       {/if}
     </section>
   {/if}
