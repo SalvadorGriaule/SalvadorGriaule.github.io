@@ -1,29 +1,36 @@
 ---
 import type { LinkSlice } from "../components/svelte/type";
-import LogoLib from "../components/svelte/LogoLib.svelte"
-import LinkBox from "../components/svelte/LinkBox.svelte"
+import LogoLib from "../components/svelte/LogoLib.svelte";
+import LinkBox from "../components/svelte/LinkBox.svelte";
 
 interface Props {
   title: string;
   description: string;
   fw: ("svelte" | "vuejs" | "react")[];
-  linkSlice: LinkSlice[];
+  linkSlice: LinkSlice[][];
 }
 
 const { title, description, fw, linkSlice } = Astro.props;
-
 ---
 
 <section
   class="h-fit bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md m-2 p-2 backdrop-blur-md"
 >
-  <h3 class="text-2xl font-semibold">{title}</h3>
-  <div
-    class="flex justify-center items-center w-full bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md p-10"
-  >
-  <div><slot /></div>
+  <div class="flex justify-between items-center mb-1">
+    <h3 class="text-2xl font-semibold">{title}</h3>
+    <button
+      id="Return"
+      class="flex justify-center items-center bg-red-800 border border-red-500 p-2 rounded-2xl text-white hover:bg-red-200 hover:text-red-800 duration-100"
+    >
+      <p>Retour ⤾</p>
+    </button>
   </div>
-   <div class="flex items-center">
+  <div
+    class="flex flex-col justify-center items-center w-full bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md p-10"
+  >
+    <slot />
+  </div>
+  <div class="flex items-center">
     <p class="text-xl w-3/5">
       {description}
     </p>
@@ -32,13 +39,25 @@ const { title, description, fw, linkSlice } = Astro.props;
     >
       <h5 class="text-2xl">Compatible avec</h5>
       <div class="flex flex-col justify-center my-3 space-y-2">
-        {fw.map((item,i) => (
-          <div class="flex items-center space-x-2">
-            <LogoLib name={item} mode="no-link" classL={"h-[2.5em] w-[2.5em] mx-2.5"} />
-            <LinkBox tabLink={linkSlice[i]} spanLink={false} />
-          </div>
-        ))}
+        {
+          fw.map((item, i) => (
+            <div class="flex items-center space-x-2">
+              <LogoLib
+                name={item}
+                mode="no-link"
+                classL={"h-[2.5em] w-[2.5em] mx-2.5"}
+              />
+              <LinkBox tabLink={linkSlice[i]} spanLink={false} />
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>
 </section>
+<script>
+  import { currentSelect } from "../assets/ts/nano";
+  document.getElementById("Return")?.addEventListener("click", () => {
+    currentSelect.set(null);
+  });
+</script>

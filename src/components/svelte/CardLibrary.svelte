@@ -11,7 +11,6 @@
   }: {
     titre: string;
     logo: ("svelte" | "vuejs" | "react")[];
-    currentSelect: number | null;
     id: number;
     children: any;
   } = $props();

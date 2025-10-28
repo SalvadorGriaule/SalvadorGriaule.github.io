@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import ShowCardLibrary from "../../layouts/ShowCardLibrary.astro";
 // import Svelte
 import LibraryPage from "../../components/svelte/Page/LibraryPage.svelte";
+import HeaderNav from "../../components/svelte/HeaderNav.svelte";
 import CircleCard from "../../components/svelte/CardLibrary/CircleCard.svelte";
 // import module
 import { LinkType, type LibInfo } from "../../components/svelte/type";
@@ -47,17 +48,20 @@ const lib: LibInfo[] = [
 ---
 
 <Layout>
-  <LibraryPage client:load lib={lib} />
-  <div id="0" class="w-screen hidden">
-    <ShowCardLibrary
-      client:load
-      title={lib[0].titre}
-      description={lib[0].description}
-      fw={lib[0].logo}
-      linkSlice={lib[0].linkBox}
-    >
-      <CircleCard client:load />
-    </ShowCardLibrary>
+  <div class="bg-linear-to-br from-slate-600 to-slate-900">
+    <HeaderNav />
+    <LibraryPage client:load lib={lib} />
+    <div id="0" class="showcard w-screen hidden">
+      <ShowCardLibrary
+        client:load
+        title={lib[0].titre}
+        description={lib[0].description}
+        fw={lib[0].logo}
+        linkSlice={lib[0].linkBox}
+      >
+        <CircleCard client:load />
+      </ShowCardLibrary>
+    </div>
   </div>
 
   <script>
