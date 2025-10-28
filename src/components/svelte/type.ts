@@ -22,7 +22,7 @@ interface OngletFunc {
 
 interface LibInfo {
   titre: string;
-  logo: string[];
+  logo: ("svelte" | "react" | "vuejs" )[];
   description: string;
   linkBox: LinkSlice[][];
   media: { type: "image" | "vidéo"; link: string };

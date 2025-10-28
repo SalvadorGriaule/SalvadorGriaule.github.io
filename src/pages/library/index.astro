@@ -71,6 +71,18 @@ const lib = new Map<number, LibInfo>([
         <CircleCard client:load />
       </ShowCardLibrary>
     </div>
+    <div id="1" class="showcard w-screen hidden">
+      <ShowCardLibrary
+        client:load
+        title={lib.get(1)!.titre}
+        description={lib.get(1)!.description}
+        fw={lib.get(1)!.logo}
+        linkSlice={lib.get(1)!.linkBox}
+      >
+        
+      </ShowCardLibrary>
+    </div>
+    
   </div>
 
   <script>
