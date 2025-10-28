@@ -1,3 +1,5 @@
+type fwf = "svelte" | "react" | "vuejs" | "all";
+
 enum LinkType {
   GitHub,
   PlayIt,
@@ -22,8 +24,9 @@ interface LibInfo {
   titre: string;
   logo: string[];
   description: string;
-  linkBox: LinkSlice[][]
+  linkBox: LinkSlice[][];
+  media: { type: "image" | "vidéo"; link: string };
 }
 
 export { LinkType, Device };
-export type { LinkSlice, OngletFunc, LibInfo };
+export type { LinkSlice, OngletFunc, LibInfo, fwf };

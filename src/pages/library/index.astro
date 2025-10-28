@@ -7,7 +7,8 @@ import HeaderNav from "../../components/svelte/HeaderNav.svelte";
 import CircleCard from "../../components/svelte/CardLibrary/CircleCard.svelte";
 // import module
 import { LinkType, type LibInfo } from "../../components/svelte/type";
-
+// import media
+import CarouselGif from "../../../../public/img/CircleCarCut.webm";
 const lib: LibInfo[] = [
   {
     titre: "Carousel en cercle",
@@ -29,6 +30,7 @@ const lib: LibInfo[] = [
         },
       ],
     ],
+    media: { type: "vidéo", link: CarouselGif },
   },
   {
     titre: "Uploader en Drag and Drop",
@@ -48,7 +50,7 @@ const lib: LibInfo[] = [
 ---
 
 <Layout>
-  <div class="bg-linear-to-br from-slate-600 to-slate-900">
+  <div class="bg-linear-to-br from-slate-600 to-slate-900 h-full">
     <HeaderNav />
     <LibraryPage client:load lib={lib} />
     <div id="0" class="showcard w-screen hidden">

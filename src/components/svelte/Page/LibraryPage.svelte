@@ -2,16 +2,21 @@
   import NavLibrary from "../NavLibrary.svelte";
   import CardLibrary from "../CardLibrary.svelte";
   // import module
-  import { type LibInfo } from "../type";
-  import { currentSelect } from "../../../assets/ts/nano";
+  import { type LibInfo, type fwf } from "../type";
+  import { currentSelect, currentTags } from "../../../assets/ts/nano";
 
   // import img
-  import CarouselGif from "../../../../public/img/CircleCarCut.webm";
+  
 
   let { lib }: { lib: LibInfo[] } = $props();
   let stateSelect: number | null = $state(null);
+  let stateTags: fwf = $state("all");
+
   currentSelect.listen((val) => {
     stateSelect = val;
+  });
+  currentTags.listen((val) => {
+    stateTags = val;
   });
 </script>
 
@@ -19,16 +24,9 @@
   {#if stateSelect == null}
     <NavLibrary />
     <section class="flex">
-      <CardLibrary titre={lib[0].titre} logo={["svelte", "react"]} id={0}>
-        <video
-          class="w-44"
-          src={CarouselGif}
-          autoplay
-          loop
-          muted
-          disablepictureinpicture><track kind="captions" /></video
-        >
-      </CardLibrary>
+      {#if stateTags == "all"}
+        <CardLibrary titre={lib[0].titre} logo={lib[0].logo} id={0} media={lib[0].media} />
+      {/if}
     </section>
   {/if}
 </main>

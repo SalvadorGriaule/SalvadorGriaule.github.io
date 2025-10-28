@@ -3,29 +3,30 @@
   import anime from "animejs";
   import { currentTags } from "../../assets/ts/nano";
 
+  const fw = ["all", "svelte", "vuejs", "react"];
+  let widthNav = $state(0);
+  let navDiv: null | HTMLDivElement = $state(null);
+
   const onclick = (tags: "svelte" | "react" | "vuejs" | "all") => {
     currentTags.set(tags);
-
     if (navDiv) {
       anime({
         targets: navDiv,
-        translateX: fw.findIndex((elem) => elem == currentTags.get()) * 96,
-        easing:"easeInOutQuint",
-        duration:500
+        translateX: fw.findIndex((elem) => elem == currentTags.get()) * (widthNav/4 - 2),
+        easing: "easeInOutQuint",
+        duration: 500,
       });
     }
   };
-
-  const fw = ["all", "svelte", "vuejs", "react"];
-  let navDiv: null | HTMLDivElement = $state(null);
 </script>
 
-<section class="w-full flex justify-center">
+<section class="w-full flex w justify-center">
   <div
     class="bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md m-2 p-2 backdrop-blur-md"
-  >
+    >
     <div
-      class="relative flex bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md p-1"
+    class="relative flex bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md p-1"
+    bind:clientWidth={widthNav}
     >
       <div
         bind:this={navDiv}
@@ -43,7 +44,7 @@
       </button>
       {#each fw.slice(1) as elem}
         <button onclick={() => onclick(elem)}>
-          <LogoLib name={elem} mode="no-link" />
+          <LogoLib name={elem} mode="no-link" classL="w-12 mx-6"/>
         </button>
       {/each}
     </div>
