@@ -77,8 +77,12 @@ const lib: LibInfo[] = [
       }
     };
 
+    const showcard = document.querySelectorAll(".showcard");
+
     currentSelect.subscribe((val) => {
-      if (val == 0) makeVisible(true, document.getElementById("0"));
+      for (let elem of showcard) {
+        makeVisible(val == Number(elem.id), document.getElementById(elem.id));
+      }
     });
   </script>
 </Layout>

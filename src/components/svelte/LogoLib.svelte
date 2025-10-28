@@ -83,7 +83,7 @@
         classL = "h-[6em] p-[1.5em]",
         mode = "link",
     }: { name: string; classL?: string; mode?: "link"|"no-link" } = $props();
-
+    
     const chosenLogo: Logo = getByNameClass(name, logo);
 </script>
 
@@ -97,7 +97,7 @@
         /></a
     >
 {:else}
-    <div class="w-fit h-full flex justify-center items-center">
+    <div class="w-fit h-fit flex justify-center items-center">
         <img
             src={chosenLogo.svg}
             class="logo {classL}"

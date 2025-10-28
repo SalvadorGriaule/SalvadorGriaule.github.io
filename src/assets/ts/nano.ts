@@ -1,7 +1,10 @@
-import { atom } from "nanostores"
+import { atom } from "nanostores";
 
-export const currentSelect = atom<null | number>(null)
+const currentSelect = atom<null | number>(null);
+const currentTags = atom<"all" | "react" | "svelte" | "vuejs">("all");
 
-export const setSelect = (num:number) => {
-    currentSelect.set(num)
-}
+export const setSelect = (num: number) => {
+  currentSelect.set(num);
+};
+
+export { currentSelect, currentTags };
