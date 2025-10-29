@@ -1,4 +1,4 @@
-const makeVisible = (bool: boolean, div: Element | null) => {
+const makeVisible = (bool: boolean, div: Element | null | undefined) => {
   if (div && bool) {
     div.classList.add("block");
     div.classList.remove("hidden");

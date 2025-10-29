@@ -27,7 +27,7 @@ const { title, description, fw, linkSlice, id } = Astro.props;
     </button>
   </div>
   <div
-    class="slotCard relative flex flex-col justify-center items-center w-full bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md p-10"
+    class="relative flex flex-col justify-center items-center w-full bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md p-10"
   >
     <div
       class="switch absolute flex flex-col items-center left-12 top-1/2 -translate-1/2"
@@ -40,7 +40,9 @@ const { title, description, fw, linkSlice, id } = Astro.props;
         ))
       }
     </div>
-    <slot />
+    <div class="slotCard">
+      <slot />
+    </div>
   </div>
   <div class="flex items-center">
     <p class="text-xl w-3/5">
@@ -76,7 +78,7 @@ const { title, description, fw, linkSlice, id } = Astro.props;
   currentSelect.listen((val) => {
     const cardId = document.getElementById(`lib${val}`);
     if (cardId) {
-      const slotFw = cardId.querySelector(".switch");
+      const switchFw = cardId.querySelector(".switch");
       const returnBtn = cardId.querySelector(".return");
       const slotCard = cardId.querySelector(".slotCard");
 
@@ -84,16 +86,16 @@ const { title, description, fw, linkSlice, id } = Astro.props;
         currentSelect.set(null);
       });
 
-      // for (let slot of slotFw) {
-      //   for (let btnFw of slot.children) {
-      //     const fw = btnFw.dataset.fw;
-      //     btnFw.addEventListener("click", () => {
-      //       for (let poss of fwP) {
-      //         makeVisibleAll(poss == fw, slotCard);
-      //       }
-      //     });
-      //   }
-      // }
+      for (let btnFw of switchFw.children) {
+        const fw = btnFw.dataset.fw;
+        btnFw.addEventListener("click", () => {
+          for (let slot of slotCard.children) {
+            console.log(fw,slot.classList.contains(fw),slot);
+            
+            makeVisible(slot.classList.contains(fw), slot);
+          }
+        });
+      }
     }
   });
 </script>
