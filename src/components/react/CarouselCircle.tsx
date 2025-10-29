@@ -67,7 +67,7 @@ export default function CarouselCircle({
           whiteOffsetApi.start({
             from: { value: frontImg < currentImg ? 0 : 100 },
             to: { value: frontImg < currentImg ? 100 : 0 },
-            config: { duration: frontImg < currentImg ? 800 : 400 },
+            config: { duration: frontImg < currentImg ? 800 : 500 },
             onRest: resolve,
           })
         ),
@@ -75,7 +75,7 @@ export default function CarouselCircle({
           blackOffsetApi.start({
             from: { value: frontImg < currentImg ? 0 : 100 },
             to: { value: frontImg < currentImg ? 100 : 0 },
-            config: { duration: frontImg < currentImg ? 400 : 800 },
+            config: { duration: frontImg < currentImg ? 500 : 800 },
             onRest: resolve,
           })
         ),
