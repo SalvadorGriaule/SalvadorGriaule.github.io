@@ -1,3 +1,5 @@
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
 type fwf = "svelte" | "react" | "vuejs" | "all";
 
 enum LinkType {
@@ -21,8 +23,9 @@ interface OngletFunc {
 }
 
 interface LibInfo {
+  id:number
   titre: string;
-  logo: ("svelte" | "react" | "vuejs" )[];
+  logo: ("svelte" | "react" | "vuejs")[];
   description: string;
   linkBox: LinkSlice[][];
   media: { type: "image" | "vidéo"; link: string };

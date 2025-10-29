@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import DownloadSvg from "../../static/download.svg";
+  import DownloadSvg from "../../assets/download.svg";
   import { colorRandomizerByChildren } from "../../assets/ts/colorRandomizer";
   import Dropzone from "dropzone";
 
@@ -158,7 +158,7 @@
               ? 'hidden'
               : 'block'}"
           >
-            <img src={DownloadSvg} alt="" />
+            <img src={DownloadSvg.src} alt="" />
           </div>
           <div
             class="w-1/4 clickab my-2 {defaultVal != undefined

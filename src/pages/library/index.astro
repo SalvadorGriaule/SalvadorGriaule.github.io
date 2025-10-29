@@ -4,7 +4,9 @@ import ShowCardLibrary from "../../layouts/ShowCardLibrary.astro";
 // import Svelte
 import LibraryPage from "../../components/svelte/Page/LibraryPage.svelte";
 import HeaderNav from "../../components/svelte/HeaderNav.svelte";
+// import card
 import CircleCard from "../../components/svelte/CardLibrary/CircleCard.svelte";
+import UploaderCard from "../../components/svelte/CardLibrary/UploaderCard.svelte";
 // import module
 import { LinkType, type LibInfo } from "../../components/svelte/type";
 // import media
@@ -13,6 +15,7 @@ const lib = new Map<number, LibInfo>([
   [
     0,
     {
+      id:0,
       titre: "Carousel en cercle",
       logo: ["svelte", "react"],
       description:
@@ -38,6 +41,7 @@ const lib = new Map<number, LibInfo>([
   [
     1,
     {
+      id:1,
       titre: "Uploader en Drag and Drop",
       logo: ["svelte", "vuejs"],
       description:
@@ -63,40 +67,34 @@ const lib = new Map<number, LibInfo>([
     <div id="0" class="showcard w-screen hidden">
       <ShowCardLibrary
         client:load
+        id={0}
         title={lib.get(0)!.titre}
         description={lib.get(0)!.description}
         fw={lib.get(0)!.logo}
         linkSlice={lib.get(0)!.linkBox}
       >
-        <CircleCard client:load />
+        <div class="svelte w-full h-full">
+          <CircleCard client:load />
+        </div>
       </ShowCardLibrary>
     </div>
     <div id="1" class="showcard w-screen hidden">
       <ShowCardLibrary
         client:load
+        id={1}
         title={lib.get(1)!.titre}
         description={lib.get(1)!.description}
         fw={lib.get(1)!.logo}
         linkSlice={lib.get(1)!.linkBox}
       >
-        
+        <UploaderCard client:load />
       </ShowCardLibrary>
     </div>
-    
   </div>
 
   <script>
     import { currentSelect } from "../../assets/ts/nano";
-
-    const makeVisible = (bool: boolean, div: HTMLElement | null) => {
-      if (div && bool) {
-        div.classList.add("block");
-        div.classList.remove("hidden");
-      } else if (div) {
-        div.classList.add("hidden");
-        div.classList.remove("block");
-      }
-    };
+    import { makeVisible } from "../../assets/ts/misc";
 
     const showcard = document.querySelectorAll(".showcard");
 

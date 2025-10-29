@@ -4,16 +4,18 @@ import LogoLib from "../components/svelte/LogoLib.svelte";
 import LinkBox from "../components/svelte/LinkBox.svelte";
 
 interface Props {
+  id: number;
   title: string;
   description: string;
   fw: ("svelte" | "vuejs" | "react")[];
   linkSlice: LinkSlice[][];
 }
 
-const { title, description, fw, linkSlice } = Astro.props;
+const { title, description, fw, linkSlice, id } = Astro.props;
 ---
 
 <section
+  id={"lib" + id}
   class="h-fit bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md m-2 p-2 backdrop-blur-md"
 >
   <div class="flex justify-between items-center mb-1">
@@ -25,8 +27,19 @@ const { title, description, fw, linkSlice } = Astro.props;
     </button>
   </div>
   <div
-    class="flex flex-col justify-center items-center w-full bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md p-10"
+    class="slotCard relative flex flex-col justify-center items-center w-full bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md p-10"
   >
+    <div
+      class="switch absolute flex flex-col items-center left-12 top-1/2 -translate-1/2"
+    >
+      {
+        fw.map((elem) => (
+          <div data-fw={elem}>
+            <LogoLib name={elem} mode="no-link" />
+          </div>
+        ))
+      }
+    </div>
     <slot />
   </div>
   <div class="flex items-center">
@@ -56,7 +69,31 @@ const { title, description, fw, linkSlice } = Astro.props;
 </section>
 <script>
   import { currentSelect } from "../assets/ts/nano";
-  document.getElementById("Return")?.addEventListener("click", () => {
-    currentSelect.set(null);
+  import { makeVisible, makeVisibleAll } from "../assets/ts/misc";
+
+  const fwP = ["svelte", "vuejs", "react"];
+
+  currentSelect.listen((val) => {
+    const cardId = document.getElementById(`lib${val}`);
+    if (cardId) {
+      const slotFw = cardId.querySelector(".switch");
+      const returnBtn = cardId.querySelector(".return");
+      const slotCard = cardId.querySelector(".slotCard");
+
+      returnBtn.addEventListener("click", () => {
+        currentSelect.set(null);
+      });
+
+      // for (let slot of slotFw) {
+      //   for (let btnFw of slot.children) {
+      //     const fw = btnFw.dataset.fw;
+      //     btnFw.addEventListener("click", () => {
+      //       for (let poss of fwP) {
+      //         makeVisibleAll(poss == fw, slotCard);
+      //       }
+      //     });
+      //   }
+      // }
+    }
   });
 </script>
