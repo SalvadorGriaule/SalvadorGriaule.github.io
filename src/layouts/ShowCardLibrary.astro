@@ -72,9 +72,7 @@ const { title, description, fw, linkSlice, id } = Astro.props;
 <script>
   import { currentSelect } from "../assets/ts/nano";
   import { makeVisible } from "../assets/ts/misc";
-
-  const fwP = ["svelte", "vuejs", "react"];
-
+  
   currentSelect.listen((val) => {
     const cardId = document.getElementById(`lib${val}`);
     if (cardId) {
@@ -90,8 +88,6 @@ const { title, description, fw, linkSlice, id } = Astro.props;
         const fw = btnFw.dataset.fw;
         btnFw.addEventListener("click", () => {
           for (let slot of slotCard.children) {
-            console.log(fw,slot.classList.contains(fw),slot);
-            
             makeVisible(slot.classList.contains(fw), slot);
           }
         });

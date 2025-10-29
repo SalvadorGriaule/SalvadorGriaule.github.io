@@ -92,7 +92,9 @@ const lib = new Map<number, LibInfo>([
         fw={lib.get(1)!.logo}
         linkSlice={lib.get(1)!.linkBox}
       >
+      <div class="svelte w-full h-full block">
         <UploaderCard client:load />
+      </div>
       </ShowCardLibrary>
     </div>
   </div>

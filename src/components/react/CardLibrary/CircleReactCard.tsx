@@ -14,27 +14,26 @@ export default function CircleCard() {
     setCurrent(num);
   }, []);
 
+  console.log(imgHolder);
   
   return (
-    <>
-      <main className="w-screen h-screen flex justify-center items-center flex-col">
+
+      <main className="flex justify-center items-center flex-col">
         <CarouselCircle urlArr={imgHolder} dim={dim} currentImg={current} />
-        <div className="mt-8 space-x-1">
+        <div className="mt-4 space-x-2">
           {imgHolder.map((elem, i) => {
             return (
               <button
                 onClick={() => handleClick(i)}
-                className="bg-linear-to-r from-slate-300 to-slate-400"
+                className="p-2 bg-linear-to-l from-blue-300/30 to-blue-400/30 rounded-2xl"
                 key={i}
               >
-                {i}
+                {i + 1}
               </button>
             );
           })}
         </div>
-        <p>{current}</p>
       </main>
-    </>
   );
 }
 

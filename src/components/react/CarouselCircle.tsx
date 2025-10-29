@@ -20,7 +20,7 @@ export default function CarouselCircle({
   key?: number;
 }) {
   // State management
-  const [sizeSvg, setSizeSvg] = useState({ width: 0, height: 0 });
+  const [sizeSvg, setSizeSvg] = useState({ width: dim, height: dim });
   const [backImg, setBackImg] = useState(0);
   const [frontImg, setFrontImg] = useState(0);
   const [transitionDirection, setTransitionDirection] = useState<
@@ -93,14 +93,14 @@ export default function CarouselCircle({
     }
   }, [currentImg]);
   // Update SVG size
-  useEffect(() => {
-    if (svgRef.current) {
-      setSizeSvg({
-        width: svgRef.current.clientWidth,
-        height: svgRef.current.clientHeight,
-      });
-    }
-  }, [svgRef.current]);
+  // useEffect(() => {
+  //   if (svgRef.current) {
+  //     setSizeSvg({
+  //       width: svgRef.current.clientWidth,
+  //       height: svgRef.current.clientHeight,
+  //     });
+  //   }
+  // }, [svgRef.current]);
 
   return (
     <div

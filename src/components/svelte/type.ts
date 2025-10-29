@@ -1,5 +1,3 @@
-import type { AstroComponentFactory } from "astro/runtime/server/index.js";
-
 type fwf = "svelte" | "react" | "vuejs" | "all";
 
 enum LinkType {
