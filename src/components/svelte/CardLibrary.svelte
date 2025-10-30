@@ -18,7 +18,6 @@
     currentSelect.get() == num
       ? currentSelect.set(null)
       : currentSelect.set(num);
-    console.log(currentSelect.get());
   };
 </script>
 

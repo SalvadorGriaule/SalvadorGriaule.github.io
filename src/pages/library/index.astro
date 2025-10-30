@@ -15,6 +15,7 @@ import UploaderCardVue from "../../components/vue/CardLibrary/UploaderCard.vue";
 import { LinkType, type LibInfo } from "../../components/svelte/type";
 // import media
 import CarouselGif from "../../../../public/img/CircleCarCut.webm";
+import ImgOfUploader from "../../../public/img/ImgCardUploader.png"
 const lib = new Map<number, LibInfo>([
   [
     0,
@@ -58,7 +59,7 @@ const lib = new Map<number, LibInfo>([
           },
         ],
       ],
-      media: { type: "image", link: "" },
+      media: { type: "image", link: ImgOfUploader.src },
     },
   ],
 ]);
