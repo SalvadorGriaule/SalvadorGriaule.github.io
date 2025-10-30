@@ -57,8 +57,9 @@
     if (fileDz != null && fileDz?.length > 0) {
       for (let i = 0; i < fileDz?.length; i++) {
         form_data.append(
-          (Array.isArray(type) && type.length == 1 ? firstMaj(type[0]) : "File") +
-            `${i}`,
+          (Array.isArray(type) && type.length == 1
+            ? firstMaj(type[0])
+            : "File") + `${i}`,
           fileDz[i]
         );
       }
@@ -184,9 +185,7 @@
         id="preview "
       >
         <div
-          class="template flex justify-center items-center space-x-2 lg:w-3/5 p-2 rounded-xl
-        
-        "
+          class="template flex justify-center items-center space-x-2 lg:w-3/5 p-2 rounded-xl"
         >
           <div class="w-1/6">
             <img class="w-full" alt="" data-dz-thumbnail />

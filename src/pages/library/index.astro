@@ -9,6 +9,8 @@ import CircleReact from "../../components/react/CardLibrary/CircleReactCard";
 // import card
 import CircleCard from "../../components/svelte/CardLibrary/CircleCard.svelte";
 import UploaderCard from "../../components/svelte/CardLibrary/UploaderCard.svelte";
+// import vue
+import UploaderCardVue from "../../components/vue/CardLibrary/UploaderCard.vue";
 // import module
 import { LinkType, type LibInfo } from "../../components/svelte/type";
 // import media
@@ -94,6 +96,9 @@ const lib = new Map<number, LibInfo>([
       >
       <div class="svelte w-full h-full block">
         <UploaderCard client:load />
+      </div>
+      <div class="vuejs w-full h-full hidden">
+        <UploaderCardVue client:load/>
       </div>
       </ShowCardLibrary>
     </div>
