@@ -15,7 +15,8 @@ import UploaderCardVue from "../../components/vue/CardLibrary/UploaderCard.vue";
 import { LinkType, type LibInfo } from "../../components/svelte/type";
 // import media
 import CarouselGif from "../../../../public/img/CircleCarCut.webm";
-import ImgOfUploader from "../../../public/img/ImgCardUploader.png"
+import ImgOfUploader from "../../../public/img/ImgCardUploader.png";
+
 const lib = new Map<number, LibInfo>([
   [
     0,
@@ -95,21 +96,33 @@ const lib = new Map<number, LibInfo>([
         fw={lib.get(1)!.logo}
         linkSlice={lib.get(1)!.linkBox}
       >
-      <div class="svelte w-full h-full block">
-        <UploaderCard client:load />
-      </div>
-      <div class="vuejs w-full h-full hidden">
-        <UploaderCardVue client:load/>
-      </div>
+        <div class="svelte w-full h-full block">
+          <UploaderCard client:load />
+        </div>
+        <div class="vuejs w-full h-full hidden">
+          <UploaderCardVue client:load />
+        </div>
       </ShowCardLibrary>
     </div>
   </div>
 
   <script>
-    import { currentSelect } from "../../assets/ts/nano";
+    import { currentSelect, currentVisible } from "../../assets/ts/nano";
     import { makeVisible } from "../../assets/ts/misc";
 
     const showcard = document.querySelectorAll(".showcard");
+
+    const callbackVis: MutationCallback = (mut) => {
+      for(let elem of mut){
+        if(elem.target.classList.contains("block")) console.log(elem.target.id);
+        currentVisible.set(elem.target.id); 
+      }
+    };
+
+    const mutObser = new MutationObserver(callbackVis);
+    for (let elem of showcard) {
+      mutObser.observe(elem,{attributes:true,attributeFilter:["class"]});
+    }
 
     currentSelect.subscribe((val) => {
       for (let elem of showcard) {
