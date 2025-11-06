@@ -166,7 +166,7 @@
               ? 'block'
               : 'hidden'}"
           >
-            <img src="/image/prestation/{defaultVal}" alt="" />
+            <img src={defaultVal} alt="" />
           </div>
           <p class="text-blue-500 ms-4 text-xl lg:text-base lg:ms-0">
             insérer un fichier {type != "all" && type != undefined

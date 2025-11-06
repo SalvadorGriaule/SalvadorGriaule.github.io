@@ -25,7 +25,7 @@
   onclick={() => {
     clickLib(id);
   }}
-  class="p-2 w-96 bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md m-2 backdrop-blur-md"
+  class="p-2 w-[23.5%] bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md m-2 backdrop-blur-md"
 >
   <div class="flex justify-between items-center">
     <h3 class="text-2xl font-semibold">{titre}</h3>
@@ -40,10 +40,10 @@
     </div>
   </div>
   <div
-    class="flex justify-center my-2 bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md p-2"
+    class="flex justify-center items-center h-48 my-2 bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md p-2"
   >
     {#if media.type == "image"}
-      <img class="w-44" src={media.link} alt={titre} />
+      <img class="w-44 h-fit" src={media.link} alt={titre} />
     {:else}
       <video
         class="w-44"
