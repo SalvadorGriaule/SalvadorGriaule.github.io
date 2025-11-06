@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Dropzone from "dropzone";
-// import DownloadSvg from "../../assets/download.svg"
+import DownloadSvg from "../../assets/download.svg"
 import { colorRandomizerByChildren } from "../../assets/ts/colorRandomizer";
 import { onMounted, ref, useTemplateRef, watch } from "vue";
 
@@ -158,7 +158,7 @@ onMounted(() => {
                             <img src="../../assets/download.svg" alt="" />
                         </div>
                         <div class="w-1/4 clickabVue my-2">
-                            <img src="" alt="" />
+                            <img :src="DownloadSvg.src" alt="" />
                         </div>
                         <p class="text-blue-500 ms-4 text-xl lg:text-base lg:ms-0">
                             insérer un fichier ici

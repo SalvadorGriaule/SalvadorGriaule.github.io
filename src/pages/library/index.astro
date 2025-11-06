@@ -114,8 +114,7 @@ const lib = new Map<number, LibInfo>([
 
     const callbackVis: MutationCallback = (mut) => {
       for(let elem of mut){
-        if(elem.target.classList.contains("block")) console.log(elem.target.id);
-        currentVisible.set(elem.target.id); 
+        if(elem.target.classList.contains("block")) currentVisible.set(elem.target.id); 
       }
     };
 
