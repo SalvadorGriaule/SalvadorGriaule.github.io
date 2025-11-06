@@ -36,7 +36,7 @@ const { title, description, fw, linkSlice, id } = Astro.props;
         class="switch relative flex flex-col items-center bg-linear-to-br from-neutral-700/60 to-neutral-800/40 rounded-md p-1"
       >
         <div
-          class="switcher absolute top-2 left-1/2 w-24 h-24 rounded-md bg-linear-to-br from-neutral-300/40 to-neutral-400/30"
+          class="switcher absolute top-2 -translate-x-1/2 w-24 h-24 rounded-md bg-linear-to-br from-neutral-300/40 to-neutral-400/30"
         >
         </div>
         {
@@ -78,12 +78,9 @@ const { title, description, fw, linkSlice, id } = Astro.props;
   </div>
 </section>
 <script>
-  import { currentSelect } from "../assets/ts/nano";
+  import { currentSelect, currentVisible } from "../assets/ts/nano";
   import { makeVisible } from "../assets/ts/misc";
   import anime from "animejs";
-
-  console.log("hello");
-  
 
   currentSelect.listen((val) => {
     const cardId = document.getElementById(`lib${val}`);
@@ -94,9 +91,11 @@ const { title, description, fw, linkSlice, id } = Astro.props;
       const switcher = cardId.querySelector(".switcher");
       const switchDiv = cardId.querySelector(".switch");
 
-      if (switcher && switchDiv) {
-        switcher.style.left = switchDiv.clientWidth / 2 + "px";
-      }
+      currentVisible.listen((val) => {
+        if (switcher && switchDiv) {
+          switcher.style.left = switchDiv.clientWidth / 2 + "px";
+        }
+      });
 
       returnBtn.addEventListener("click", () => {
         currentSelect.set(null);
