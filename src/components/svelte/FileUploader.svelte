@@ -155,14 +155,14 @@
       >
         <div class="flex justify-center items-center flex-col">
           <div
-            class="w-1/3 clickab lg:w-1/6 {defaultVal != undefined
+            class="w-1/3 clickab lg:w-1/5 {defaultVal != undefined
               ? 'hidden'
               : 'block'}"
           >
             <img src={DownloadSvg.src} alt="" />
           </div>
           <div
-            class="w-1/4 clickab my-2 {defaultVal != undefined
+            class="w-1/3 clickab my-2 {defaultVal != undefined
               ? 'block'
               : 'hidden'}"
           >

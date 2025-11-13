@@ -6,11 +6,10 @@ import DefaultImg from '../../../assets/imgHolder.jpg'
 let fileDz: Ref<File[] | null> = ref([]);
 let defaultImage: Ref<boolean> = ref(false);
 
-
-
 const onclick = () => {
     defaultImage.value = !defaultImage.value
 }
+
 </script>
 <template>
     <div class="w-full flex flex-col items-center space-y-2">

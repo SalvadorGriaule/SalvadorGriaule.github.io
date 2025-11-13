@@ -153,10 +153,10 @@ onMounted(() => {
                     class="clickabVue flex-row flex justify-center items-center w-11/12 rounded-md p-2 border-blue-500 border-2 border-dashed h-11/12"
                 >
                     <div class="flex justify-center items-center flex-col">
-                        <div v-if="defaultVal != null" class="w-1/3 clickabVue lg:w-1/6" >
+                        <div v-if="defaultVal != null" class="w-1/3 clickabVue" >
                             <img :src="defaultVal" alt="" />
                         </div>
-                        <div v-else class="w-1/4 clickabVue my-2">
+                        <div v-else class="w-1/5 clickabVue my-2">
                             <img :src="DownloadSvg.src" alt="" />
                         </div>
                         <p class="text-blue-500 ms-4 text-xl lg:text-base lg:ms-0">

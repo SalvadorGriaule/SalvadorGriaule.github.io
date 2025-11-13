@@ -10,31 +10,32 @@ export default function CircleCard() {
   const [current, setCurrent] = useState(0);
   const dim = 500;
 
+  let gradient: string[] = [];
+
+  for (let i = 0; i < 3; i++) {
+    gradient.push(`from-blue-${300 + i * 100}/30 to-blue-${400 + i * 100}/30`);
+  }
+
   const handleClick = useCallback((num: number) => {
     setCurrent(num);
   }, []);
 
-  console.log(imgHolder);
-  
   return (
-
-      <main className="flex justify-center items-center flex-col">
-        <CarouselCircle urlArr={imgHolder} dim={dim} currentImg={current} />
-        <div className="mt-4 space-x-2">
-          {imgHolder.map((elem, i) => {
-            return (
-              <button
-                onClick={() => handleClick(i)}
-                className="p-2 bg-linear-to-l from-blue-300/30 to-blue-400/30 rounded-2xl"
-                key={i}
-              >
-                {i + 1}
-              </button>
-            );
-          })}
-        </div>
-      </main>
+    <main className="flex justify-center items-center flex-col">
+      <CarouselCircle urlArr={imgHolder} dim={dim} currentImg={current} />
+      <div className="mt-5 space-x-2">
+        {imgHolder.map((elem, i) => {
+          return (
+            <button
+              onClick={() => handleClick(i)}
+              className={"p-2 bg-linear-to-l rounded-2xl " + gradient[i]}
+              key={i}
+            >
+              {i + 1}
+            </button>
+          );
+        })}
+      </div>
+    </main>
   );
 }
-
-

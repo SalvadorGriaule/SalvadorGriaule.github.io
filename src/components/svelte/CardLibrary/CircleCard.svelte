@@ -8,25 +8,20 @@
   const imgHolder = [ImgHolder1, ImgHolder2, ImgHolder3];
   let currentImg = $state(0);
 
-  const onclickCircle = (num:number) => {
-    currentImg = num
-  }
+  const onclickCircle = (num: number) => {
+    currentImg = num;
+  };
 </script>
 
-<CircleCarousel urlArr={imgHolder} {currentImg} dim={500} />
-<div class="mt-4 flex space-x-2 justify-center">
-  <button
-    onclick={() => onclickCircle(0)}
-    class="p-2 bg-linear-to-l from-blue-300/30 to-blue-400/30 rounded-2xl"
-    >1</button
-  ><button
-    onclick={() => onclickCircle(1)}
-    class="p-2 bg-linear-to-l from-blue-400/30 to-blue-500/30 rounded-2xl"
-    >2</button
-  >
-  <button
-    onclick={() => onclickCircle(2)}
-    class="p-2 bg-linear-to-l from-blue-500/30 to-blue-600/30 rounded-2xl"
-    >3</button
-  >
+<div class="flex flex-col items-center">
+  <CircleCarousel urlArr={imgHolder} {currentImg} dim={500} />
+  <div class="mt-5 flex space-x-2 justify-center">
+    {#each imgHolder, i}
+      <button
+        onclick={() => onclickCircle(i)}
+        class="p-2 bg-linear-to-l from-blue-{300 + i * 100}/30 to-blue-{400 + i * 100}/30 rounded-2xl"
+        >{i + 1}</button
+      >
+    {/each}
+  </div>
 </div>
