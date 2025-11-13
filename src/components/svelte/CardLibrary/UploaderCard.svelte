@@ -1,6 +1,6 @@
 <script lang="ts">
   import FileUploader from "../FileUploader.svelte";
-  import DefaultImg from "../../../assets/imgHolder.jpg";
+  import DefaultImg from "@assets/imgHolder.jpg";
 
   let fileDz: File[] | null = $state([]);
   let defaultImage = $state(false);

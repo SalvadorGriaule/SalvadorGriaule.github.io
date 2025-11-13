@@ -77,7 +77,6 @@ const lib = new Map<number, LibInfo>([
     <LibraryPage client:load lib={lib} />
     <div id="0" class="showcard w-screen hidden">
       <ShowCardLibrary
-        client:load
         id={0}
         title={lib.get(0)!.titre}
         description={lib.get(0)!.description}
@@ -94,7 +93,6 @@ const lib = new Map<number, LibInfo>([
     </div>
     <div id="1" class="showcard w-screen hidden">
       <ShowCardLibrary
-        client:load
         id={1}
         title={lib.get(1)!.titre}
         description={lib.get(1)!.description}

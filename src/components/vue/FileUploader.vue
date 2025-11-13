@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Dropzone from "dropzone";
-import DownloadSvg from "../../assets/download.svg"
-import { colorRandomizerByChildren } from "../../assets/ts/colorRandomizer";
+import DownloadSvg from "@assets/download.svg"
+import { colorRandomizerByChildren } from "@assets/ts/colorRandomizer";
 import { onMounted, ref, useTemplateRef, watch } from "vue";
 
 type FileType = "image" | "audio" | "vidéo" | "text";
