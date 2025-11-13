@@ -131,7 +131,6 @@
     document.addEventListener("formdata", (e) => {
       if (fileDz != undefined) upload(e.formData);
     });
-    $inspect(preview.children);
   });
 </script>
 

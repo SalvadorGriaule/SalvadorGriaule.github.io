@@ -75,8 +75,8 @@ let fileDiv = ref();
 let typeMode = ""
 
 const dragEvent = (bool: boolean) => {
-    feedBack.value.style.height = bool ? `${dOheight}px` : "0px";
-    feedBack.value.style.width = bool ? `${dOwidth}px` : "0px";
+    feedBack.value.style.height = bool ? `${dOheight.value}px` : "0px";
+    feedBack.value.style.width = bool ? `${dOwidth.value}px` : "0px";
 };
 
 onMounted(() => {
@@ -84,15 +84,12 @@ onMounted(() => {
     // if (data) data = "http://" + url + "/" + data;
     if (Array.isArray(type)) typeMode = testFile(type);
 
-    if (standBy.value) {
-        watch(dragOver, () => {
-            console.log(dOheight.value, dOheight.value);
-            dOheight.value = standBy.value.offsetHeight
-            dOwidth.value = standBy.value.offsetWidth
+    watch(dragOver, () => {
+        dOheight.value = imgUpload.value.offsetHeight
+        dOwidth.value = imgUpload.value.offsetWidth
+        dragEvent(dragOver.value == 1)
+    })
 
-        })
-
-    }
 
     if (preview.value && standBy.value) {
         const dropzone = new Dropzone("#dropImgVue", {
@@ -123,6 +120,7 @@ onMounted(() => {
             fileDz = fileDz.filter((elem) => elem.name != file.name);
             if (fileDz.length == 0) {
                 dragEvent(false);
+                dragOver.value = 0;
                 standBy.value.classList.add("flex");
                 standBy.value.classList.remove("hidden");
                 imgUpload.value.classList.remove("flex-col");
@@ -131,16 +129,18 @@ onMounted(() => {
             emit("fileUpload", fileDz)
         });
         dropzone.on("dragenter", (e) => {
-            if (standBy.value == e.target) dragOver.value = 1;
+            if (imgUpload.value == e.target) {
+                dragOver.value = 1;
+            }
         })
         dropzone.on("dragleave", (e) => {
-            if (feedBack.value == e.target) dragOver.value = 0;
+            if (feedBack.value == e.target) {
+                dragOver.value = 0;
+            }
         })
         document.addEventListener("formdata", (e) => {
             if (fileDz != undefined) upload(e.formData);
         })
-        console.log(preview.value,standBy.value);
-        
     }
 })
 </script>
@@ -148,12 +148,12 @@ onMounted(() => {
 <template>
     <div class="flex w-11/12 justify-center items-center rounded-lg overflow-hidden h-full">
         <div class="w-full h-full flex justify-center items-center">
-            <div ref="imgUpload" class="clickabVue relative flex justify-center items-center bg-gray-300 w-full h-full" id="dropImgVue">
+            <div ref="imgUpload" class="clickabVue relative flex justify-center items-center bg-gray-300 w-full h-full"
+                id="dropImgVue">
                 <div ref="standBy" id="standBy"
-                    class="clickabVue flex-row flex justify-center items-center w-11/12 rounded-md p-2 border-blue-500 border-2 border-dashed h-11/12"
-                >
+                    class="clickabVue flex-row flex justify-center items-center w-11/12 rounded-md p-2 border-blue-500 border-2 border-dashed h-11/12">
                     <div class="flex justify-center items-center flex-col">
-                        <div v-if="defaultVal != null" class="w-1/3 clickabVue" >
+                        <div v-if="defaultVal != null" class="w-1/3 clickabVue">
                             <img :src="defaultVal" alt="" />
                         </div>
                         <div v-else class="w-1/5 clickabVue my-2">
@@ -193,5 +193,4 @@ onMounted(() => {
             </div>
         </div>
     </div>
-
 </template>
