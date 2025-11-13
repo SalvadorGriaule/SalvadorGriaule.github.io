@@ -2,20 +2,20 @@
 import Layout from "../../layouts/Layout.astro";
 import ShowCardLibrary from "../../layouts/ShowCardLibrary.astro";
 // import Svelte
-import LibraryPage from "../../components/svelte/Page/LibraryPage.svelte";
-import HeaderNav from "../../components/svelte/HeaderNav.svelte";
+import LibraryPage from "@svelte/Page/LibraryPage.svelte";
+import HeaderNav from "@svelte/HeaderNav.svelte";
 // import react
 import CircleReact from "../../components/react/CardLibrary/CircleReactCard";
 // import card
-import CircleCard from "../../components/svelte/CardLibrary/CircleCard.svelte";
-import UploaderCard from "../../components/svelte/CardLibrary/UploaderCard.svelte";
+import CircleCard from "@svelte/CardLibrary/CircleCard.svelte";
+import UploaderCard from "@svelte/CardLibrary/UploaderCard.svelte";
 // import vue
-import UploaderCardVue from "../../components/vue/CardLibrary/UploaderCard.vue";
+import UploaderCardVue from "@vue/CardLibrary/UploaderCard.vue";
 // import module
-import { LinkType, type LibInfo } from "../../components/svelte/type";
+import { LinkType, type LibInfo } from "@svelte/type";
 // import media
-import CarouselGif from "../../../../public/img/CircleCarCut.webm";
-import ImgOfUploader from "../../../public/img/ImgCardUploader.png";
+import ImgOfUploader from "@public/img/ImgCardUploader.png";
+import CarouselGif from "@public/img/CircleCarCut.webm";
 
 const lib = new Map<number, LibInfo>([
   [
