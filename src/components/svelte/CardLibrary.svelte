@@ -1,6 +1,6 @@
 <script lang="ts">
   import LogoLib from "./LogoLib.svelte";
-  import { currentSelect } from "../../assets/ts/nano";
+  import { currentSelect } from "@assets/ts/nano";
 
   let {
     titre,
@@ -14,11 +14,13 @@
     media: { type: "image" | "vidéo"; link: string };
   } = $props();
 
+  $inspect(logo)
   const clickLib = (num: number) => {
     currentSelect.get() == num
       ? currentSelect.set(null)
       : currentSelect.set(num);
   };
+
 </script>
 
 <button
@@ -29,7 +31,7 @@
 >
   <div class="flex justify-between items-center">
     <h3 class="text-2xl font-semibold">{titre}</h3>
-    <div class="w-18 flex">
+    <div class="w-18 flex justify-end">
       {#each logo as elem}
         <LogoLib
           name={elem}

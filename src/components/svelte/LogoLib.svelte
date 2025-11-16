@@ -1,16 +1,16 @@
 <script lang="ts">
-    import djangoLogo from "../../assets/django.svg";
-    import svelteLogo from "../../assets/svelte.svg";
-    import viteLogo from "../../assets/vite.svg";
-    import fastapiLogo from "../../assets/fastapi.svg";
-    import vueLogo from "../../assets/vue.svg";
-    import tailwindcssLogo from "../../assets/tailwind.svg";
-    import tsLogo from "../../assets/typescript.svg";
-    import juliaLogo from "../../assets/julia.svg";
-    import jsLogo from "../../assets/javascript.svg";
-    import laravelLogo from "../../assets/laravel.svg";
-    import nuxtLogo from "../../assets/nuxt.svg";
-    import reactLogo from "../../assets/logo_dark.svg"
+    import djangoLogo from "@assets/django.svg";
+    import svelteLogo from "@assets/svelte.svg";
+    import viteLogo from "@assets/vite.svg";
+    import fastapiLogo from "@assets/fastapi.svg";
+    import vueLogo from "@assets/vue.svg";
+    import tailwindcssLogo from "@assets/tailwind.svg";
+    import tsLogo from "@assets/typescript.svg";
+    import juliaLogo from "@assets/julia.svg";
+    import jsLogo from "@assets/javascript.svg";
+    import laravelLogo from "@assets/laravel.svg";
+    import nuxtLogo from "@assets/nuxt.svg";
+    import reactLogo from "@assets/logo_dark.svg"
 
     class Logo {
         name: string;
@@ -78,13 +78,18 @@
         }
     };
 
-    const {
+    let {
         name,
         classL = "h-[6em] p-[1.5em]",
         mode = "link",
     }: { name: string; classL?: string; mode?: "link"|"no-link" } = $props();
     
-    const chosenLogo: Logo = getByNameClass(name, logo);
+    let chosenLogo: Logo = $state(getByNameClass(name, logo));
+
+    $effect(() => {
+        chosenLogo = getByNameClass(name, logo);
+    })
+    $inspect(chosenLogo, 'logo')
 </script>
 
 {#if mode == "link"}

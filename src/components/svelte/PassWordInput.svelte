@@ -40,7 +40,7 @@
     let widthCheckDiv = $state(0);
     let heightCheckDiv: 150 | 82 = $derived(widthCheckDiv < 470 ? 150 : 82);
 
-    $inspect(widthCheckDiv)
+    $inspect(widthCheckDiv);
 
     $effect(() => {
         let heightAni = isFocus ? `${heightCheckDiv}px` : "0px";
@@ -70,10 +70,15 @@
         required
     />
 
-    <div bind:this={divCheck} class="h-0 overflow-hidden">
+    <div
+        bind:this={divCheck}
+        bind:clientWidth={widthCheckDiv}
+        class="{widthCheckDiv < 470 && widthCheckDiv > 300
+            ? 'justify-center'
+            : 'justify-start'} h-0 flex overflow-hidden"
+    >
         <div
-            bind:clientWidth={widthCheckDiv}
-            class="{heightCheckDiv == 150 ? "items-center" : "items-start"} flex flex-col flex-wrap ml-2 my-1"
+            class="flex flex-col flex-wrap ml-2 my-1"
             style:height={heightCheckDiv + "px"}
         >
             {#each allCheck as check, i}
