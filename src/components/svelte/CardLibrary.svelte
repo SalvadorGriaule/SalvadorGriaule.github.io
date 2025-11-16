@@ -43,7 +43,7 @@
     class="flex justify-center items-center h-48 my-2 bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md p-2"
   >
     {#if media.type == "image"}
-      <img class="w-44 h-fit" src={media.link} alt={titre} />
+      <img class="w-[275px] h-fit" src={media.link} alt={titre} />
     {:else}
       <video
         class="w-44"

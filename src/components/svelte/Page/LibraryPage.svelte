@@ -3,7 +3,7 @@
   import CardLibrary from "../CardLibrary.svelte";
   // import module
   import { type LibInfo, type fwf } from "../type";
-  import { currentSelect, currentTags } from "../../../assets/ts/nano";
+  import { currentSelect, currentTags } from "@assets/ts/nano";
 
   // import img
 

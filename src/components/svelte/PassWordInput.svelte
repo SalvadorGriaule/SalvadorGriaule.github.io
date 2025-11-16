@@ -37,10 +37,15 @@
     let checking: string = $derived(checkingAll([...outCheck], passwordInput));
     let isFocus = $state(false);
 
+    let widthCheckDiv = $state(0);
+    let heightCheckDiv: 150 | 82 = $derived(widthCheckDiv < 470 ? 150 : 82);
+
+    $inspect(widthCheckDiv)
+
     $effect(() => {
-        let heightAni = isFocus ? "82px" : "0px";
-        anime ({
-            targets:divCheck,
+        let heightAni = isFocus ? `${heightCheckDiv}px` : "0px";
+        anime({
+            targets: divCheck,
             height: heightAni,
             duration: 250,
             easing: "easeInQuad",
@@ -66,7 +71,11 @@
     />
 
     <div bind:this={divCheck} class="h-0 overflow-hidden">
-        <div class="flex flex-col flex-wrap h-[82px] ml-2 my-1">
+        <div
+            bind:clientWidth={widthCheckDiv}
+            class="{heightCheckDiv == 150 ? "items-center" : "items-start"} flex flex-col flex-wrap ml-2 my-1"
+            style:height={heightCheckDiv + "px"}
+        >
             {#each allCheck as check, i}
                 <div class="flex space-x-2">
                     <div class="w-4">
