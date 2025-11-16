@@ -9,6 +9,7 @@ import CircleReact from "../../components/react/CardLibrary/CircleReactCard";
 // import card
 import CircleCard from "@svelte/CardLibrary/CircleCard.svelte";
 import UploaderCard from "@svelte/CardLibrary/UploaderCard.svelte";
+import CardPassWordInput from "@svelte/CardLibrary/CardPassWordInput.svelte";
 // import vue
 import UploaderCardVue from "@vue/CardLibrary/UploaderCard.vue";
 // import module
@@ -16,6 +17,7 @@ import { LinkType, type LibInfo } from "@svelte/type";
 // import media
 import ImgOfUploader from "@public/img/ImgCardUploader.png";
 import CarouselGif from "@public/img/CircleCarCut.webm";
+import PWInput from "@public/img/PasswordInput.png"
 
 const lib = new Map<number, LibInfo>([
   [
@@ -58,14 +60,26 @@ const lib = new Map<number, LibInfo>([
             type: LinkType.GitHub,
             link: "https://github.com/SalvadorGriaule/FileUploader",
           },
-        ],[
+        ],
+        [
           {
             type: LinkType.GitHub,
-            link:"https://github.com/SalvadorGriaule/FileUploaderVue"
-          }
-        ]
+            link: "https://github.com/SalvadorGriaule/FileUploaderVue",
+          },
+        ],
       ],
       media: { type: "image", link: ImgOfUploader.src },
+    },
+  ],
+  [
+    2,
+    {
+      id: 2,
+      titre: "password input",
+      logo: ["svelte"],
+      description: "Composant de champs pour password interactive",
+      linkBox: [],
+      media: { type: "image", link: PWInput.src },
     },
   ],
 ]);
@@ -107,23 +121,37 @@ const lib = new Map<number, LibInfo>([
         </div>
       </ShowCardLibrary>
     </div>
+    <div id="2" class="showcard w-screen hidden">
+      <ShowCardLibrary
+        id={2}
+        title={lib.get(2)!.titre}
+        description={lib.get(2)!.description}
+        fw={lib.get(2)!.logo}
+        linkSlice={lib.get(2)!.linkBox}
+      >
+        <div class="svelte w-full h-full block">
+          <CardPassWordInput client:load />
+        </div>
+      </ShowCardLibrary>
+    </div>
   </div>
 
   <script>
-    import { currentSelect, currentVisible } from "../../assets/ts/nano";
-    import { makeVisible } from "../../assets/ts/misc";
+    import { currentSelect, currentVisible } from "@assets/ts/nano";
+    import { makeVisible } from "@assets/ts/misc";
 
     const showcard = document.querySelectorAll(".showcard");
 
     const callbackVis: MutationCallback = (mut) => {
-      for(let elem of mut){
-        if(elem.target.classList.contains("block")) currentVisible.set(elem.target.id); 
+      for (let elem of mut) {
+        if (elem.target.classList.contains("block"))
+          currentVisible.set(elem.target.id);
       }
     };
 
     const mutObser = new MutationObserver(callbackVis);
     for (let elem of showcard) {
-      mutObser.observe(elem,{attributes:true,attributeFilter:["class"]});
+      mutObser.observe(elem, { attributes: true, attributeFilter: ["class"] });
     }
 
     currentSelect.subscribe((val) => {

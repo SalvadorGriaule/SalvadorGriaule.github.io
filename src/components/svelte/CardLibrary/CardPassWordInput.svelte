@@ -1,12 +1,15 @@
 <script lang="ts">
   import PassWordInput from "@svelte/PassWordInput.svelte";
   let boolPW = $state(false);
-  let btnForm: HTMLButtonElement | null = $state(null);
+  let disabled = $derived(!boolPW)
+  
 </script>
 
-<div class="flex flex-col items-center">
-  <div class="bg-white p-2 rounded-2xl drop-shadow-2xl">
+<div class="flex flex-col items-center w-full">
+  <div class="bg-white p-2 rounded-2xl drop-shadow-2xl w-full">
     <PassWordInput bind:boolPW />
-    <button bind:this={btnForm}>Envoyer</button>
+    <div class="w-full flex justify-center mt-2">
+      <button {disabled} class="p-2 rounded-2xl bg-green-600 text-white disabled:bg-gray-600">Envoyer</button>
+    </div>
   </div>
 </div>
