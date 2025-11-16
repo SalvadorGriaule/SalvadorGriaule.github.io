@@ -6,7 +6,9 @@ import LibraryPage from "@svelte/Page/LibraryPage.svelte";
 import HeaderNav from "@svelte/HeaderNav.svelte";
 // import react
 import CircleReact from "../../components/react/CardLibrary/CircleReactCard";
-// import card
+// import ts vanilla
+import CardTimedCarousel from "src/components/CardTimedCarousel.astro";
+// import svelte card
 import CircleCard from "@svelte/CardLibrary/CircleCard.svelte";
 import UploaderCard from "@svelte/CardLibrary/UploaderCard.svelte";
 import CardPassWordInput from "@svelte/CardLibrary/CardPassWordInput.svelte";
@@ -89,6 +91,17 @@ const lib = new Map<number, LibInfo>([
       media: { type: "image", link: PWInput.src },
     },
   ],
+  [
+    3,
+    {
+      id: 3,
+      titre: "Carousel à bouton",
+      logo: ["ts"],
+      description: "Carousel à bouton",
+      linkBox: [[{ type: LinkType.GitHub, link: "" }]],
+      media: { type: "image", link: "" },
+    },
+  ],
 ]);
 ---
 
@@ -141,6 +154,20 @@ const lib = new Map<number, LibInfo>([
         </div>
       </ShowCardLibrary>
     </div>
+    <div id="3" class="showcard w-screen hidden">
+      <ShowCardLibrary
+        id={3}
+        title={lib.get(3)!.titre}
+        description={lib.get(3)!.description}
+        fw={lib.get(3)!.logo}
+        linkSlice={lib.get(3)!.linkBox}
+      >
+        <div class="ts w-full h-48 block">
+          <CardTimedCarousel />
+        </div>
+      </ShowCardLibrary>
+    </div>
+    
   </div>
 
   <script>

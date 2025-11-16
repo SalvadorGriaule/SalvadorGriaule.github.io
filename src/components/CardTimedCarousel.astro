@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+import imgHolder1 from "@assets/imgHolder.jpg";
+import imgHolder2 from "@assets/imgHolder2.jpg";
+import imgHolder3 from "@assets/imgHolder3.jpg";
+---
+
+<div class="h-full w-full flex justify-center items-center">
+    <div
+        id="contentCarousel"
+        class="w-4/5 lg:w-2/5 bg-[rgba(0,0,0,0.35)] backdrop-blur-md rounded-md p-2"
+    >
+        <div
+            class="flex overflow-hidden scroll-smooth snap-mandatory snap-always snap-x"
+            id="carousel"
+        >
+            <Image src={imgHolder1} alt="" class="mr-3 snap-center" />
+            <Image src={imgHolder2} alt="" class="mr-3 snap-center" />
+            <Image src={imgHolder3} alt="" class="mr-3 snap-center" />
+        </div>
+    </div>
+</div>
+<script>
+    import { initNav } from "@assets/ts/timedCarousel";
+    import { currentSelect } from "@assets/ts/nano";
+
+    const carousel = document.getElementById("carousel");
+    const contentCar = document.getElementById("contentCarousel");
+
+    initNav(contentCar,carousel)
+</script>

@@ -1,18 +1,18 @@
 <script lang="ts">
   import LogoLib from "./LogoLib.svelte";
   import anime from "animejs";
-  import { currentTags } from "../../assets/ts/nano";
+  import { currentTags } from "@assets/ts/nano";
 
-  const fw = ["all", "svelte", "vuejs", "react"];
+  const fw = ["all", "svelte", "vuejs", "react", "ts"];
   let widthNav = $state(0);
   let navDiv: null | HTMLDivElement = $state(null);
 
-  const onclick = (tags: "svelte" | "react" | "vuejs" | "all") => {
+  const onclick = (tags: "svelte" | "react" | "vuejs"| "ts" | "all") => {
     currentTags.set(tags);
     if (navDiv) {
       anime({
         targets: navDiv,
-        translateX: fw.findIndex((elem) => elem == currentTags.get()) * (widthNav/4 - 2),
+        translateX: fw.findIndex((elem) => elem == currentTags.get()) * (widthNav/fw.length - 2),
         easing: "easeInOutQuint",
         duration: 500,
       });

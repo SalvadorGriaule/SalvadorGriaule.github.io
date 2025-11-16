@@ -1,4 +1,4 @@
-type fwf = "svelte" | "react" | "vuejs" | "all";
+type fwf = "svelte" | "react" | "vuejs" | "ts" |"all";
 
 enum LinkType {
   GitHub,
@@ -21,9 +21,9 @@ interface OngletFunc {
 }
 
 interface LibInfo {
-  id:number
+  id: number
   titre: string;
-  logo: ("svelte" | "react" | "vuejs")[];
+  logo: ("svelte" | "react" | "vuejs" | "ts")[];
   description: string;
   linkBox: LinkSlice[][];
   media: { type: "image" | "vidéo"; link: string };
