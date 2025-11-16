@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import imgHolder1 from "@assets/imgHolder.jpg";
 import imgHolder2 from "@assets/imgHolder2.jpg";
 import imgHolder3 from "@assets/imgHolder3.jpg";
@@ -14,9 +13,9 @@ import imgHolder3 from "@assets/imgHolder3.jpg";
             class="flex overflow-hidden scroll-smooth snap-mandatory snap-always snap-x"
             id="carousel"
         >
-            <Image src={imgHolder1} alt="" class="mr-3 snap-center" />
-            <Image src={imgHolder2} alt="" class="mr-3 snap-center" />
-            <Image src={imgHolder3} alt="" class="mr-3 snap-center" />
+            <img src={imgHolder1.src} alt="" class="mr-3 snap-center" />
+            <img src={imgHolder2.src} alt="" class="mr-3 snap-center" />
+            <img src={imgHolder3.src} alt="" class="mr-3 snap-center" />
         </div>
     </div>
 </div>
