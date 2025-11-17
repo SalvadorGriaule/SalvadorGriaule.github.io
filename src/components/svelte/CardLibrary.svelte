@@ -11,7 +11,7 @@
     titre: string;
     logo: ("svelte" | "vuejs" | "react")[];
     id: number;
-    media: { type: "image" | "vidéo"; link: string };
+    media: { type: "image" | "vidéo"; link: string; widthMedia?: number };
   } = $props();
 
   const clickLib = (num: number) => {
@@ -19,7 +19,6 @@
       ? currentSelect.set(null)
       : currentSelect.set(num);
   };
-
 </script>
 
 <button
@@ -47,7 +46,7 @@
       <img class="w-[275px] h-fit" src={media.link} alt={titre} />
     {:else}
       <video
-        class="w-44"
+        style:width={`${media.widthMedia}rem`}
         src={media.link}
         autoplay
         loop

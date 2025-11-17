@@ -26,7 +26,7 @@ interface LibInfo {
   logo: ("svelte" | "react" | "vuejs" | "ts")[];
   description: string;
   linkBox: LinkSlice[][];
-  media: { type: "image" | "vidéo"; link: string };
+  media: { type: "image" | "vidéo"; link: string; widthMedia?: number };
 }
 
 export { LinkType, Device };
