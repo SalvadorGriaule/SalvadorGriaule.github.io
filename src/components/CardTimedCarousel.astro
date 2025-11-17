@@ -5,26 +5,30 @@ import imgHolder3 from "@assets/imgHolder3.jpg";
 ---
 
 <div class="h-full w-full flex justify-center items-center">
+  <div
+    id="contentCarousel"
+    class="w-4/5 lg:w-3/5 bg-[rgba(0,0,0,0.35)] backdrop-blur-md rounded-md p-2"
+  >
     <div
-        id="contentCarousel"
-        class="w-4/5 lg:w-2/5 bg-[rgba(0,0,0,0.35)] backdrop-blur-md rounded-md p-2"
+      class="flex overflow-hidden scroll-smooth snap-mandatory snap-always snap-x"
+      id="carousel"
     >
-        <div
-            class="flex overflow-hidden scroll-smooth snap-mandatory snap-always snap-x"
-            id="carousel"
-        >
-            <img src={imgHolder1.src} alt="" class="mr-3 snap-center" />
-            <img src={imgHolder2.src} alt="" class="mr-3 snap-center" />
-            <img src={imgHolder3.src} alt="" class="mr-3 snap-center" />
-        </div>
+      <img src={imgHolder1.src} alt="" class="mr-3 snap-center" />
+      <img src={imgHolder2.src} alt="" class="mr-3 snap-center" />
+      <img src={imgHolder3.src} alt="" class="mr-3 snap-center" />
     </div>
+  </div>
 </div>
 <script>
-    import { initNav } from "@assets/ts/timedCarousel";
-    import { currentSelect } from "@assets/ts/nano";
+  import { initNav, toScrollClick } from "@assets/ts/timedCarousel";
+  import { currentSelect } from "@assets/ts/nano";
 
-    const carousel = document.getElementById("carousel");
-    const contentCar = document.getElementById("contentCarousel");
+  const carousel = document.getElementById("carousel");
+  const contentCar = document.getElementById("contentCarousel");
 
-    initNav(contentCar,carousel)
+  initNav(contentCar, carousel);
+
+  currentSelect.listen(() => {
+     toScrollClick(0, carousel);
+  });
 </script>

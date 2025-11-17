@@ -16,7 +16,6 @@
     for (let [k, v] of lib) {
       if(v.logo.includes(stateTags)) result.set(k,v)
     }
-    console.log(result);
     
     return result
   };

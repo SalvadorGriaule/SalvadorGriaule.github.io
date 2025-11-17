@@ -10,7 +10,6 @@ export const colorRandomizer = () => {
 
 export const colorRandomizerByChildren = (target:HTMLCollection) => {
     for(let elem of target){
-        console.log(elem);
         const {bg , border } = colorRandomizer()
         if (!elem.style.backgroundColor && elem.id != "standBy") {
             elem.style.backgroundColor = `rgb(${bg.r},${bg.g},${bg.b})`

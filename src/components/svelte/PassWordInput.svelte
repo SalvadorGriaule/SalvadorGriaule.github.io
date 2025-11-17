@@ -40,8 +40,6 @@
     let widthCheckDiv = $state(0);
     let heightCheckDiv: 150 | 82 = $derived(widthCheckDiv < 470 ? 150 : 82);
 
-    $inspect(widthCheckDiv);
-
     $effect(() => {
         let heightAni = isFocus ? `${heightCheckDiv}px` : "0px";
         anime({

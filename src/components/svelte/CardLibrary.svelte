@@ -14,7 +14,6 @@
     media: { type: "image" | "vidéo"; link: string };
   } = $props();
 
-  $inspect(logo)
   const clickLib = (num: number) => {
     currentSelect.get() == num
       ? currentSelect.set(null)

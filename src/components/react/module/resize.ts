@@ -10,7 +10,7 @@ export const resize = (dim: { h: number, w: number }, dimCadre: number) => {
         res = { w: dim.w - a, h: dim.h - a }
 
     }
-    console.log(res, dimCadre, dim, rapport);
+    
 
     return res
 }

@@ -89,7 +89,7 @@
     $effect(() => {
         chosenLogo = getByNameClass(name, logo);
     })
-    $inspect(chosenLogo, 'logo')
+    
 </script>
 
 {#if mode == "link"}

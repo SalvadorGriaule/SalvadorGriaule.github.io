@@ -9,7 +9,6 @@
   let bodySvelte: null | HTMLDivElement = $state(null);
 
   const { posts, content } = $props();
-  console.log(content);
 
   onMount(() => {
     const osInstance = OverlayScrollbars(document.body, {

@@ -5,11 +5,13 @@ let currentImg = 0;
 const initNav = (target: HTMLElement, carousel: HTMLElement) => {
     const tabDiv = document.createElement("div");
     tabDiv.className = "flex h-3 w-full mt-2";
+    let itemLenght = `${100 / carousel.children.length - 0.5}%`  
     for (let i = 0; i < carousel.children.length; i++) {
         let j = i;
         const div = document.createElement("div");
         const divProg = document.createElement("div");
-        div.className = "btnCar h-3 w-[24.5%] ml-[0.5%] bg-[rgba(0,0,0,0.35)] backdrop-blur-md";
+        div.className = "btnCar h-3 ml-[0.5%] bg-[rgba(0,0,0,0.35)] backdrop-blur-md";
+        div.style.width = itemLenght
         div.append(divProg);
         divProg.className = "h-3 w-0 bg-[rgba(255,255,255,0.35)]";
         tabDiv.append(div);
@@ -24,8 +26,8 @@ const progNav = (arrBtn: NodeListOf<Element>, carousel: HTMLElement) => {
     anime({
         targets: arrBtn[currentImg].children[0],
         width: '100%',
-        duration: 4000,
-        easing: 'easeOutQuart',
+        duration: 3400,
+        easing: 'linear',
         complete: function () {
             currentImg++;
             arrBtn[currentImg - 1].children[0].style.width = "0%";
@@ -58,4 +60,4 @@ const inResize = (carousel: HTMLElement) => {
     carousel.scrollLeft = currentImg * (carousel.children[0].offsetWidth);
 }
 
-export { initNav }
+export { initNav, toScrollClick }
