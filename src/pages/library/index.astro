@@ -12,7 +12,7 @@ import CardTimedCarousel from "src/components/CardTimedCarousel.astro";
 import CircleCard from "@svelte/CardLibrary/CircleCard.svelte";
 import UploaderCard from "@svelte/CardLibrary/UploaderCard.svelte";
 import CardPassWordInput from "@svelte/CardLibrary/CardPassWordInput.svelte";
-import CardMultiSelect from "@svelte/CardLibrary/CardMultiSelect.svelte"
+import CardMultiSelect from "@svelte/CardLibrary/CardMultiSelect.svelte";
 // import vue
 import UploaderCardVue from "@vue/CardLibrary/UploaderCard.vue";
 // import module
@@ -22,6 +22,7 @@ import ImgOfUploader from "@public/img/ImgCardUploader.png";
 import CarouselGif from "@public/img/CircleCarCut.webm";
 import BtnCarousel from "@public/img/BtnCarousel.webm";
 import PWInput from "@public/img/PasswordInput.png";
+import MultiSelect from "@public/img/MultiSelect.png"
 
 const lib = new Map<number, LibInfo>([
   [
@@ -100,8 +101,34 @@ const lib = new Map<number, LibInfo>([
       titre: "Carousel à bouton",
       logo: ["ts"],
       description: "Carousel à bouton",
-      linkBox: [[{ type: LinkType.GitHub, link: "https://github.com/SalvadorGriaule/CarouselBtn" }]],
+      linkBox: [
+        [
+          {
+            type: LinkType.GitHub,
+            link: "https://github.com/SalvadorGriaule/CarouselBtn",
+          },
+        ],
+      ],
       media: { type: "vidéo", link: BtnCarousel, widthMedia: 19 },
+    },
+  ],
+  [
+    4,
+    {
+      id: 4,
+      titre: "MultiSelect",
+      logo: ["svelte"],
+      description:
+        "un sélecteur multiple avancé avec hiérarchie qui offre une expérience utilisateur riche avec recherche, hiérarchie visuelle, et feedback immédiat des sélections.",
+      linkBox: [
+        [
+          {
+            type: LinkType.GitHub,
+            link: "https://github.com/SalvadorGriaule/multiSelect",
+          },
+        ],
+      ],
+      media: { type: "image", link: MultiSelect.src },
     },
   ],
 ]);
@@ -166,6 +193,19 @@ const lib = new Map<number, LibInfo>([
       >
         <div class="ts w-full h-[50vh] block">
           <CardTimedCarousel />
+        </div>
+      </ShowCardLibrary>
+    </div>
+    <div id="4" class="showcard w-screen hidden">
+      <ShowCardLibrary
+        id={4}
+        title={lib.get(4)!.titre}
+        description={lib.get(4)!.description}
+        fw={lib.get(4)!.logo}
+        linkSlice={lib.get(4)!.linkBox}
+      >
+        <div class="svelte w-full h-[50vh] block">
+          <CardMultiSelect client:load/>
         </div>
       </ShowCardLibrary>
     </div>

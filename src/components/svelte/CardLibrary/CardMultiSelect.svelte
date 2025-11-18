@@ -16,7 +16,7 @@
   };
 </script>
 
-<main class="flex justify-center items-center h-screen bg-zinc-200">
+<section class="flex justify-center items-center h-full">
   <div class="flex p-2 bg-gray-400 rounded-xl space-x-3">
     <div
       class="flex flex-col items-center p-3 border-4 border-black rounded-xl"
@@ -77,4 +77,4 @@
       </div>
     </div>
   </div>
-</main>
+</section>
