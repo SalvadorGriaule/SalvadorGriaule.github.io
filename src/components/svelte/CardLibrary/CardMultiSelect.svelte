@@ -1,0 +1,80 @@
+<script lang="ts">
+  import MultiSelect, { clear } from "@svelte/MultiSelect.svelte";
+  import DB from "@assets/json/catg.json";
+  import DBLuxe from "@assets/json/luxe.json";
+
+  let switchTog = $state(false);
+  let currentDB = $state(DB.data);
+  let selected: string[] = $state([]);
+  let enableSearch = $state(false);
+  let enableAff = $state(false);
+
+  const onclick = () => {
+    switchTog = !switchTog;
+    clear();
+    currentDB = !switchTog ? DB.data : DBLuxe.data;
+  };
+</script>
+
+<main class="flex justify-center items-center h-screen bg-zinc-200">
+  <div class="flex p-2 bg-gray-400 rounded-xl space-x-3">
+    <div
+      class="flex flex-col items-center p-3 border-4 border-black rounded-xl"
+    >
+      <div class="p-2">
+        <button
+          {onclick}
+          aria-label="switch"
+          class="{switchTog
+            ? 'bg-green-500'
+            : 'bg-slate-500'} flex items-center p-2 h-6 w-20 rounded-xl duration-150"
+        >
+          <div
+            class="bg-slate-200 rounded-full w-4 h-4 duration-150 {switchTog
+              ? 'ml-[75%]'
+              : 'ml-0'}"
+          ></div>
+        </button>
+      </div>
+      <div class="p-2 shadow-2xl rounded-xl bg-white">
+        <MultiSelect
+          dataForMS={currentDB}
+          name={!switchTog ? "Réalisateur" : "Catégorie"}
+          mainClick={!switchTog ? false : true}
+          affSelected={enableAff}
+          searchMode={enableSearch}
+          bind:selected
+        />
+      </div>
+    </div>
+    <div class="p-2 border-4 border-black rounded-xl">
+      <div>
+        <div>
+          <div class="flex space-x-2">
+            <input
+              bind:checked={enableSearch}
+              type="checkbox"
+              name="search"
+              id=""
+            />
+            <p>Enable search</p>
+          </div>
+          <div class="flex space-x-2">
+            <input
+              bind:checked={enableAff}
+              type="checkbox"
+              name="affichage"
+              id=""
+            />
+            <p>Enable affichage</p>
+          </div>
+        </div>
+        <div class="border-2 border-black h-40 mt-2 rounded-lg">
+          {#each selected as elem}
+            <p>{elem}</p>
+          {/each}
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
