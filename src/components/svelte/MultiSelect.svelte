@@ -33,7 +33,7 @@
 
   let nameSelect: HTMLDivElement[] = $state([]);
 
-  const nameCatg: Function = (arr: Array<string>): Array<string> => {
+  const nameCatg = (arr: Array<string>): Array<string> => {
     let out: Array<string> = [];
     for (let i = 0; i < arr.length; i++) {
       for (let j = 0; j < nameSelect.length; j++) {

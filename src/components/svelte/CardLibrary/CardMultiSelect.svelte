@@ -36,7 +36,7 @@
           ></div>
         </button>
       </div>
-      <div class="p-2 shadow-2xl rounded-xl bg-white">
+      <div class="p-2 shadow-2xl rounded-xl w-96 bg-white">
         <MultiSelect
           dataForMS={currentDB}
           name={!switchTog ? "Réalisateur" : "Catégorie"}

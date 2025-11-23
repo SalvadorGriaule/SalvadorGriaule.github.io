@@ -46,7 +46,7 @@
   ];
   let y = $state<number>(0);
   let bodySvelte = $state<HTMLDivElement | null>(null);
-  
+
   onMount(() => {
     const osInstance = OverlayScrollbars(document.body, {
       scrollbars: { theme: "" },
@@ -85,29 +85,31 @@
     <div class="relative z-10">
       <SliderPerpetuel tabSrc={techLogo} />
     </div>
-    <div
-      class="relative z-20 w-full flex flex-col items-center justify-center"
-      style="transform: translateY({-1.1 * y}px)"
-    >
-      <CardProject
-        titre="SoMuchWater"
-        desktopSrc={SMWLaptop.src}
-        phoneSrc={SMWPhone.src}
-        lien={linkSMW}
-        description="ici"
-        devices={[Device.SmartPhone, Device.Laptop]}
-        techUse={techSMW}
-      />
-      <CardProject
-        titre="Lecteur"
-        desktopSrc={LecteurDesktop.src}
-        phoneSrc={LecteurPhone.src}
-        lien={linkLec}
-        description="ici"
-        devices={[Device.SmartPhone, Device.Laptop]}
-        techUse={techLec}
-      />
-      <!-- <CardProject titre="Sneakers"/> -->
+    <div class="sticky w-full z-50">
+      <div
+        class="relative z-20 w-full flex flex-col items-center justify-center"
+        style="transform: translateY({-1.1 * y}px)"
+      >
+        <CardProject
+          titre="SoMuchWater"
+          desktopSrc={SMWLaptop.src}
+          phoneSrc={SMWPhone.src}
+          lien={linkSMW}
+          description="ici"
+          devices={[Device.SmartPhone, Device.Laptop]}
+          techUse={techSMW}
+        />
+        <CardProject
+          titre="Lecteur"
+          desktopSrc={LecteurDesktop.src}
+          phoneSrc={LecteurPhone.src}
+          lien={linkLec}
+          description="ici"
+          devices={[Device.SmartPhone, Device.Laptop]}
+          techUse={techLec}
+        />
+        <!-- <CardProject titre="Sneakers"/> -->
+      </div>
     </div>
   </main>
   <Footer />

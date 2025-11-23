@@ -31,7 +31,7 @@
 <main class="mx-20 mt-10 flex flex-col">
   {#if stateSelect == null}
     <NavLibrary />
-    <section class="flex">
+    <section class="flex flex-wrap">
       {#if stateTags == "all"}
         {#each lib as [k, elem]}
           <CardLibrary
