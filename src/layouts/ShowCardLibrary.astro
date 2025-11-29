@@ -31,28 +31,32 @@ const { title, description, fw, linkSlice, id } = Astro.props;
   >
     {
       fw.length > 1 && (
-        <div class="absolute left-12 top-1/2 -translate-1/2 bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md ml-5 p-2 backdrop-blur-md">
-          <div class="switch relative flex flex-col items-center bg-linear-to-br from-neutral-700/60 to-neutral-800/40 rounded-md p-1">
-            <div class="switcher absolute top-2 -translate-x-1/2 w-24 h-24 rounded-md bg-linear-to-br from-neutral-300/40 to-neutral-400/30" />
+        <div class="absolute top-[86.5%] right-2 ml-2 bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md p-2 backdrop-blur-md md:ml-5 md:right-auto md:left-12 md:top-1/2 md:-translate-1/2">
+          <div class="switch relative flex items-center bg-linear-to-br from-neutral-700/60 to-neutral-800/40 rounded-md p-1 md:flex-col">
+            <div class="switcher absolute top-1.5 w-[52px] h-[52px] rounded-md bg-linear-to-br from-neutral-300/40 to-neutral-400/30 md:top-2 md:w-24 md:h-24 md:-translate-x-1/2" />
             {fw.map((elem) => (
-              <div data-fw={elem} class="fw h-24">
-                <LogoLib name={elem} mode="no-link" />
+              <div data-fw={elem} class="fw md:h-24">
+                <LogoLib
+                  name={elem}
+                  classL="h-[3.5em] w-[3.5em] p-[0.65em] md:h-[6em] md:w-[6em] md:p-[1.5em] md:min-w-fit"
+                  mode="no-link"
+                />
               </div>
             ))}
           </div>
         </div>
       )
     }
-    <div class="slotCard w-1/2 flex justify-center">
+    <div class="slotCard w-3/4 flex justify-center lg:w-2/3 xl:w-1/2">
       <slot />
     </div>
   </div>
-  <div class="flex items-center">
-    <p class="text-xl w-3/5">
+  <div class="flex flex-col md:items-center md:flex-row">
+    <p class="text-xl p-2 md:w-3/5 md:p-0">
       {description}
     </p>
     <div
-      class="p-2 mt-2 w-2/5 flex flex-col items-start border-s-2 border-black"
+      class="p-2 mt-2 flex flex-col items-start md:border-s-2 md:border-black md:w-2/5"
     >
       <h5 class="text-2xl">Compatible avec</h5>
       <div class="flex flex-col justify-center my-3 space-y-2">
@@ -75,6 +79,7 @@ const { title, description, fw, linkSlice, id } = Astro.props;
 <script>
   import { currentSelect, currentVisible } from "@assets/ts/nano";
   import { makeVisible } from "@assets/ts/misc";
+  import { breakPointAdd, breakPointPile } from "@assets/ts/breakPoint";
   import anime from "animejs";
 
   currentSelect.listen((val) => {
@@ -85,6 +90,21 @@ const { title, description, fw, linkSlice, id } = Astro.props;
       const slotCard = cardId.querySelector(".slotCard");
       const switcher = cardId.querySelector(".switcher");
       const switchDiv = cardId.querySelector(".switch");
+      let currentFw = 0;
+
+      const switcherResize = () => {
+        let screenW = window.visualViewport?.width;
+
+        switcher.style.left =
+          switcher && switchDiv && screenW && screenW > 768
+            ? switchDiv.clientWidth / 2 + "px"
+            : 6 + "px";
+
+        switcher.style.transform =
+          screenW > 768
+            ? `translateX(0px) translateY(${currentFw * 90}px)`
+            : `translateX(${currentFw * 56}px) translateY(0px)`;
+      };
 
       returnBtn.addEventListener("click", () => {
         currentSelect.set(null);
@@ -92,9 +112,7 @@ const { title, description, fw, linkSlice, id } = Astro.props;
 
       if (switchFw.length != 0) {
         currentVisible.listen((val) => {
-          if (switcher && switchDiv) {
-            switcher.style.left = switchDiv.clientWidth / 2 + "px";
-          }
+          breakPointAdd(switcherResize);
         });
 
         let i = 0;
@@ -104,13 +122,15 @@ const { title, description, fw, linkSlice, id } = Astro.props;
           btnFw.addEventListener("click", () => {
             anime({
               targets: switcher,
-              translateY: j * 90 + "px",
               easing: "easeInOutQuint",
+              translateX: window.visualViewport.width < 748 ? j * 56 + "px" : 0,
+              translateY: window.visualViewport.width > 748 ? j * 90 + "px" : 0,
               duration: 500,
             });
             for (let slot of slotCard.children) {
               makeVisible(slot.classList.contains(fw), slot);
             }
+            currentFw = j;
           });
           i++;
         }

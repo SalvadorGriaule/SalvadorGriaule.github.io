@@ -18,4 +18,8 @@ const execBreakPoint = () => {
     window.onresize = execBreakPoint
 }
 
-export { breakPointAdd, execBreakPoint }
+const breakPointPile = () => {
+    console.log(pileFunc);
+}
+
+export { breakPointAdd, execBreakPoint , breakPointPile}

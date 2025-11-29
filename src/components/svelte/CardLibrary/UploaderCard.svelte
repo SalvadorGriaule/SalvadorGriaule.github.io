@@ -15,7 +15,7 @@
   <button class="p-2 rounded-2xl text-xl bg-gray-400" {onclick}> 
     Mettre une image par default : <span class="{defaultImage ? 'text-green-700' : "text-red-700"} font-bold">{defaultImage ? "Oui" : "Non"}</span>
   </button>
-  <div class="w-full h-[50vh] max-h-[50vh] overflow-scroll">
+  <div class="w-full h-[50vh] max-h-[50vh] pb-14 overflow-scroll md:pb-0">
     <FileUploader {fileDz} defaultVal={defaultImage ? DefaultImg.src : undefined}/>
   </div>
 </div>

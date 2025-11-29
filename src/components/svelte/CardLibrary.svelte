@@ -25,7 +25,7 @@
   onclick={() => {
     clickLib(id);
   }}
-  class="p-2 w-[23.5%] bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md m-2 backdrop-blur-md"
+  class="p-2 w-full bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md m-2 backdrop-blur-md md:w-[45%] xl:w-[23.5%]"
 >
   <div class="flex justify-between items-center">
     <h3 class="text-2xl font-semibold">{titre}</h3>

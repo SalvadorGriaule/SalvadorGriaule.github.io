@@ -17,11 +17,15 @@
 </script>
 
 <section class="flex justify-center items-center h-full">
-  <div class="flex p-2 bg-gray-400 rounded-xl space-x-3">
+  <div class="flex flex-col p-2 bg-gray-400 rounded-xl space-y-2 lg:space-y-2  lg:space-x-3 lg:flex-row">
     <div
       class="flex flex-col items-center p-3 border-4 border-black rounded-xl"
     >
-      <div class="p-2">
+      <div class="p-2 flex space-x-2 items-center">
+        <div class="flex flex-col items-center">
+          <p>Réalisateur selon pays</p>
+          <p>parent non clickable</p>
+        </div>
         <button
           {onclick}
           aria-label="switch"
@@ -35,6 +39,10 @@
               : 'ml-0'}"
           ></div>
         </button>
+        <div class="flex flex-col items-center">
+          <p>tags pour objet de luxe</p>
+          <p>parent clickable</p>
+        </div>
       </div>
       <div class="p-2 shadow-2xl rounded-xl w-96 bg-white">
         <MultiSelect

@@ -16,7 +16,7 @@ const onclick = () => {
         <button @click="onclick" class="p-2 rounded-2xl text-xl bg-gray-400">Mettre une image par default : <span
                 class="font-bold" :class="[defaultImage ? 'text-green-700' : 'text-red-700']">{{ defaultImage ? "Oui" :
                 "Non" }}</span></button>
-        <div class="w-full h-[50vh] max-h-[50vh] flex justify-center overflow-scroll">
+        <div class="w-full h-[50vh] max-h-[50vh] flex justify-center overflow-scroll pb-16 md:pb-0">
             <FileUploader @file-upload="(e) => { fileDz = e }" :default-val="defaultImage ? DefaultImg.src : null" />
         </div>
     </div>
