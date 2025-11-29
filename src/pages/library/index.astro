@@ -8,6 +8,7 @@ import HeaderNav from "@svelte/HeaderNav.svelte";
 import CircleReact from "../../components/react/CardLibrary/CircleReactCard";
 // import ts vanilla
 import CardTimedCarousel from "src/components/CardTimedCarousel.astro";
+import CardMenuBurger from "src/components/CardMenuBurger.astro";
 // import svelte card
 import CircleCard from "@svelte/CardLibrary/CircleCard.svelte";
 import UploaderCard from "@svelte/CardLibrary/UploaderCard.svelte";
@@ -22,7 +23,7 @@ import ImgOfUploader from "@public/img/ImgCardUploader.png";
 import CarouselGif from "@public/img/CircleCarCut.webm";
 import BtnCarousel from "@public/img/BtnCarousel.webm";
 import PWInput from "@public/img/PasswordInput.png";
-import MultiSelect from "@public/img/MultiSelact.png"
+import MultiSelect from "@public/img/MultiSelact.png";
 
 const lib = new Map<number, LibInfo>([
   [
@@ -131,6 +132,25 @@ const lib = new Map<number, LibInfo>([
       media: { type: "image", link: MultiSelect.src },
     },
   ],
+  [
+    5,
+    {
+      id: 5,
+      titre: "Menu burger",
+      logo: ["ts"],
+      description:
+        "transforme un menu classique en menu burger animé en tiroire",
+      linkBox: [
+        [
+          {
+            type: LinkType.GitHub,
+            link: "",
+          },
+        ],
+      ],
+      media: { type: "image", link: "" },
+    },
+  ],
 ]);
 ---
 
@@ -138,7 +158,7 @@ const lib = new Map<number, LibInfo>([
   <div class="bg-linear-to-br from-slate-600 to-slate-800 min-h-full">
     <HeaderNav />
     <LibraryPage client:load lib={lib} />
-    <div id="0" class="showcard w-screen hidden">
+    <div id="Card0" class="showcard w-screen hidden">
       <ShowCardLibrary
         id={0}
         title={lib.get(0)!.titre}
@@ -154,7 +174,7 @@ const lib = new Map<number, LibInfo>([
         </div>
       </ShowCardLibrary>
     </div>
-    <div id="1" class="showcard w-screen hidden">
+    <div id="Card1" class="showcard w-screen hidden">
       <ShowCardLibrary
         id={1}
         title={lib.get(1)!.titre}
@@ -170,7 +190,7 @@ const lib = new Map<number, LibInfo>([
         </div>
       </ShowCardLibrary>
     </div>
-    <div id="2" class="showcard w-screen hidden">
+    <div id="Card2" class="showcard w-screen hidden">
       <ShowCardLibrary
         id={2}
         title={lib.get(2)!.titre}
@@ -183,7 +203,7 @@ const lib = new Map<number, LibInfo>([
         </div>
       </ShowCardLibrary>
     </div>
-    <div id="3" class="showcard w-screen hidden">
+    <div id="Card3" class="showcard w-screen hidden">
       <ShowCardLibrary
         id={3}
         title={lib.get(3)!.titre}
@@ -196,7 +216,7 @@ const lib = new Map<number, LibInfo>([
         </div>
       </ShowCardLibrary>
     </div>
-    <div id="4" class="showcard w-screen hidden">
+    <div id="Card4" class="showcard w-screen hidden">
       <ShowCardLibrary
         id={4}
         title={lib.get(4)!.titre}
@@ -205,7 +225,20 @@ const lib = new Map<number, LibInfo>([
         linkSlice={lib.get(4)!.linkBox}
       >
         <div class="svelte w-full h-[50vh] block">
-          <CardMultiSelect client:load/>
+          <CardMultiSelect client:load />
+        </div>
+      </ShowCardLibrary>
+    </div>
+    <div id="Card5" class="showcard w-screen hidden">
+      <ShowCardLibrary
+        id={5}
+        title={lib.get(5)!.titre}
+        description={lib.get(5)!.description}
+        fw={lib.get(5)!.logo}
+        linkSlice={lib.get(5)!.linkBox}
+      >
+        <div class="ts w-full h-[50vh] block">
+          <CardMenuBurger />
         </div>
       </ShowCardLibrary>
     </div>
@@ -220,7 +253,7 @@ const lib = new Map<number, LibInfo>([
     const callbackVis: MutationCallback = (mut) => {
       for (let elem of mut) {
         if (elem.target.classList.contains("block"))
-          currentVisible.set(elem.target.id);
+          currentVisible.set(elem.target.id.replace("Card", ""));
       }
     };
 
@@ -231,7 +264,10 @@ const lib = new Map<number, LibInfo>([
 
     currentSelect.subscribe((val) => {
       for (let elem of showcard) {
-        makeVisible(val == Number(elem.id), document.getElementById(elem.id));
+        makeVisible(
+          val == Number(elem.id.replace("Card", "")),
+          document.getElementById(elem.id),
+        );
       }
     });
   </script>

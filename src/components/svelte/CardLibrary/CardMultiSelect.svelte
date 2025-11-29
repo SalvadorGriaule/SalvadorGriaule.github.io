@@ -17,14 +17,20 @@
 </script>
 
 <section class="flex justify-center items-center h-full">
-  <div class="flex flex-col p-2 bg-gray-400 rounded-xl space-y-2 lg:space-y-2  lg:space-x-3 lg:flex-row">
+  <div
+    class="flex flex-col p-2 bg-gray-400 rounded-xl space-y-2 lg:space-y-2 lg:space-x-3 lg:flex-row"
+  >
     <div
       class="flex flex-col items-center p-3 border-4 border-black rounded-xl"
     >
       <div class="p-2 flex space-x-2 items-center">
-        <div class="flex flex-col items-center">
+        <div
+          class="flex flex-col items-center border-2 p-2 rounded-2xl duration-150 {switchTog
+            ? 'bg-green-400 border-green-600'
+            : 'bg-slate-400 border-slate-600'}"
+        >
           <p>Réalisateur selon pays</p>
-          <p>parent non clickable</p>
+          <p class="font-semibold">parent non clickable</p>
         </div>
         <button
           {onclick}
@@ -39,9 +45,13 @@
               : 'ml-0'}"
           ></div>
         </button>
-        <div class="flex flex-col items-center">
+        <div
+          class="flex flex-col items-center border-2 p-2 rounded-2xl duration-150 {switchTog
+            ? 'bg-slate-400 border-slate-600'
+            : 'bg-green-400 border-green-600'}"
+        >
           <p>tags pour objet de luxe</p>
-          <p>parent clickable</p>
+          <p class="font-semibold">parent clickable</p>
         </div>
       </div>
       <div class="p-2 shadow-2xl rounded-xl w-96 bg-white">

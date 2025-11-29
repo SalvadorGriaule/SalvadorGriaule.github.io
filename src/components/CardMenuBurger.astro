@@ -1,0 +1,43 @@
+---
+import Burger from "@assets/menuBurger.svg";
+---
+
+<div class="w-full h-full flex justify-center items-center">
+    <div
+        id="trueH"
+        class="h-[25vh] border-stone-500 border-4 rounded-2xl overflow-hidden relative"
+    >
+        <div class="bg-orange-300 flex space-x-4 p-2 relative z-50">
+            <h2 class="font-bold">Burger</h2>
+            <nav>
+                <ul class="flex space-x-2 ">
+                    <li><a href="">image</a></li>
+                    <li><a href="">audio</a></li>
+                    <li><a href="">texte</a></li>
+                </ul>
+            </nav>
+            <button class="w-8 h-8">
+                <img id="burger" src={Burger.src} alt="menu burger" />
+            </button>
+        </div>
+    </div>
+</div>
+<script>
+    import { getNav, navDeskToMob, animeBurger } from "@assets/ts/burgerMenu";
+    import { currentVisible } from "@assets/ts/nano";
+
+    const btnBurger = document.getElementById("burger");
+    let bool = false;
+
+    currentVisible.listen((val) => {
+        const menuBurger = navDeskToMob(
+            getNav(document.querySelector("#trueH nav")),
+            document.querySelector("#trueH"),
+        );
+
+        btnBurger.addEventListener("click", () => {
+            bool = !bool;
+            animeBurger(bool, menuBurger);
+        });
+    });
+</script>
