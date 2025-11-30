@@ -1,13 +1,13 @@
 {
   "data": [
     {
-      "idDB": 0,
+      "id": 0,
       "name": "Cinéma Hongkongais"
     },
-    { "idDB": 1, "name": "Johnny To", "sub_id": 0 },
-    { "idDB": 2, "name": "Tsui Hark", "sub_id": 0 },
-    { "idDB": 3, "name": "Cinéma italien" },
-    { "idDB": 4, "name": "Nanni Moretti", "sub_id": 3 },
-    { "idDB":5, "name":"Ringo lam", "sub_id":0}
+    { "id": 1, "name": "Johnny To", "sub_id": 0 },
+    { "id": 2, "name": "Tsui Hark", "sub_id": 0 },
+    { "id": 3, "name": "Cinéma italien" },
+    { "id": 4, "name": "Nanni Moretti", "sub_id": 3 },
+    { "id":5, "name":"Ringo lam", "sub_id":0}
   ]
 }
