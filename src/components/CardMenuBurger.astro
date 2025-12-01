@@ -21,13 +21,19 @@ import Burger from "@assets/menuBurger.svg";
           <img src={Burger.src} alt="menu burger" />
         </button>
       </div>
+      <div class="w-full h-full flex justify-center bg-orange-100">
+        <h3 class="text-3xl pt-10 font-semibold text-gray-400">
+          Contenu
+        </h3>
+      </div>
     </div>
     <div class="resBorder w-1 bg-stone-500 cursor-col-resize"></div>
   </div>
 </div>
+
 <script>
   import { getNav, navDeskToMob, animeBurger } from "@assets/ts/burgerMenu";
-  import { currentVisible } from "@assets/ts/nano";
+  import { currentVisible,inSlot } from "@assets/ts/nano";
 
   const btnBurger = document.getElementById("burger");
   const card = document.getElementById("cardBurger");
@@ -52,6 +58,7 @@ import Burger from "@assets/menuBurger.svg";
   obsResize.observe(trueH, { attributes: true, attributeFilter: ["style"] });
 
   currentVisible.listen((val) => {
+    if (inSlot.get() != null && val.id == 5) inSlot.get().className = "slotCard w-full flex justify-center"
     let wTrueH = trueH?.clientWidth;
     let baseWidth = 0;
     let initPos = 0;
@@ -66,24 +73,24 @@ import Burger from "@assets/menuBurger.svg";
         resize = true;
         initPos = e.screenX;
         baseWidth = wTrueH;
-        console.log("click", baseWidth);
       });
       i++;
     }
+
     card.addEventListener("mousemove", (e) => {
       if (resize)
         trueH.style.width =
           westEast == "west"
-            ? wTrueH + (initPos - e.screenX) + "px"
+            ? wTrueH + ((initPos - e.screenX) ) + "px"
             : wTrueH - (initPos - e.screenX) + "px";
-      console.log("move", resize);
+      console.log(initPos,e.screenX);
     });
     card.addEventListener("mouseup", () => {
       resize = false;
       wTrueH = trueH?.clientWidth;
       westEast = null;
-      console.log("up");
     });
+
     const menuBurger = navDeskToMob(getNav(trueH.querySelector("nav")), trueH,270);
 
     btnBurger.addEventListener("click", () => {

@@ -1,8 +1,19 @@
-import { atom } from "nanostores";
+import { atom, map, computed } from "nanostores";
 
 const currentSelect = atom<null | number>(null);
 const currentTags = atom<"all" | "react" | "svelte" | "vuejs" | "ts">("all");
-const currentVisible = atom<null | number>(null);
+
+interface CardVisible {
+  id: number | null;
+  cardSection: HTMLElement | null;
+}
+
+const currentVisible = map<CardVisible>({ id: null, cardSection: null });
+
+const inSlot = computed(currentVisible, (elem) => {
+  if (elem.cardSection) return elem.cardSection.querySelector(".slotCard");
+  return null;
+});
 
 export const setSelect = (num: number) => {
   currentSelect.set(num);
@@ -15,4 +26,4 @@ const linearColor = [
   "oklch(54.6% 0.245 262.881)",
 ];
 
-export { currentSelect, currentTags, currentVisible, linearColor };
+export { currentSelect, currentTags, currentVisible, inSlot, linearColor };
