@@ -2,42 +2,93 @@
 import Burger from "@assets/menuBurger.svg";
 ---
 
-<div class="w-full h-full flex justify-center items-center">
-    <div
-        id="trueH"
-        class="h-[25vh] border-stone-500 border-4 rounded-2xl overflow-hidden relative"
-    >
-        <div class="bg-orange-300 flex space-x-4 p-2 relative z-50">
-            <h2 class="font-bold">Burger</h2>
-            <nav>
-                <ul class="flex space-x-2 ">
-                    <li><a href="">image</a></li>
-                    <li><a href="">audio</a></li>
-                    <li><a href="">texte</a></li>
-                </ul>
-            </nav>
-            <button class="w-8 h-8">
-                <img id="burger" src={Burger.src} alt="menu burger" />
-            </button>
-        </div>
+<div id="cardBurger" class="w-full h-full flex justify-center items-center">
+  <div class="flex border-stone-500 border-y-4 rounded-md">
+    <div class="resBorder w-1 bg-stone-500 cursor-col-resize"></div>
+    <div id="trueH" class="h-[25vh] w-full overflow-hidden relative">
+      <div
+        class="bg-orange-300 w-full flex justify-between items-center h-1/5 p-2 relative z-50"
+      >
+        <h2 class="font-bold">Burger</h2>
+        <nav class="hidden">
+          <ul class="flex space-x-2">
+            <li><a href="">image</a></li>
+            <li><a href="">audio</a></li>
+            <li><a href="">texte</a></li>
+          </ul>
+        </nav>
+        <button id="burger" class="w-8 h-8 block">
+          <img src={Burger.src} alt="menu burger" />
+        </button>
+      </div>
     </div>
+    <div class="resBorder w-1 bg-stone-500 cursor-col-resize"></div>
+  </div>
 </div>
 <script>
-    import { getNav, navDeskToMob, animeBurger } from "@assets/ts/burgerMenu";
-    import { currentVisible } from "@assets/ts/nano";
+  import { getNav, navDeskToMob, animeBurger } from "@assets/ts/burgerMenu";
+  import { currentVisible } from "@assets/ts/nano";
 
-    const btnBurger = document.getElementById("burger");
-    let bool = false;
+  const btnBurger = document.getElementById("burger");
+  const card = document.getElementById("cardBurger");
+  const trueH = document.querySelector("#trueH");
+  const border = document.querySelectorAll(".resBorder");
 
-    currentVisible.listen((val) => {
-        const menuBurger = navDeskToMob(
-            getNav(document.querySelector("#trueH nav")),
-            document.querySelector("#trueH"),
-        );
+  let bool = false;
 
-        btnBurger.addEventListener("click", () => {
-            bool = !bool;
-            animeBurger(bool, menuBurger);
-        });
+  const resCB: MutationCallback = (mut) => {
+    let wid = trueH?.clientWidth;
+    if (wid < 270) {
+      btnBurger?.classList.replace("hidden", "block");
+      trueH.querySelector("nav")?.classList.replace("block", "hidden");
+    } else {
+      btnBurger?.classList.replace("block", "hidden");
+      trueH.querySelector("nav")?.classList.replace("hidden", "block");
+    }
+  };
+
+  const obsResize = new MutationObserver(resCB);
+
+  obsResize.observe(trueH, { attributes: true, attributeFilter: ["style"] });
+
+  currentVisible.listen((val) => {
+    let wTrueH = trueH?.clientWidth;
+    let baseWidth = 0;
+    let initPos = 0;
+    let resize = false;
+    let westEast: "west" | "est" | null = null;
+    let i = 0;
+
+    for (let elem of border) {
+      let j = i;
+      elem.addEventListener("mousedown", (e) => {
+        westEast = j == 0 ? "west" : "est";
+        resize = true;
+        initPos = e.screenX;
+        baseWidth = wTrueH;
+        console.log("click", baseWidth);
+      });
+      i++;
+    }
+    card.addEventListener("mousemove", (e) => {
+      if (resize)
+        trueH.style.width =
+          westEast == "west"
+            ? wTrueH + (initPos - e.screenX) + "px"
+            : wTrueH - (initPos - e.screenX) + "px";
+      console.log("move", resize);
     });
+    card.addEventListener("mouseup", () => {
+      resize = false;
+      wTrueH = trueH?.clientWidth;
+      westEast = null;
+      console.log("up");
+    });
+    const menuBurger = navDeskToMob(getNav(trueH.querySelector("nav")), trueH,270);
+
+    btnBurger.addEventListener("click", () => {
+      bool = !bool;
+      animeBurger(bool, menuBurger);
+    });
+  });
 </script>
