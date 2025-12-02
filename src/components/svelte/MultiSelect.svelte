@@ -83,14 +83,16 @@
   const clickDiv: Function = (id: string, elem: HTMLDivElement) => {
     if (select.find((elem) => elem == id) === undefined) {
       select.push(id);
-      selected = nameCatg(select);
       elem.classList.add("bg-blue-400");
     } else {
       select = select.filter((elem) => elem != id);
-      selected = nameCatg(select);
       elem.classList.remove("bg-blue-400");
     }
   };
+
+  $effect(() => {
+    selected = nameCatg(select);
+  });
 </script>
 
 <div class="flex flex-col space-y-2 w-full">
