@@ -28,7 +28,7 @@
   class="p-2 w-full bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md m-2 backdrop-blur-md md:w-[45%] xl:w-[23.5%]"
 >
   <div class="flex justify-between items-center">
-    <h3 class="text-2xl font-semibold">{titre}</h3>
+    <h3 class="text-xl font-semibold truncate md:text-2xl">{titre}</h3>
     <div class="w-18 flex justify-end">
       {#each logo as elem}
         <LogoLib

@@ -28,7 +28,7 @@
   });
 </script>
 
-<main class="mx-20 mt-10 flex flex-col">
+<main class="mt-4 flex flex-col md:mx-20 md:mt-10">
   {#if stateSelect == null}
     <NavLibrary />
     <section class="flex flex-wrap">
