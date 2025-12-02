@@ -4,8 +4,8 @@ import Burger from "@assets/menuBurger.svg";
 
 <div id="cardBurger" class="w-full h-full flex justify-center items-center">
   <div class="flex border-stone-500 border-y-4 rounded-md">
-    <div class="resBorder w-1 bg-stone-500 cursor-col-resize"></div>
-    <div id="trueH" class="h-[25vh] w-full overflow-hidden relative">
+    <div class="resBorder w-1.5 bg-stone-500 cursor-col-resize"></div>
+    <div id="trueH" class="h-[25vh] w-full min-w-44 overflow-hidden relative">
       <div
         class="bg-orange-300 w-full flex justify-between items-center h-1/5 p-2 relative z-50"
       >
@@ -22,18 +22,16 @@ import Burger from "@assets/menuBurger.svg";
         </button>
       </div>
       <div class="w-full h-full flex justify-center bg-orange-100">
-        <h3 class="text-3xl pt-10 font-semibold text-gray-400">
-          Contenu
-        </h3>
+        <h3 class="text-3xl pt-10 font-semibold text-gray-400">Contenu</h3>
       </div>
     </div>
-    <div class="resBorder w-1 bg-stone-500 cursor-col-resize"></div>
+    <div class="resBorder w-1.5 bg-stone-500 cursor-col-resize"></div>
   </div>
 </div>
 
 <script>
   import { getNav, navDeskToMob, animeBurger } from "@assets/ts/burgerMenu";
-  import { currentVisible,inSlot } from "@assets/ts/nano";
+  import { currentVisible, inSlot } from "@assets/ts/nano";
 
   const btnBurger = document.getElementById("burger");
   const card = document.getElementById("cardBurger");
@@ -57,8 +55,14 @@ import Burger from "@assets/menuBurger.svg";
 
   obsResize.observe(trueH, { attributes: true, attributeFilter: ["style"] });
 
+  btnBurger.addEventListener("mousedown", () => {     
+    animeBurger(!bool, menuBurger);
+    bool = !bool;
+  });
+
   currentVisible.listen((val) => {
-    if (inSlot.get() != null && val.id == 5) inSlot.get().className = "slotCard w-full flex justify-center"
+    if (inSlot.get() != null && val.id == 5)
+      inSlot.get().className = "slotCard w-full flex justify-center";
     let wTrueH = trueH?.clientWidth;
     let baseWidth = 0;
     let initPos = 0;
@@ -73,6 +77,7 @@ import Burger from "@assets/menuBurger.svg";
         resize = true;
         initPos = e.screenX;
         baseWidth = wTrueH;
+        card.style.cursor = "col-resize";
       });
       i++;
     }
@@ -81,21 +86,22 @@ import Burger from "@assets/menuBurger.svg";
       if (resize)
         trueH.style.width =
           westEast == "west"
-            ? wTrueH + ((initPos - e.screenX) ) + "px"
-            : wTrueH - (initPos - e.screenX) + "px";
-      console.log(initPos,e.screenX);
+            ? wTrueH + (initPos - e.screenX) * 2 + "px"
+            : wTrueH - (initPos - e.screenX) * 2 + "px";
+      
     });
+
     card.addEventListener("mouseup", () => {
       resize = false;
       wTrueH = trueH?.clientWidth;
       westEast = null;
+      card.style.cursor = "default"
     });
 
-    const menuBurger = navDeskToMob(getNav(trueH.querySelector("nav")), trueH,270);
-
-    btnBurger.addEventListener("click", () => {
-      bool = !bool;
-      animeBurger(bool, menuBurger);
-    });
+    const menuBurger = navDeskToMob(
+      getNav(trueH.querySelector("nav")),
+      trueH,
+      270
+    );
   });
 </script>

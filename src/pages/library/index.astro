@@ -24,6 +24,7 @@ import CarouselGif from "@public/img/CircleCarCut.webm";
 import BtnCarousel from "@public/img/BtnCarousel.webm";
 import PWInput from "@public/img/PasswordInput.png";
 import MultiSelect from "@public/img/MultiSelact.png";
+import VidBurger from "@public/img/BurgerMenu.webm";
 
 const lib = new Map<number, LibInfo>([
   [
@@ -148,7 +149,7 @@ const lib = new Map<number, LibInfo>([
           },
         ],
       ],
-      media: { type: "image", link: "" },
+      media: { type: "vidéo", link: VidBurger, widthMedia: 24 },
     },
   ],
 ]);
@@ -253,7 +254,10 @@ const lib = new Map<number, LibInfo>([
     const callbackVis: MutationCallback = (mut) => {
       for (let elem of mut) {
         if (elem.target.classList.contains("block"))
-          currentVisible.set({id:Number(elem.target.id.replace("Card", "")),cardSection:document.getElementById(elem.target.id)});
+          currentVisible.set({
+            id: Number(elem.target.id.replace("Card", "")),
+            cardSection: document.getElementById(elem.target.id),
+          });
       }
     };
 
@@ -266,7 +270,7 @@ const lib = new Map<number, LibInfo>([
       for (let elem of showcard) {
         makeVisible(
           val == Number(elem.id.replace("Card", "")),
-          document.getElementById(elem.id),
+          document.getElementById(elem.id)
         );
       }
     });
