@@ -1,0 +1,374 @@
+@font-face {
+    font-family: "PublicPixel";
+    src: url(../font/public-pixel-font/PublicPixel-z84yD.ttf);
+}
+
+body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url(../img/sky-galaxy-atmosphere-astronomical-object-blue-atmospheric-phenomenon-1563259-pxhere.com.jpg);
+    background-size: cover;
+}
+
+#board {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#area {
+    width: 95vw;
+    height: 95vw;
+    background-color: black;
+    border-color: blue;
+    border-width: 3px;
+    border-style: solid;
+    position: relative;
+}
+
+#niv1 {
+    width: 95vw;
+    height: 95vw;
+    display: grid;
+    grid-template: repeat(5, 20%)/ repeat(5, 20%);
+}
+
+#niv2 {
+    display: none;
+    width: 95vw;
+    height: 95vw;
+    grid-template: repeat(5, 20%)/ repeat(5, 20%);
+}
+
+#niv3 {
+    display: none;
+    width: 95vw;
+    height: 95vw;
+    grid-template: repeat(5, 20%)/ repeat(5, 20%);
+}
+
+#niv4 {
+    width: 95vw;
+    height: 95vw;
+    display: none;
+    grid-template: repeat(5, 20%)/ repeat(5, 20%);
+}
+
+#niv5 {
+    width: 95vw;
+    height: 95vw;
+    display: none;
+    grid-template: repeat(5, 20%)/ repeat(5, 20%);
+}
+
+#niv6 {
+    width: 95vw;
+    height: 95vw;
+    display: none;
+    grid-template: repeat(5, 20%)/ repeat(5, 20%);
+}
+
+#niv7 {
+    width: 95vw;
+    height: 95vw;
+    display: none;
+    grid-template: repeat(5, 20%)/ repeat(5, 20%);
+}
+
+#PacMan {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#PacC{
+    width: 100%;
+    height: 100%;
+}
+
+#PacT {
+    width: 80%;
+    height: 3vh;
+    background-color: yellow;
+    border-top-left-radius: 150px;
+    border-top-right-radius: 150px;
+}
+
+#PacB {
+    width: 80%;
+    height: 3vh;
+    background-color: yellow;
+    border-bottom-left-radius: 150px;
+    border-bottom-right-radius: 150px;
+
+}
+
+#Score {
+    font-family: "PublicPixel";
+    font-size: larger;
+    color: yellow;
+    text-shadow: 4px 4px 0px rgba(255, 255, 255, 0.33);
+    text-align: center;
+}
+
+.esp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-width: 0px 0px 0px 0px;
+    border-color: blue;
+    border-style: solid;
+}
+
+.point {
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+
+}
+
+#fantom {
+    width: 80%;
+    height: 80%;
+    background-color: cyan;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+
+/*********************css menu*******************/
+#menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    font-family: "PublicPixel";
+    text-shadow: 4px 4px 0px rgba(255, 255, 255, 0.33);
+    text-align: center;
+    color: yellow;
+    margin-inline: 100px;
+    margin-block: 100px;
+
+}
+
+#nav {
+    display: flex;
+    height: 150px;
+    width: 200px;
+    padding-left: 0px;
+    flex-direction: column;
+    list-style-type: none;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#menuChEnd {
+    display: flex;
+    height: 150px;
+    width: 200px;
+    padding-left: 0px;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#back {
+    display: none;
+    position: absolute;
+    margin-top: 100%;
+}
+
+/**********************LeaderBoard********************************/
+#ldAff {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+    height: 150px;
+    padding-left: 0px;
+}
+
+#inputName {
+    display: none;
+    height: 150px;
+    width: 200px;
+}
+
+@media screen and (min-width:576px) {
+
+    #board {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #area {
+        width: 600px;
+        height: 600px;
+        background-color: black;
+        border-color: blue;
+        border-width: 3px;
+        border-style: solid;
+    }
+
+    #niv1 {
+        width: 600px;
+        height: 600px;
+        display: grid;
+        grid-template: repeat(5, 20%)/ repeat(5, 20%);
+    }
+
+    #niv2 {
+        display: none;
+        width: 600px;
+        height: 600px;
+        grid-template: repeat(5, 20%)/ repeat(5, 20%);
+    }
+
+    #niv3 {
+        display: none;
+        width: 600px;
+        height: 600px;
+        grid-template: repeat(5, 20%)/ repeat(5, 20%);
+    }
+
+    #niv4 {
+        width: 600px;
+        height: 600px;
+        display: none;
+        grid-template: repeat(5, 20%)/ repeat(5, 20%);
+    }
+
+    #niv5 {
+        width: 600px;
+        height: 600px;
+        display: none;
+        grid-template: repeat(5, 20%)/ repeat(5, 20%);
+    }
+
+    #niv6 {
+        width: 600px;
+        height: 600px;
+        display: none;
+        grid-template: repeat(5, 20%)/ repeat(5, 20%);
+    }
+
+    #niv7 {
+        width: 600px;
+        height: 600px;
+        display: none;
+        grid-template: repeat(5, 20%)/ repeat(5, 20%);
+    }
+
+    #PacMan {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+
+    }
+
+    #PacT {
+        width: 100px;
+        height: 50px;
+        background-color: yellow;
+        border-top-left-radius: 150px;
+        border-top-right-radius: 150px;
+
+    }
+
+    #PacB {
+        width: 100px;
+        height: 50px;
+        background-color: yellow;
+        border-bottom-left-radius: 150px;
+        border-bottom-right-radius: 150px;
+
+    }
+
+    #Score {
+        font-family: "PublicPixel";
+        font-size: xx-large;
+        color: yellow;
+        text-shadow: 4px 4px 0px rgba(255, 255, 255, 0.33);
+        text-align: center;
+    }
+
+    .esp {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-width: 0px 0px 0px 0px;
+        border-color: blue;
+        border-style: solid;
+    }
+
+    .point {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+
+    }
+
+    #fantom {
+        width: 100px;
+        height: 100px;
+        background-color: cyan;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+    }
+
+    /*********************css menu*******************/
+    #menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        height: 200px;
+        width: 200px;
+        font-family: "PublicPixel";
+        text-shadow: 4px 4px 0px rgba(255, 255, 255, 0.33);
+        text-align: center;
+        color: yellow;
+        margin-inline: 200px;
+        margin-block: 200px;
+
+    }
+
+    #nav {
+        display: flex;
+        height: 150px;
+        width: 200px;
+        padding-left: 0px;
+        flex-direction: column;
+        list-style-type: none;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #menuChEnd {
+        display: flex;
+        height: 150px;
+        width: 200px;
+        padding-left: 0px;
+        flex-direction: row;
+        list-style-type: none;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #back {
+        display: none;
+        position: absolute;
+        margin-top: 100%;
+    }
+
+}

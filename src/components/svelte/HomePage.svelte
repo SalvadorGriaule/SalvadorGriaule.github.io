@@ -7,10 +7,12 @@
   import CardProject from "./CardProject.svelte";
   import Footer from "./Footer.svelte";
   // import componants image
-  import SMWPhone from "../../../public/img/SoMuchWaterPhone.png";
-  import SMWLaptop from "../../../public/img/SoMuchWaterDesktop.png";
-  import LecteurPhone from "../../../public/img/LecteurV2.png";
-  import LecteurDesktop from "../../../public/img/LecteurV2Desktop.png";
+  import SMWPhone from "@public/img/SoMuchWaterPhone.png";
+  import SMWLaptop from "@public/img/SoMuchWaterDesktop.png";
+  import LecteurPhone from "@public/img/LecteurV2.png";
+  import LecteurDesktop from "@public/img/LecteurV2Desktop.png";
+  import PacManDesktop from "@public/img/PacManWishDesktop.png";
+
   // import type
   import { Device, LinkType, type LinkSlice } from "./type.ts";
   import { onMount } from "svelte";
@@ -44,6 +46,13 @@
       type: LinkType.GitHub,
     },
   ];
+  const techPacMan = ["js"];
+  const linkPacMan: LinkSlice[] = [
+    {
+      link: "https://github.com/SalvadorGriaule/PacMan-",
+      type: LinkType.GitHub
+    }
+  ]
   let y = $state<number>(0);
   let bodySvelte = $state<HTMLDivElement | null>(null);
 
@@ -107,6 +116,14 @@
           description="ici"
           devices={[Device.SmartPhone, Device.Laptop]}
           techUse={techLec}
+        />
+        <CardProject 
+          titre="PacMan Wish"
+          desktopSrc={PacManDesktop.src}
+          lien={linkPacMan}
+          description="ici"
+          devices={[Device.Laptop]}
+          techUse={techPacMan}
         />
         <!-- <CardProject titre="Sneakers"/> -->
       </div>

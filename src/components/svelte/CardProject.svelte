@@ -36,8 +36,8 @@
         devices,
     }: {
         titre: string;
-        desktopSrc: string;
-        phoneSrc: string;
+        desktopSrc?: string;
+        phoneSrc?: string;
         lien: LinkSlice[];
         description: string;
         techUse: string[];

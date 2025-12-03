@@ -1,0 +1,358 @@
+---
+import "@assets/pacman/css/style.css"
+---
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../../assets/pacman/js/anime.min.ts"></script>
+    <script src="../../../assets/pacman/js/menu.ts"></script>
+    <script src="../../../assets/pacman/js/leaderboard.ts"></script>
+    <script src="../../../assets/pacman/js/dexie.min.ts"></script>
+    <script src="../../../assets/pacman/js/funcPacMan.ts"></script>
+    <script src="../../../assets/pacman/js/hammer.min.ts"></script>
+    <script src="../../../assets/pacman/js/script.ts"></script>
+    <link rel="icon" href="../../../assets/pacman/img/favicon/favicon.ico" type="image/x-icon">
+    <title>PacMan</title>
+</head>
+
+<body>
+    <div id="board">
+        <p id="Score">Score: 0</p>
+        <div id="area">
+            <div id="menu">
+                <ul id="nav">
+                    <li>Start</li>
+                    <li>Option</li>
+                    <li>Leader Board</li>
+                </ul>
+                <ul id="ldAff">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div id="inputName">
+                    <form action="" id="formN">
+                        <label for="pyname">puts your name</label>
+                        <input type="text" name="name">
+                        <button type="submit">valider</button>
+                    </form>
+                </div>
+                <p id="back">Back</p>
+            </div>
+            <div id="niv1">
+                <div class="esp">
+                    <div id="PacMan">
+                        <div id="PacC">
+                            <div id="PacT"></div>
+                            <div id="PacB"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="esp">
+                    <div class="point"></div>
+                    <div class="BordR"></div>
+                </div>
+                <div class="esp">
+                    <div class="point"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="point"></div>
+                    <div class="BordR"></div>
+                    <div class="BordT"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="BordB"></div>
+                    <div class="BordR"></div>
+                </div>
+                <div class="esp">
+                    <div class="point"></div>
+                    <div class="BordB"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="BordB"></div>
+                </div>
+                <div class="esp">
+                    <div class="point"></div>
+                </div>
+                <div class="esp">
+                    <div class="BordL"></div>
+                    <div class="point"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="BordL"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="BordB"></div>
+                </div>
+                <div class="esp">
+                    <div class="point"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="BordL"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div id="fantom"> </div>
+                </div>
+            </div>
+            <div id="niv2">
+                <div class="esp">
+                    <div class="BordB"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="BordL"></div>
+                </div>
+                <div class="esp">
+                    <div class="point"></div>
+                </div>
+                <div class="esp">
+                    <div class="point"></div>
+                    <div class="BordL"></div>
+                </div>
+                <div class="esp">
+                    <div class="point"></div>
+                </div>
+                <div class="esp">
+                    <div class="BordL"></div>
+                </div>
+                <div class="esp">
+                    <div class="point"></div>
+                    <div class="BordR"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="BordB"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="BordL"></div>
+                    <div class="BordT"></div>
+                </div>
+                <div class="esp">
+                    <div class="BordR"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="BordB"></div>
+                </div>
+                <div class="esp">
+                    <div class="BordT"></div>
+                    <div class="point"></div>
+                    <div class="BordB"></div>
+                </div>
+                <div class="esp">
+                    <div class="BordB"></div>
+                </div>
+                <div class="esp">
+                    <div class="BordL"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="point"></div>
+                </div>
+                <div class="esp">
+                    <div class="BordL"></div>
+                    <div class="point"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+            </div>
+            <div id="niv3">
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp rotate">
+                    <div class="BordR"></div>
+                </div>
+                <div class="esp">
+                    <div class="BordR"></div>
+                </div>
+                <div class="esp">
+                    <div class="point"></div>
+                </div>
+                <div class="esp rotate">
+                    <div class="BordT"></div>
+                    <div class="BordB"></div>
+                    <div class="point"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="BordL"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="BordB"></div>
+                </div>
+                <div class="esp rotate">
+                    <div class="BordL"></div>
+                    <div class="BordR"></div>
+                    <div class="BordB"></div>
+                    <div class="point"></div>
+                </div>
+                <div class="esp">
+                    <div class="BordR"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="BordB"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp rotate">
+                    <div class="BordR"></div>
+                </div>
+                <div class="esp">
+                    <div class="BordR"></div>
+                    <div class="BordB"></div>
+                    <div class="point"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <dic class="point"></dic>
+                </div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="BordL"></div>
+                    <div class="point"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+            </div>
+            <div id="niv4">
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="point"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+            </div>
+            <div id="niv5">
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="point"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+            </div>
+            <div id="niv6">
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="point"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+            </div>
+            <div id="niv7">
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp">
+                    <div class="point"></div>
+                </div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+                <div class="esp"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
