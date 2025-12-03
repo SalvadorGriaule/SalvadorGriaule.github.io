@@ -10,14 +10,15 @@
   let { lib }: { lib: Map<number, LibInfo> } = $props();
   let stateSelect: number | null = $state(null);
   let stateTags: fwf = $state("all");
+  let widthPage = $state(0);
 
   const filterTag = () => {
     let result: Map<number, LibInfo> = new Map();
     for (let [k, v] of lib) {
-      if(v.logo.includes(stateTags)) result.set(k,v)
+      if (v.logo.includes(stateTags)) result.set(k, v);
     }
-    
-    return result
+
+    return result;
   };
 
   currentSelect.listen((val) => {
@@ -28,7 +29,11 @@
   });
 </script>
 
-<main class="mt-4 flex flex-col md:mx-20 md:mt-10">
+<svelte:window bind:innerWidth={widthPage} />
+
+<main
+  class="mt-4 flex flex-col md:mx-20 md:mt-10 relative"
+>
   {#if stateSelect == null}
     <NavLibrary />
     <section class="flex flex-wrap">
@@ -42,8 +47,8 @@
           />
         {/each}
       {:else}
-        {#each filterTag() as [k,elem]}
-           <CardLibrary
+        {#each filterTag() as [k, elem]}
+          <CardLibrary
             titre={elem.titre}
             logo={elem.logo}
             id={k}
