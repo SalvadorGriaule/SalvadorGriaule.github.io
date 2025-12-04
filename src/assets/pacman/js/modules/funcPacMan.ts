@@ -10,10 +10,10 @@ const g = (): PAC => globalThis.PAC;
    1.  Balayage de la grille (bordures + points)
 ---------------------------------------------------------- */
 export function balayArena(): void {
-  const { esp, bordure, PCY, PCX, PCY2, PCX2, pointI } = g();
-  let x = 0, p = 0;
+  let { esp, bordure, PCY, PCX, PCY2, PCX2, pointI,p } = g();
+  let x = 0;
   let PCY_loc = 1, PCX_loc = 1, PCY2_loc = 2, PCX2_loc = 2;
-
+    console.log(pointI);
   for (let i = 1; i < 6; i++) {
     for (let i2 = 1; i2 < 6; i2++) {
       if (esp[x].children.length > 0) {
@@ -48,7 +48,9 @@ export function balayArena(): void {
 ---------------------------------------------------------- */
 export function initPC(): void {
   const { pointI, p, soundBegin, niveau } = g();
+  console.log(p);
   for (let i = 0; i < p; i++) {
+    console.log(pointI[i]);
     pointI[i].style.backgroundColor = 'white';
     pointI[i].style.visibility = 'visible';
   }
@@ -84,7 +86,7 @@ export function calcTurn(tab: HTMLElement[]): void {
    4.  Events clavier & swipe
 ---------------------------------------------------------- */
 export function eventPacMan(): void {
-  const { hammertime, handlersEV, index } = g();
+  const { hammertime, handlersEV, index, curEvLisPacMan } = g();
   document.addEventListener('keyup', handlersEV[index] || (handlersEV[index] = curEvLisPacMan()));
   hammertime.on('swipeleft swiperight swipeup swipedown', ev => evLisPacMan(ev as HammerInput));
 }

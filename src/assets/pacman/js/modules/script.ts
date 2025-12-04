@@ -2,6 +2,8 @@
 import anime from 'animejs';
 import Dexie from 'dexie';
 import Hammer from 'hammerjs';
+import beginAudio from "@assets/pacman/audio/pacman_beginning.wav"
+import endAudio from "@assets/pacman/audio/pacman_death.wav"
 
 /* ============================================================
    1.  Déclaration du namespace global
@@ -78,8 +80,8 @@ function initGlobals() {
   let choixV = '';
 
   /* ------ Audio ------ */
-  const soundBegin = new Audio('asset/audio/pacman_beginning.wav');
-  const soundDeath = new Audio('asset/audio/pacman_death.wav');
+  const soundBegin = new Audio(beginAudio);
+  const soundDeath = new Audio(endAudio);
 
   /* ------ Base de données ------ */
   const dbLB = new Dexie('LeaderBoard');
