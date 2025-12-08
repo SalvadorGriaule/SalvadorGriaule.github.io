@@ -1,4 +1,7 @@
 // menu.ts
+import { initPC, balayArena,eventPacMan } from './funcPacMan.js';
+import { leaderBoard } from './leaderboard.js';
+
 type PAC = typeof globalThis.PAC;
 
 /* ----------------------------------------------------------
@@ -50,21 +53,21 @@ function leaveMenu(n: number, childElem: HTMLCollection): void {
    3.  Navigation
 ---------------------------------------------------------- */
 async function choixVFunc(choix: string): Promise<void> {
-  const { menu, nav, scoreAll, score, nivN } = g();
+  const { menu, nav, scoreAll, score, nivN,p } = g();
   if (choix === 'Start') {
     menu.style.display = 'none';
     nav.style.display = 'none';
     cleanMenu();
     if (scoreAll > 0 || score > 0) g().scoreAll = 0, g().nivN = 1, await changeNiv();
-    await import('./funcPacMan.js').then(m => m.balayArena());
-    await import('./funcPacMan.js').then(m => m.initPC());
-    await import('./funcPacMan.js').then(m => m.eventPacMan());
+    balayArena();
+    initPC();
+    eventPacMan();
     return;
   }
   if (choix === 'Leader Board') {
     nav.style.display = 'none';
     cleanMenu();
-    await import('./leaderboard.js').then(m => m.leaderBoard());
+    leaderBoard();
   }
 }
 

@@ -13,7 +13,6 @@ export function balayArena(): void {
   let { esp, bordure, PCY, PCX, PCY2, PCX2, pointI,p } = g();
   let x = 0;
   let PCY_loc = 1, PCX_loc = 1, PCY2_loc = 2, PCX2_loc = 2;
-    console.log(pointI);
   for (let i = 1; i < 6; i++) {
     for (let i2 = 1; i2 < 6; i2++) {
       if (esp[x].children.length > 0) {
@@ -22,6 +21,7 @@ export function balayArena(): void {
           if (child.className === 'point') {
             pointI[p].style.gridArea = `${PCY_loc}/${PCX_loc}/${PCY2_loc}/${PCX2_loc}`;
             p++;
+            g().p = p
           } else {
             if (child.className === 'BordT') bordure[0] = 2;
             if (child.className === 'BordR') bordure[1] = 2;
@@ -48,9 +48,7 @@ export function balayArena(): void {
 ---------------------------------------------------------- */
 export function initPC(): void {
   const { pointI, p, soundBegin, niveau } = g();
-  console.log(p);
-  for (let i = 0; i < p; i++) {
-    console.log(pointI[i]);
+  for (let i = 0; i < p; i++) {  
     pointI[i].style.backgroundColor = 'white';
     pointI[i].style.visibility = 'visible';
   }
@@ -120,13 +118,12 @@ export function evLisPacMan(ev: KeyboardEvent | HammerInput): void {
 
   g().turn++;
   if (g().turn % 2 === 1 && rotateTui && rotateTui.length) calcTurn(Array.from(rotateTui));
-
   // Déplacements
   const moves = [
-    { keys: ['s', 'S', 'ArrowDown', 'swipedown'], cond: PCY < 5, wall: esp[x].style.borderBottomWidth !== '2px' && esp[x + 5].style.borderTopWidth !== '2px', dx: 0, dy: +espH, rot: 90, gridDy: 1 },
-    { keys: ['z', 'Z', 'ArrowUp', 'swipeup'], cond: PCY > 1, wall: esp[x].style.borderTopWidth !== '2px' && esp[x - 5].style.borderBottomWidth !== '2px', dx: 0, dy: -espH, rot: 270, gridDy: -1 },
-    { keys: ['d', 'D', 'ArrowRight', 'swiperight'], cond: PCX < 5, wall: esp[x].style.borderRightWidth !== '2px' && esp[x + 1].style.borderLeftWidth !== '2px', dx: +espW, dy: 0, rot: 0, gridDx: 1 },
-    { keys: ['q', 'Q', 'ArrowLeft', 'swipeleft'], cond: PCX > 1, wall: esp[x].style.borderLeftWidth !== '2px' && esp[x - 1].style.borderRightWidth !== '2px', dx: -espW, dy: 0, rot: 180, gridDx: -1 },
+    { keys: ['s', 'S', 'ArrowDown', 'swipedown'], cond: PCY < 5, wall: esp[x].style.borderBottomWidth !== '2px' && esp[x + 5]?.style.borderTopWidth !== '2px', dx: 0, dy: +espH, rot: 90, gridDy: 1 },
+    { keys: ['z', 'Z', 'ArrowUp', 'swipeup'], cond: PCY > 1, wall: esp[x].style.borderTopWidth !== '2px' && esp[x - 5]?.style.borderBottomWidth !== '2px', dx: 0, dy: -espH, rot: 270, gridDy: -1 },
+    { keys: ['d', 'D', 'ArrowRight', 'swiperight'], cond: PCX < 5, wall: esp[x].style.borderRightWidth !== '2px' && esp[x + 1]?.style.borderLeftWidth !== '2px', dx: +espW, dy: 0, rot: 0, gridDx: 1 },
+    { keys: ['q', 'Q', 'ArrowLeft', 'swipeleft'], cond: PCX > 1, wall: esp[x].style.borderLeftWidth !== '2px' && esp[x - 1]?.style.borderRightWidth !== '2px', dx: -espW, dy: 0, rot: 180, gridDx: -1 },
   ];
 
   for (const m of moves) {
@@ -188,7 +185,7 @@ function ghostMove(): void {
   if (FCX > 1 && esp[f].style.borderLeftWidth !== '2px' && esp[f - 1].style.borderRightWidth !== '2px') dirs.push('left');
 
   // Anti-retour
-  if (lastMouv) dirs.splice(dirs.indexOf(reverse(lastMouv)), 1);
+  if (lastMouv && dirs.length != 1) dirs.splice(dirs.indexOf(reverse(lastMouv)), 1);
 
   // Choix
   const move = dirs.length === 1 ? dirs[0] : dirs[Math.floor(Math.random() * dirs.length)];
