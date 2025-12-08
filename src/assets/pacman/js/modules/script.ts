@@ -35,14 +35,18 @@ function initGlobals() {
   const PassNivFnt = document.createElement('div');
 
   const restart = document.createElement('p');
-  restart.appendChild(document.createTextNode('Restart ?'));
+  const txtRestart = document.createTextNode("Restart ?");
+  restart.appendChild(txtRestart);
   const nextLevel = document.createElement('p');
-  nextLevel.appendChild(document.createTextNode('Next Level ?'));
+  const txtNextLevel = document.createTextNode("Next Level ?");
+  nextLevel.appendChild(txtNextLevel);
   const choixFinNiv = document.createElement('ul');
   const yes = document.createElement('li');
-  yes.appendChild(document.createTextNode('Oui'));
+  const yesTxt = document.createTextNode("Oui");
+  yes.appendChild(yesTxt);
   const no = document.createElement('li');
-  no.appendChild(document.createTextNode('Non'));
+  const noTxt = document.createTextNode("Non");
+  no.appendChild(noTxt);
   choixFinNiv.appendChild(yes);
   choixFinNiv.appendChild(no);
 
@@ -107,7 +111,7 @@ function initGlobals() {
     PassNivPM, PacC, PacT, PacB, PassNivFnt,
     restart, nextLevel, choixFinNiv, yes, no,
     fantom, PacMan, niveau, esp, espH, espW, pointI, rotateTui,
-    score, scoreAll, life, nivN, turn,
+    score, scoreAll, life, nivN, turn, txtNextLevel, yesTxt, noTxt, txtRestart,
     PCX, PCX2, PCY, PCY2, px, py,
     FCX, FCX2, FCY, FCY2, fx, fy,
     MouvPossFnt, lastMouv, MouvPoss, Mouv, bordure,

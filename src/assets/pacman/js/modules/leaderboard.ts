@@ -30,7 +30,7 @@ export function leaderBoard(): void {
    2.  Retour au menu + eventuel enregistrement du score
 ---------------------------------------------------------- */
 export async function returnScore(): Promise<void> {
-  const { no, document, hammertime, niveau, nextLevel, restart, choixFinNiv, PacMan, fantom, scoreAll, dbLB, inputN, formN, formNval } = g();
+  const { no, hammertime, niveau, nextLevel, restart, choixFinNiv, PacMan, fantom, scoreAll, dbLB, inputN, formN, formNval } = g();
   no.removeEventListener('click', returnScore);
   document.removeEventListener('keyup', g().handlersEV[g().index]);
   hammertime.off('swipeleft swiperight swipeup swipedown');
