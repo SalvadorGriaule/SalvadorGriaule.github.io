@@ -5,6 +5,7 @@
   import HeaderNav from "./HeaderNav.svelte";
   import SliderPerpetuel from "./SliderPerpetuel.svelte";
   import CardProject from "./CardProject.svelte";
+  import HomeLib from "./HomeLib.svelte";
   import Footer from "./Footer.svelte";
   // import componants image
   import SMWPhone from "@public/img/SoMuchWaterPhone.png";
@@ -16,7 +17,6 @@
   // import type
   import { Device, LinkType, type LinkSlice } from "./type.ts";
   import { onMount } from "svelte";
-  import { currentY } from "./context.ts";
 
   const nom = "MORALES";
   const prenom = "QUENTIN";
@@ -50,9 +50,13 @@
   const linkPacMan: LinkSlice[] = [
     {
       link: "https://github.com/SalvadorGriaule/PacMan-",
-      type: LinkType.GitHub
-    }
-  ]
+      type: LinkType.GitHub,
+    },
+    {
+      link: "/demo/pacman",
+      type: LinkType.PlayIt,
+    },
+  ];
   let y = $state<number>(0);
   let bodySvelte = $state<HTMLDivElement | null>(null);
 
@@ -117,7 +121,7 @@
           devices={[Device.SmartPhone, Device.Laptop]}
           techUse={techLec}
         />
-        <CardProject 
+        <CardProject
           titre="PacMan Wish"
           desktopSrc={PacManDesktop.src}
           lien={linkPacMan}
@@ -128,8 +132,8 @@
         <!-- <CardProject titre="Sneakers"/> -->
       </div>
     </div>
+    <HomeLib />
   </main>
-  <Footer />
 </div>
 
 <style>

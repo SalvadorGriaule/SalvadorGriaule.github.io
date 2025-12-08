@@ -18,17 +18,18 @@
   }: { tabLink: LinkSlice[]; spanLink?: boolean } = $props();
 </script>
 
-<div class="flex items-center space-x-2">
+
+<div class="flex items-start space-x-2">
   {#if spanLink}
-    <span>Lien:</span>
+    <span class="pt-1.5">Lien:</span>
   {/if}
-  <div class="bg-blue-950 p-2 rounded-lg">
+  <div class="bg-blue-950 p-2 space-y-1.5 rounded-lg">
     {#each tabLink as elem}
       <div class="flex space-x-2 items-center">
         <div class="w-5 h-5">
           <img src={addSvg(elem.type)} alt="" />
         </div>
-        <a href={elem.link} class="text-white">{elem.link}</a>
+        <a href={elem.link} class="text-white">{elem.type == LinkType.PlayIt ? "Play it" : elem.link}</a>
       </div>
     {/each}
   </div>
