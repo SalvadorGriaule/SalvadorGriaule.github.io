@@ -7,15 +7,9 @@
   import CardProject from "./CardProject.svelte";
   import HomeLib from "./HomeLib.svelte";
   import Footer from "./Footer.svelte";
-  // import componants image
-  import SMWPhone from "@public/img/SoMuchWaterPhone.png";
-  import SMWLaptop from "@public/img/SoMuchWaterDesktop.png";
-  import LecteurPhone from "@public/img/LecteurV2.png";
-  import LecteurDesktop from "@public/img/LecteurV2Desktop.png";
-  import PacManDesktop from "@public/img/PacManWishDesktop.png";
 
   // import type
-  import { Device, LinkType, type LinkSlice } from "./type.ts";
+  import { projet } from "@assets/ts/nano.ts";
   import { onMount } from "svelte";
 
   const nom = "MORALES";
@@ -32,31 +26,7 @@
   ];
 
   // variable projet
-  const techSMW = ["nuxt", "fastapi", "ts", "tailwindcss", "julia"];
-  const linkSMW: LinkSlice[] = [
-    {
-      link: "https://github.com/SalvadorGriaule/SoMuchWater",
-      type: LinkType.GitHub,
-    },
-  ];
-  const techLec = ["js"];
-  const linkLec: LinkSlice[] = [
-    {
-      link: "https://github.com/SalvadorGriaule/LecteurV2",
-      type: LinkType.GitHub,
-    },
-  ];
-  const techPacMan = ["js"];
-  const linkPacMan: LinkSlice[] = [
-    {
-      link: "https://github.com/SalvadorGriaule/PacMan-",
-      type: LinkType.GitHub,
-    },
-    {
-      link: "/demo/pacman",
-      type: LinkType.PlayIt,
-    },
-  ];
+  
   let y = $state<number>(0);
   let bodySvelte = $state<HTMLDivElement | null>(null);
 
@@ -102,33 +72,19 @@
       <div
         class="relative z-20 w-full flex flex-col items-center justify-center"
         style="transform: translateY({-1.1 * y}px)"
-      >
-        <CardProject
-          titre="SoMuchWater"
-          desktopSrc={SMWLaptop.src}
-          phoneSrc={SMWPhone.src}
-          lien={linkSMW}
-          description="ici"
-          devices={[Device.SmartPhone, Device.Laptop]}
-          techUse={techSMW}
-        />
-        <CardProject
-          titre="Lecteur"
-          desktopSrc={LecteurDesktop.src}
-          phoneSrc={LecteurPhone.src}
-          lien={linkLec}
-          description="ici"
-          devices={[Device.SmartPhone, Device.Laptop]}
-          techUse={techLec}
-        />
-        <CardProject
-          titre="PacMan Wish"
-          desktopSrc={PacManDesktop.src}
-          lien={linkPacMan}
-          description="ici"
-          devices={[Device.Laptop]}
-          techUse={techPacMan}
-        />
+      > 
+        {#each projet as p}
+          <CardProject 
+            titre={p.titre}
+            description={p.descritption}
+            lien={p.lien}
+            devices={p.device}
+            techUse={p.techUse}
+            desktopSrc={p.desktopSrc ? p.desktopSrc : undefined}
+            phoneSrc={p.phoneSrc ? p.phoneSrc : undefined}
+          />
+        {/each}
+       
         <!-- <CardProject titre="Sneakers"/> -->
       </div>
     </div>

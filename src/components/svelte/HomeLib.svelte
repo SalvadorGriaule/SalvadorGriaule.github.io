@@ -1,6 +1,7 @@
 <script lang="ts">
     import { lib } from "@assets/ts/nano";
     import CardLibrary from "./CardLibrary.svelte";
+
     const lastAdd = lib.values().toArray().slice(lib.size - 3)
 </script>
 
@@ -19,6 +20,5 @@
                 {/each}
             </div>
         </div>
-
     </div>
 </section>
