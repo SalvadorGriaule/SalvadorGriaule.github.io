@@ -23,6 +23,12 @@
         }
     };
 
+    let ago = (date:Date) => {
+        const now = new Date();
+        const diff = Number()
+        console.log(diff);
+    }
+
     let carousel: HTMLDivElement;
     let currentOng = $state(0);
     
@@ -34,6 +40,7 @@
         description,
         techUse,
         devices,
+        dateUpdate
     }: {
         titre: string;
         desktopSrc?: string;
@@ -42,8 +49,10 @@
         description: string;
         techUse: string[];
         devices: Device[];
+        dateUpdate?: Date;
     } = $props();
 
+    let timeAgo = $derived(dateUpdate ? ago(dateUpdate) : null)
     let onglet: OngletFunc[] = [];
     let asignKey = 0;
     devices.forEach((device) => {

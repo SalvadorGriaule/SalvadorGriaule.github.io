@@ -83,6 +83,7 @@ const projet: ProjetInfo[] = [
     descritption: "ici",
     techUse: ["js"],
     device: [Device.Laptop],
+    date: new Date("August 19, 2020 23:15:30")
   },
 ];
 

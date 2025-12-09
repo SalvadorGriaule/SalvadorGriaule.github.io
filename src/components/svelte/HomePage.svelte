@@ -82,9 +82,9 @@
             techUse={p.techUse}
             desktopSrc={p.desktopSrc ? p.desktopSrc : undefined}
             phoneSrc={p.phoneSrc ? p.phoneSrc : undefined}
+            dateUpdate={p.date}
           />
         {/each}
-       
         <!-- <CardProject titre="Sneakers"/> -->
       </div>
     </div>
