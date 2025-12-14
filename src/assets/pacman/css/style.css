@@ -4,9 +4,6 @@
 }
 
 body {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     background-image: url(../img/sky-galaxy-atmosphere-astronomical-object-blue-atmospheric-phenomenon-1563259-pxhere.com.jpg);
     background-size: cover;
 }
@@ -199,6 +196,20 @@ body {
     display: none;
     height: 150px;
     width: 200px;
+}
+
+/*****************Retour Astro************/
+#retourAstro {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#retourAstro button {
+    border-radius: 6px;
+    padding: 5px;
+    color: white;
+    background-color: darkred;
 }
 
 @media screen and (min-width:576px) {
