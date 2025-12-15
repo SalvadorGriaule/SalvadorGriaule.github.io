@@ -2,7 +2,7 @@
     import { lib } from "@assets/ts/nano";
     import CardLibrary from "./CardLibrary.svelte";
 
-    const lastAdd = lib.values()
+    const lastAdd = [...lib.values()]
 </script>
 
 <section class="w-full flex justify-center">
@@ -10,7 +10,7 @@
         <h4 class="text-3xl font-semibold pb-2 w-full text-center">Dernier componants disponible</h4>
         <div class="bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-2xl w-full">
             <div class="w-full flex justify-center space-x-1.5">
-                {#each lastAdd.toArray().slice(lib.size - 3) as elem,i}
+                {#each lastAdd.slice(lib.size - 3) as elem,i}
                 <CardLibrary 
                 titre={elem.titre}
                 logo={elem.logo}
