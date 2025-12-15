@@ -29,6 +29,7 @@
   
   let y = $state<number>(0);
   let bodySvelte = $state<HTMLDivElement | null>(null);
+  let height = $state<number>(0)
 
   onMount(() => {
     const osInstance = OverlayScrollbars(document.body, {
@@ -68,9 +69,12 @@
     <div class="relative z-10">
       <SliderPerpetuel tabSrc={techLogo} />
     </div>
-    <div class="sticky w-full z-50">
+    <div class="relative h-[1305px] w-full z-50"
+      style:height={height/2 + "px"}
+    >
       <div
-        class="relative z-20 w-full flex flex-col items-center justify-center"
+        bind:clientHeight={height}
+        class="absolute z-20 w-full flex flex-col items-center justify-center"
         style="transform: translateY({-1.1 * y}px)"
       > 
         {#each projet as p}
