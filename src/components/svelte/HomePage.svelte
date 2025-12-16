@@ -1,11 +1,13 @@
 <script lang="ts">
   // import from lib
   import { OverlayScrollbars } from "overlayscrollbars";
+  import { useIntersectionObserver } from "runed";
   // import componants
   import HeaderNav from "./HeaderNav.svelte";
   import SliderPerpetuel from "./SliderPerpetuel.svelte";
   import CardProject from "./CardProject.svelte";
   import HomeLib from "./HomeLib.svelte";
+  import Contact from "./Contact.svelte";
   import Footer from "./Footer.svelte";
 
   // import type
@@ -26,10 +28,27 @@
   ];
 
   // variable projet
-  
+
   let y = $state<number>(0);
   let bodySvelte = $state<HTMLDivElement | null>(null);
-  let height = $state<number>(0)
+  let divProjet = $state<HTMLElement | null>(null);
+  let height = $state<number>(0);
+
+  let isIntersecting = $state(false);
+  let classIntererting = $derived(
+    isIntersecting ? "opacity-100 scale-100" : "opacity-0 scale-50"
+  );
+
+  useIntersectionObserver(
+    () => divProjet,
+    (entries) => {
+      const entry = entries[0];
+      console.log(entry.target);
+      if (!entry) return;
+      isIntersecting = entry.isIntersecting;
+    },
+    { threshold: [0.4], rootMargin: "0px" }
+  );
 
   onMount(() => {
     const osInstance = OverlayScrollbars(document.body, {
@@ -69,16 +88,17 @@
     <div class="relative z-10">
       <SliderPerpetuel tabSrc={techLogo} />
     </div>
-    <div class="relative h-[1305px] w-full z-50"
-      style:height={height/2 + "px"}
+    <div
+      class="relative h-[1305px] w-full z-50"
+      style:height={height / 2 + "px"}
     >
       <div
         bind:clientHeight={height}
         class="absolute z-20 w-full flex flex-col items-center justify-center"
         style="transform: translateY({-1.1 * y}px)"
-      > 
+      >
         {#each projet as p}
-          <CardProject 
+          <CardProject
             titre={p.titre}
             description={p.descritption}
             lien={p.lien}
@@ -89,10 +109,12 @@
             dateUpdate={p.date}
           />
         {/each}
-        <!-- <CardProject titre="Sneakers"/> -->
       </div>
     </div>
-    <HomeLib />
+    <div class="w-full {classIntererting} duration-700" bind:this={divProjet}>
+      <HomeLib />
+    </div>
+    <Contact />
   </main>
 </div>
 
