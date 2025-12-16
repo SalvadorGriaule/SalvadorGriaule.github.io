@@ -43,7 +43,6 @@
     () => divProjet,
     (entries) => {
       const entry = entries[0];
-      console.log(entry.target);
       if (!entry) return;
       isIntersecting = entry.isIntersecting;
     },
