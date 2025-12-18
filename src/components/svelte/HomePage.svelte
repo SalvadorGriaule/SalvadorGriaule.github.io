@@ -113,7 +113,6 @@
     <div class="w-full {classIntererting} duration-700" bind:this={divProjet}>
       <HomeLib />
     </div>
-    <Contact />
   </main>
 </div>
 
