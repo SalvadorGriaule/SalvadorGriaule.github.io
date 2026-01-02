@@ -30,24 +30,43 @@
   // variable projet
 
   let y = $state<number>(0);
+  let widthScreen = $state(0);
+  let heightScreen = $state(0);
   let bodySvelte = $state<HTMLDivElement | null>(null);
   let divProjet = $state<HTMLElement | null>(null);
   let height = $state<number>(0);
 
   let isIntersecting = $state(false);
+  let slowParralax = 0
+  let beginSlow = 0
+  let factorSlow = $derived(widthScreen > 768 ? 0.1 : 0.33)
+  let factorParallax = $derived.by(() => {
+    if (!isIntersecting) {
+      beginSlow = 0
+      return -1.1;
+    } else {
+      if (beginSlow == 0) beginSlow = y
+      slowParralax = factorSlow * ((y - beginSlow)/((bodySvelte.clientHeight - heightScreen) - beginSlow))
+      console.log(y,slowParralax,bodySvelte.clientHeight - heightScreen);
+      return -1.1 + slowParralax
+    }
+  });
   let classIntererting = $derived(
-    isIntersecting ? "opacity-100 scale-100" : "opacity-0 scale-50"
+    isIntersecting ? "opacity-100 scale-100" : "opacity-0 scale-50",
   );
-
-  useIntersectionObserver(
-    () => divProjet,
-    (entries) => {
-      const entry = entries[0];
-      if (!entry) return;
-      isIntersecting = entry.isIntersecting;
-    },
-    { threshold: [0.4], rootMargin: "0px" }
-  );
+  
+  let thresholdResponsive = $derived(widthScreen > 768 ? 0.4 : 0.1);
+  $effect(() => {
+    useIntersectionObserver(
+      () => divProjet,
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+        isIntersecting = entry.isIntersecting;
+      },
+      { threshold: [thresholdResponsive], rootMargin: "0px" },
+    );
+  });
 
   onMount(() => {
     const osInstance = OverlayScrollbars(document.body, {
@@ -56,7 +75,12 @@
   });
 </script>
 
-<svelte:window bind:scrollY={y} />
+<svelte:window
+  bind:scrollY={y}
+  bind:innerWidth={widthScreen}
+  
+/>
+<svelte:body bind:clientHeight={heightScreen}/>
 <div bind:this={bodySvelte} class="bg-linear-to-br from-slate-600 to-slate-900">
   <HeaderNav />
   <main class="flex flex-col items-center">
@@ -94,7 +118,7 @@
       <div
         bind:clientHeight={height}
         class="absolute z-20 w-full flex flex-col items-center justify-center"
-        style="transform: translateY({-1.1 * y}px)"
+        style="transform: translateY({factorParallax * y}px)"
       >
         {#each projet as p}
           <CardProject
@@ -110,7 +134,10 @@
         {/each}
       </div>
     </div>
-    <div class="w-full {classIntererting} duration-700" bind:this={divProjet}>
+    <div
+      class="pt-24 w-full {classIntererting} duration-700 lg:pt-8"
+      bind:this={divProjet}
+    >
       <HomeLib />
     </div>
   </main>
