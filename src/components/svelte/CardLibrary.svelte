@@ -2,6 +2,7 @@
   import { testURL } from "@assets/ts/misc";
   import LogoLib from "./LogoLib.svelte";
   import { currentSelect } from "@assets/ts/nano";
+  import { storeSelect } from "./store.svelte";
 
   let {
     titre,
@@ -16,13 +17,13 @@
   } = $props();
 
   const clickLib = (num: number) => {
-    currentSelect.get() == num
-      ? currentSelect.set(null)
-      : currentSelect.set(num);
-    
     if (window && testURL(window.location.host)) {
-      localStorage.setItem("HTLSelect", String(num));
+      storeSelect.current = num;
       window.location.replace(`http://${window.location.host}/library`);
+    } else {
+      currentSelect.get() == num
+        ? currentSelect.set(null)
+        : currentSelect.set(num);
     }
   };
 </script>

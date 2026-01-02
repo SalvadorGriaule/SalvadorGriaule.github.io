@@ -4,12 +4,14 @@
   // import module
   import { type LibInfo, type fwf } from "../type";
   import { currentSelect, currentTags } from "@assets/ts/nano";
-    import { onMount } from "svelte";
+  import { storeSelect } from "@svelte/store.svelte";
 
   // import img
 
   let { lib }: { lib: Map<number, LibInfo> } = $props();
-  let stateSelect: number | null = $state(null);
+  let stateSelect: number | null = $state(storeSelect.current);
+  currentSelect.set(stateSelect);
+  storeSelect.current = null;
   let stateTags: fwf = $state("all");
 
   const filterTag = () => {
@@ -27,19 +29,9 @@
   currentTags.listen((val) => {
     stateTags = val;
   });
-
-  onMount(() => {
-    let htl = localStorage.getItem("HTLSelect") 
-    if(htl){
-      currentSelect.set(Number(htl));
-      localStorage.removeItem("HTLSelect");
-    }
-  })
 </script>
 
-<main
-  class="mt-4 flex flex-col md:mx-20 md:mt-10 relative"
->
+<main class="mt-4 flex flex-col md:mx-20 md:mt-10 relative">
   {#if stateSelect == null}
     <NavLibrary />
     <section class="flex flex-wrap">

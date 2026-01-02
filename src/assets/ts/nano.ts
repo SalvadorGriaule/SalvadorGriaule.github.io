@@ -1,5 +1,6 @@
 import { type LibInfo, type ProjetInfo, LinkType, Device } from "@svelte/type";
 import { atom, map, computed } from "nanostores";
+
 import ImgOfUploader from "@public/img/ImgCardUploader.png";
 import CarouselGif from "@public/img/CircleCarCut.webm";
 import BtnCarousel from "@public/img/BtnCarousel.webm";
@@ -26,10 +27,6 @@ const inSlot = computed(currentVisible, (elem) => {
   if (elem.cardSection) return elem.cardSection.querySelector(".slotCard");
   return null;
 });
-
-export const setSelect = (num: number) => {
-  currentSelect.set(num);
-};
 
 const linearColor = [
   "oklch(80.9% 0.105 251.813)",
