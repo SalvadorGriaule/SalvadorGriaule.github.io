@@ -1,7 +1,8 @@
 <script lang="ts">
   import LogoLib from "./LogoLib.svelte";
   import anime from "animejs";
-  import { currentTags } from "@assets/ts/nano";
+  import { currentSelect, currentTags } from "@assets/ts/nano";
+  import { onMount } from "svelte";
 
   let { direction = "row" }: { direction?: "row" | "col" } = $props();
 
@@ -18,21 +19,34 @@
   const onclick = (tags: "svelte" | "react" | "vuejs" | "ts" | "all") => {
     currentTags.set(tags);
 
-    let animDirection = direction == "row" ? {
-      translateX:
-        fw.findIndex((elem) => elem == currentTags.get()) *
-        (widthNav / fw.length - 2),
-    } : {
-      translateY:
-        fw.findIndex((elem) => elem == currentTags.get()) *
-        (widthNav / fw.length - 2),
-    } ;
+    let animDirection =
+      direction == "row"
+        ? {
+            translateX:
+              fw.findIndex((elem) => elem == currentTags.get()) *
+              (widthNav / fw.length - 2),
+          }
+        : {
+            translateY:
+              fw.findIndex((elem) => elem == currentTags.get()) *
+              (widthNav / fw.length - 2),
+          };
 
-    if (navDiv) anime(Object.assign(animeObj, animDirection))
+    if (navDiv) anime(Object.assign(animeObj, animDirection));
   };
+
+  onMount(() => {
+    if (navDiv && !currentSelect.get() && currentTags.get() != "all") 
+      navDiv.style.transform = `translateX(${
+        fw.findIndex((elem) => elem == currentTags.get()) *
+        (widthNav / fw.length - 2)
+      }px)`;
+    
+  })
 </script>
 
-<div class="flex justify-center h-full md:static top-[66%]  md:w-full"
+<div
+  class="flex justify-center h-full md:static top-[66%] md:w-full"
   style:position={direction == "row" ? "static" : "sticky"}
 >
   <div

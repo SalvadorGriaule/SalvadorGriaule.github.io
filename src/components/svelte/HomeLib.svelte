@@ -14,7 +14,7 @@
                 <CardLibrary 
                 titre={elem.titre}
                 logo={elem.logo}
-                id={i}
+                id={elem.id}
                 media={elem.media}
                 />
                 {/each}
