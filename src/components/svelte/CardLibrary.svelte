@@ -18,7 +18,8 @@
     currentSelect.get() == num
       ? currentSelect.set(null)
       : currentSelect.set(num);
-
+    console.log(window.location.href,`http://${window.location.host}/`,window.location.href == `http://${window.location.host}/`);
+    
     if (window && window.location.href == `http://${window.location.host}/`) {
       localStorage.setItem("HTLSelect", String(num));
       window.location.replace(`http://${window.location.host}/library`);
