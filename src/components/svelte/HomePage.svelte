@@ -7,6 +7,7 @@
   import SliderPerpetuel from "./SliderPerpetuel.svelte";
   import CardProject from "./CardProject.svelte";
   import HomeLib from "./HomeLib.svelte";
+  import CVScroll from "./CVScroll.svelte";
   import Contact from "./Contact.svelte";
   import Footer from "./Footer.svelte";
 
@@ -29,17 +30,17 @@
 
   // variable projet
 
-  let y = $state<number>(0);
+  let y = $state(0);
   let widthScreen = $state(0);
   let heightScreen = $state(0);
   let bodySvelte = $state<HTMLDivElement | null>(null);
   let divProjet = $state<HTMLElement | null>(null);
-  let height = $state<number>(0);
+  let height = $state(0);
 
   let isIntersecting = $state(false);
   let slowParralax = 0
   let beginSlow = 0
-  let factorSlow = $derived(widthScreen > 768 ? 0.1 : 0.33)
+  let factorSlow = $derived(widthScreen > 768 ? 0.1 : 0.8)
   let factorParallax = $derived.by(() => {
     if (!isIntersecting) {
       beginSlow = 0
@@ -47,7 +48,6 @@
     } else {
       if (beginSlow == 0) beginSlow = y
       slowParralax = factorSlow * ((y - beginSlow)/((bodySvelte.clientHeight - heightScreen) - beginSlow))
-      console.log(y,slowParralax,bodySvelte.clientHeight - heightScreen);
       return -1.1 + slowParralax
     }
   });
@@ -139,6 +139,9 @@
       bind:this={divProjet}
     >
       <HomeLib />
+    </div>
+    <div class="w-full">
+      <CVScroll />
     </div>
   </main>
 </div>

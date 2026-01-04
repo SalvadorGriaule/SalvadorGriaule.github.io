@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   aria-hidden="true"
+   data-file-name="logo-ceppic.svg"
+   width="66.318977"
+   height="37.640427"
+   viewBox="0 0 1365.1733 778.71199"
+   version="1.1"
+   id="svg16"
+   sodipodi:docname="logo-ceppic-white.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview18"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">.cls-3{fill:#ffffff}</style>
+  </defs>
+  <path
+     d="m 634.13501,197.54266 -145.20004,145.71 -105.65,-105.58 -151.73,152 105.72,105.68 -145.27,145.69995 -160.07,-159.92995 a 129.22,129.22 0 0 1 -0.15,-182.64 l 260.07,-260.359996 c 50.36,-50.5 132.14,-50.5 182.64,-0.14 z"
+     fill="#2dc434"
+     id="path6"
+     inkscape:export-filename="ceppic.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+  <path
+     d="m 291.97497,740.96261 -54.21,-54.13 647.00004,-648.939946 a 129.13,129.13 0 0 1 182.64999,-0.11 l 260.79,260.499996 a 129.14,129.14 0 0 1 0.12,182.62 l -259,259.36995 a 129.14,129.14 0 0 1 -182.65999,0.11 l -160.46,-160.32 145.39,-145.57995 106.25,106.22995 150.75999,-150.99995 -152.39999,-152.25 -501.61004,503.36995 a 129.15,129.15 0 0 1 -182.62,0.13 z"
+     fill="#39a6ff"
+     id="path8" />
+</svg>
