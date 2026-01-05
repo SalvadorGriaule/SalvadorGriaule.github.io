@@ -55,6 +55,8 @@
     isIntersecting ? "opacity-100 scale-100" : "opacity-0 scale-50",
   );
   
+  let heightScrollCV = $state(0);
+
   let thresholdResponsive = $derived(widthScreen > 768 ? 0.4 : 0.1);
   $effect(() => {
     useIntersectionObserver(
@@ -78,7 +80,6 @@
 <svelte:window
   bind:scrollY={y}
   bind:innerWidth={widthScreen}
-  
 />
 <svelte:body bind:clientHeight={heightScreen}/>
 <div bind:this={bodySvelte} class="bg-linear-to-br from-slate-600 to-slate-900">
@@ -140,8 +141,8 @@
     >
       <HomeLib />
     </div>
-    <div class="w-full">
-      <CVScroll />
+    <div class="relative w-full h-[200rem]" bind:clientHeight={heightScrollCV}>
+      <CVScroll heightParent={heightScrollCV} scrollY={y} />
     </div>
   </main>
 </div>

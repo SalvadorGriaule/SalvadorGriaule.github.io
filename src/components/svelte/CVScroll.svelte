@@ -2,9 +2,14 @@
   import Ceppic from "@assets/logo-ceppic-white.svg";
   import Yzel from "@assets/logoRecadre.svg";
   import { breakPointAdd } from "@assets/ts/breakPoint";
-    import { onMount } from "svelte";
+  import anime from "animejs";
+  import { onMount } from "svelte";
+  import { watch } from "runed";
 
   type NameAndImg = { nom: string; image?: string };
+
+  let { heightParent, scrollY }: { heightParent?: number; scrollY?: number } =
+    $props();
 
   const entrer: { titre: string; centre: NameAndImg; stage: NameAndImg }[] = [
     {
@@ -24,7 +29,12 @@
     },
   ];
 
+  let sectionCV: null | HTMLElement = $state(null);
+  let offTopCV: null | number = $state(null);
+
   let cvPoint: null | HTMLElement[] = $state([]);
+  let activPoint: boolean[] = $state([]);
+  let indActive = $derived(activPoint.filter((elem) => elem == true).length);
   let hWhiteBar = $state(0);
 
   const resizeHWB = () => {
@@ -32,12 +42,36 @@
     hWhiteBar = cvPoint[cvPoint.length - 1].offsetTop - cvPoint[0].offsetTop;
   };
 
+  let progressHWB = $state(0);
+
   onMount(() => {
+    activPoint = Array(cvPoint.length).fill(false);
     breakPointAdd(resizeHWB);
-  })
+  });
+
+  watch(
+    () => scrollY,
+    () => {
+      if (sectionCV && heightParent) {
+        offTopCV = sectionCV.offsetTop;
+        for (let i = 0; i < cvPoint.length; i++) {
+          activPoint[i] =
+            (i * heightParent) / 3.5 < offTopCV - 32 ? true : false;
+        }
+        if (indActive >= 2) {
+          progressHWB = (indActive - 1) * (hWhiteBar / 2);
+        } else {
+          progressHWB = 0;
+        }
+      }
+    },
+  );
 </script>
 
-<section class="w-full flex justify-center mt-8">
+<section
+  bind:this={sectionCV}
+  class="w-full sticky top-16 flex justify-center mt-8"
+>
   <div
     class="w-11/12 flex flex-col bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-2xl p-2"
   >
@@ -45,18 +79,22 @@
     <div
       class="flex rounded-2xl bg-gradient-to-br from-sky-700 to-sky-800 p-2 lg:w-1/2 2xl:w-[38%]"
     >
-      <div
-        class="h-[23.5rem] relative mt-4 flex flex-col justify-between"
-      ></div>
       <div class="relative flex flex-col mt-2 ml-2">
         <div
           class="absolute w-1 left-1.5 bg-white"
           style:height={`${hWhiteBar}px`}
-        ></div>
+        >
+          <div
+            class="bg-green-400 w-full duration-300"
+            style:height={`${progressHWB}px`}
+          ></div>
+        </div>
         {#each entrer as elem, i}
           <div
             bind:this={cvPoint[i]}
-            class="relative rounded-full border-2 border-white bg-gradient-to-bl from-zinc-400 to-zinc-600 w-4 h-4"
+            class="{activPoint[i]
+              ? 'border-green-400'
+              : 'border-white'} duration-200 delay-300 relative rounded-full border-2 bg-gradient-to-bl from-zinc-400 to-zinc-600 w-4 h-4"
           ></div>
           <div class="relative left-6 -top-6">
             <h2 class="font-semibold text-xl">
