@@ -36,13 +36,30 @@
   let activPoint: boolean[] = $state([]);
   let indActive = $derived(activPoint.filter((elem) => elem == true).length);
   let hWhiteBar = $state(0);
+  let progressHWB: null | HTMLElement = $state(null);
+
+  const progress = (point: HTMLDivElement, reverse: boolean) => {
+    const animePoint = { 
+      targets:point,
+      delay:reverse ? 0 : 300
+    }
+    const animeBar = {
+      targets: progressHWB,
+      height: indActive >= 2 ? (indActive - 1) * (hWhiteBar / 2) : 0
+    }
+    const animeSense = reverse ? [animePoint,animeBar] : [animeBar,animePoint] 
+    let tl = anime.timeline({
+      easing:'easeOutQuint'
+    }
+  ).add(animeSense[0], reverse ? 200 : 300).add(animeSense[1],reverse ? 300 : 200)
+
+  };
 
   const resizeHWB = () => {
     if (cvPoint.length < 2) hWhiteBar = 0;
     hWhiteBar = cvPoint[cvPoint.length - 1].offsetTop - cvPoint[0].offsetTop;
   };
 
-  let progressHWB = $state(0);
 
   onMount(() => {
     activPoint = Array(cvPoint.length).fill(false);
@@ -55,13 +72,9 @@
       if (sectionCV && heightParent) {
         offTopCV = sectionCV.offsetTop;
         for (let i = 0; i < cvPoint.length; i++) {
+          const pre = activPoint[i];
           activPoint[i] =
             (i * heightParent) / 3.5 < offTopCV - 32 ? true : false;
-        }
-        if (indActive >= 2) {
-          progressHWB = (indActive - 1) * (hWhiteBar / 2);
-        } else {
-          progressHWB = 0;
         }
       }
     },
@@ -85,8 +98,9 @@
           style:height={`${hWhiteBar}px`}
         >
           <div
+            bind:this={progressHWB}
             class="bg-green-400 w-full duration-300"
-            style:height={`${progressHWB}px`}
+            
           ></div>
         </div>
         {#each entrer as elem, i}
