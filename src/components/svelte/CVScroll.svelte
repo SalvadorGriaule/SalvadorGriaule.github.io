@@ -38,28 +38,32 @@
   let hWhiteBar = $state(0);
   let progressHWB: null | HTMLElement = $state(null);
 
-  const progress = (point: HTMLDivElement, reverse: boolean) => {
-    const animePoint = { 
-      targets:point,
-      delay:reverse ? 0 : 300
-    }
+  const progress = (point: HTMLElement, reverse: boolean) => {
+    const animePoint = {
+      targets: point,
+      borderColor: reverse ? '#fffff' : '#05df72',
+    };
     const animeBar = {
       targets: progressHWB,
-      height: indActive >= 2 ? (indActive - 1) * (hWhiteBar / 2) : 0
-    }
-    const animeSense = reverse ? [animePoint,animeBar] : [animeBar,animePoint] 
-    let tl = anime.timeline({
-      easing:'easeOutQuint'
-    }
-  ).add(animeSense[0], reverse ? 200 : 300).add(animeSense[1],reverse ? 300 : 200)
-
+      height: indActive >= 2 ? (indActive - 1) * (hWhiteBar / 2) : 0,
+    };
+    let animeSense = reverse
+      ? [animePoint, animeBar]
+      : [animeBar, animePoint];
+      console.log(animeSense);
+    let tl = anime
+      .timeline({
+        easing: "easeOutQuint",
+        duration:600
+      })
+      .add(animeSense[0])
+      .add(animeSense[1], reverse ? "-=250" : "+=200");
   };
 
   const resizeHWB = () => {
     if (cvPoint.length < 2) hWhiteBar = 0;
     hWhiteBar = cvPoint[cvPoint.length - 1].offsetTop - cvPoint[0].offsetTop;
   };
-
 
   onMount(() => {
     activPoint = Array(cvPoint.length).fill(false);
@@ -75,6 +79,7 @@
           const pre = activPoint[i];
           activPoint[i] =
             (i * heightParent) / 3.5 < offTopCV - 32 ? true : false;
+          if (pre != activPoint[i]) progress(cvPoint[i], !activPoint[i]);
         }
       }
     },
@@ -100,15 +105,12 @@
           <div
             bind:this={progressHWB}
             class="bg-green-400 w-full duration-300"
-            
           ></div>
         </div>
         {#each entrer as elem, i}
           <div
             bind:this={cvPoint[i]}
-            class="{activPoint[i]
-              ? 'border-green-400'
-              : 'border-white'} duration-200 delay-300 relative rounded-full border-2 bg-gradient-to-bl from-zinc-400 to-zinc-600 w-4 h-4"
+            class="border-white relative rounded-full border-2 bg-gradient-to-bl from-zinc-400 to-zinc-600 w-4 h-4"
           ></div>
           <div class="relative left-6 -top-6">
             <h2 class="font-semibold text-xl">
