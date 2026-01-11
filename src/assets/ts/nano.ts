@@ -12,6 +12,9 @@ import SMWLaptop from "@public/img/SoMuchWaterDesktop.png";
 import LecteurPhone from "@public/img/LecteurV2.png";
 import LecteurDesktop from "@public/img/LecteurV2Desktop.png";
 import PacManDesktop from "@public/img/PacManWishDesktop.png";
+import YzelDesktop from "@public/vidéo/ShotCutYzelDesktop.mpg";
+import YzelPhone from "@public/vidéo/ShotCutYzelPhone.mpg";
+
 
 const currentSelect = atom<null | number>(null);
 const currentTags = atom<"all" | "react" | "svelte" | "vuejs" | "ts">("all");
@@ -37,6 +40,20 @@ const linearColor = [
 
 const projet: ProjetInfo[] = [
   {
+    titre: "Yzel conseils",
+    desktopSrc: YzelDesktop,
+    phoneSrc: YzelPhone,
+    lien: [
+      {
+        link: "",
+        type: LinkType.Soon
+      }
+    ],
+    descritption: "ici",
+    techUse: ["svelte", "tailwindcss", "ts"],
+    device: [Device.SmartPhone, Device.Laptop]
+  },
+  {
     titre: "SoMuchWater",
     desktopSrc: SMWLaptop.src,
     phoneSrc: SMWPhone.src,
@@ -49,6 +66,7 @@ const projet: ProjetInfo[] = [
     descritption: "ici",
     techUse: ["nuxt", "fastapi", "ts", "tailwindcss", "julia"],
     device: [Device.SmartPhone, Device.Laptop],
+
   },
   {
     titre: "Lecteur",

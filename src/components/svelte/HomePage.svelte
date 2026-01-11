@@ -131,6 +131,7 @@
             desktopSrc={p.desktopSrc ? p.desktopSrc : undefined}
             phoneSrc={p.phoneSrc ? p.phoneSrc : undefined}
             dateUpdate={p.date}
+            isVid={p.isVid}
           />
         {/each}
       </div>

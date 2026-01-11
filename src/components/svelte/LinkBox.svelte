@@ -1,6 +1,7 @@
 <script lang="ts">
-  import GitHubSvg from "../../assets/github.svg";
-  import PlaySvg from "../../assets/controller.svg";
+  import GitHubSvg from "@assets/github.svg";
+  import PlaySvg from "@assets/controller.svg";
+  import Gear from "@assets/gear.svg";
   import { LinkType, type LinkSlice } from "./type.ts";
 
   const addSvg = (type: LinkType): string => {
@@ -9,27 +10,47 @@
         return GitHubSvg.src;
       case LinkType.PlayIt:
         return PlaySvg.src;
+      case LinkType.Soon:
+        return Gear.src;
     }
   };
 
+  const textLink = (ls: LinkSlice): { text: string; link: string } => {
+    switch (ls.type) {
+      case LinkType.PlayIt:
+        return { text: "Play it", link: ls.link };
+      case LinkType.Soon:
+        return { text: "Bientôt disponible", link: "" };
+      case LinkType.GitHub:
+        return { text: ls.link, link: ls.link };
+    }
+  };
+
+  const formatTabLink = (tabLink: LinkSlice[]) => {
+    let res = [];
+    for (let elem of tabLink) {
+      res.push({ svg: addSvg(elem.type), link: textLink(elem) });
+    }
+    return res;
+  };
+  
   const {
     tabLink,
     spanLink = true,
   }: { tabLink: LinkSlice[]; spanLink?: boolean } = $props();
 </script>
 
-
 <div class="flex items-start space-x-2">
   {#if spanLink}
     <span class="pt-1.5">Lien:</span>
   {/if}
   <div class="bg-blue-950 p-2 space-y-1.5 rounded-lg">
-    {#each tabLink as elem}
+    {#each formatTabLink(tabLink) as elem}
       <div class="flex space-x-2 items-center">
         <div class="w-5 h-5">
-          <img src={addSvg(elem.type)} alt="" />
+          <img src={elem.svg} alt="" />
         </div>
-        <a href={elem.link} class="text-white">{elem.type == LinkType.PlayIt ? "Play it" : elem.link}</a>
+        <a href={elem.link.link} class="text-white">{elem.link.text}</a>
       </div>
     {/each}
   </div>

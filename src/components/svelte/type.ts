@@ -1,4 +1,5 @@
 type fwf = "svelte" | "react" | "vuejs" | "ts" | "js" | "all";
+
 type Tech =
   | fwf
   | "fastapi"
@@ -8,9 +9,22 @@ type Tech =
   | "laravel"
   | "nuxt";
 
+type NameAndImg = { nom: string; image?: string };
+
+type entrerCV = {
+  titre: string;
+  centre: NameAndImg;
+  stage: NameAndImg;
+  date: string;
+  duréeStage?: string;
+  pdf?: string;
+  taskStage: string[];
+};
+
 enum LinkType {
   GitHub,
   PlayIt,
+  Soon
 }
 
 enum Device {
@@ -45,9 +59,10 @@ interface ProjetInfo {
   lien: LinkSlice[];
   device: Device[];
   descritption: string;
+  isVid?:{ desktop: boolean; phone: boolean };
   desktopSrc?: string;
   phoneSrc?: string;
 }
 
 export { LinkType, Device };
-export type { LinkSlice, OngletFunc, LibInfo, fwf, Tech, ProjetInfo };
+export type { LinkSlice, OngletFunc, LibInfo, fwf, Tech, ProjetInfo , entrerCV};

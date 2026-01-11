@@ -12,8 +12,8 @@
     import DefaultMockup from "flowbite-svelte/DefaultMockup.svelte";
 
     let changingKey = (key: number, tabElem: HTMLCollection) => {
-        if (tabElem.length > 1){
-            if (key == 1){
+        if (tabElem.length > 1) {
+            if (key == 1) {
                 tabElem[0].classList.add("-translate-x-180");
                 tabElem[1].classList.remove("translate-x-180");
             } else {
@@ -23,24 +23,25 @@
         }
     };
 
-    let ago = (date:Date) => {
+    let ago = (date: Date) => {
         const now = new Date();
-        const diff = Number()
+        const diff = Number();
         console.log(diff);
-    }
+    };
 
     let carousel: HTMLDivElement;
     let currentOng = $state(0);
-    
+
     const {
         titre,
         desktopSrc = "",
         phoneSrc = "",
+        isVid = { phone: false, desktop: false },
         lien,
         description,
         techUse,
         devices,
-        dateUpdate
+        dateUpdate,
     }: {
         titre: string;
         desktopSrc?: string;
@@ -50,9 +51,10 @@
         techUse: string[];
         devices: Device[];
         dateUpdate?: Date;
+        isVid?: { desktop: boolean; phone: boolean };
     } = $props();
 
-    let timeAgo = $derived(dateUpdate ? ago(dateUpdate) : null)
+    let timeAgo = $derived(dateUpdate ? ago(dateUpdate) : null);
     let onglet: OngletFunc[] = [];
     let asignKey = 0;
     devices.forEach((device) => {
@@ -92,7 +94,11 @@
         >
             {#if devices.includes(Device.SmartPhone)}
                 <div
-                    class="z-20 absolute min-w-[180px] w-1/6 self-center duration-150 {devices.includes(Device.Laptop) ? "md:mr-[80%] md:mt-[5%] md:translate-x-0 md:self-start xl:w-2/13 2xl:mt-[4.2%]" : ""}"
+                    class="z-20 absolute min-w-[180px] w-1/6 self-center duration-150 {devices.includes(
+                        Device.Laptop,
+                    )
+                        ? 'md:mr-[80%] md:mt-[5%] md:translate-x-0 md:self-start xl:w-2/13 2xl:mt-[4.2%]'
+                        : ''}"
                 >
                     <DefaultMockup
                         slot="rounded-[2rem] overflow-hidden w-full h-full bg-white dark:bg-gray-800"
@@ -102,20 +108,42 @@
                         leftBot="h-1/7 w-[3px] bg-gray-800 dark:bg-gray-800 absolute -left-[17px] top-[45%] rounded-l-lg"
                         right="h-1/7 w-[3px] bg-gray-800 dark:bg-gray-800 absolute -right-[17px] top-[45%] rounded-r-lg"
                     >
-                        <img src={phoneSrc} alt="" />
+                        {#if isVid.phone}
+                            <video src={phoneSrc}
+                                ><track kind="captions" />
+                            </video>
+                        {:else}
+                            <img
+                                src={phoneSrc}
+                                alt={titre + " " + Device.SmartPhone}
+                            />
+                        {/if}
                     </DefaultMockup>
                 </div>
             {/if}
             {#if devices.includes(Device.Laptop)}
                 <div
-                    class="z-10 absolute self-center w-4/5 duration-150 {devices.includes(Device.SmartPhone) ? "translate-x-180 md:translate-x-0" : ""}"
+                    class="z-10 absolute self-center w-4/5 duration-150 {devices.includes(
+                        Device.SmartPhone,
+                    )
+                        ? 'translate-x-180 md:translate-x-0'
+                        : ''}"
                 >
                     <Laptop
                         bot="relative mx-auto bg-gray-900 dark:bg-gray-700 rounded-b-xl rounded-t-sm  h-[21px] max-w-full"
                         inner="rounded-lg overflow-hidden h-full bg-white dark:bg-gray-800"
                         div="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[8px] rounded-t-xl h-full max-w-7/8"
                     >
-                        <img src={desktopSrc} alt="" />
+                        {#if isVid.phone}
+                            <video src={phoneSrc}
+                                ><track kind="captions" />
+                            </video>
+                        {:else}
+                            <img
+                                src={desktopSrc}
+                                alt={titre + " " + Device.Laptop}
+                            />
+                        {/if}
                     </Laptop>
                 </div>
             {/if}
