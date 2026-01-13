@@ -7,7 +7,8 @@ type Tech =
   | "django"
   | "julia"
   | "laravel"
-  | "nuxt";
+  | "nuxt"
+  | "node";
 
 type NameAndImg = { nom: string; image?: string };
 
@@ -24,7 +25,7 @@ type entrerCV = {
 enum LinkType {
   GitHub,
   PlayIt,
-  Soon
+  Soon,
 }
 
 enum Device {
@@ -59,10 +60,10 @@ interface ProjetInfo {
   lien: LinkSlice[];
   device: Device[];
   descritption: string;
-  isVid?:{ desktop: boolean; phone: boolean };
+  isVid?: { desktop: boolean; phone: boolean };
   desktopSrc?: string;
   phoneSrc?: string;
 }
 
 export { LinkType, Device };
-export type { LinkSlice, OngletFunc, LibInfo, fwf, Tech, ProjetInfo , entrerCV};
+export type { LinkSlice, OngletFunc, LibInfo, fwf, Tech, ProjetInfo, entrerCV };

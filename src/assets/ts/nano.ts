@@ -12,9 +12,8 @@ import SMWLaptop from "@public/img/SoMuchWaterDesktop.png";
 import LecteurPhone from "@public/img/LecteurV2.png";
 import LecteurDesktop from "@public/img/LecteurV2Desktop.png";
 import PacManDesktop from "@public/img/PacManWishDesktop.png";
-import YzelDesktop from "@public/vidéo/ShotCutYzelDesktop.mpg";
-import YzelPhone from "@public/vidéo/ShotCutYzelPhone.mpg";
-
+import YzelDesktop from "@public/vidéo/ShotCutYzelDesktop.mp4";
+import YzelPhone from "@public/vidéo/ShotCutYzelPhone.mp4";
 
 const currentSelect = atom<null | number>(null);
 const currentTags = atom<"all" | "react" | "svelte" | "vuejs" | "ts">("all");
@@ -46,12 +45,13 @@ const projet: ProjetInfo[] = [
     lien: [
       {
         link: "",
-        type: LinkType.Soon
-      }
+        type: LinkType.Soon,
+      },
     ],
     descritption: "ici",
-    techUse: ["svelte", "tailwindcss", "ts"],
-    device: [Device.SmartPhone, Device.Laptop]
+    techUse: ["svelte", "tailwindcss", "ts","node"],
+    device: [Device.SmartPhone, Device.Laptop],
+    isVid: { desktop: true, phone: true },
   },
   {
     titre: "SoMuchWater",
@@ -66,7 +66,6 @@ const projet: ProjetInfo[] = [
     descritption: "ici",
     techUse: ["nuxt", "fastapi", "ts", "tailwindcss", "julia"],
     device: [Device.SmartPhone, Device.Laptop],
-
   },
   {
     titre: "Lecteur",
@@ -98,7 +97,7 @@ const projet: ProjetInfo[] = [
     descritption: "ici",
     techUse: ["js"],
     device: [Device.Laptop],
-    date: new Date("August 19, 2020 23:15:30")
+    date: new Date("August 19, 2020 23:15:30"),
   },
 ];
 
