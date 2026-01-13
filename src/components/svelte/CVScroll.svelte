@@ -52,7 +52,7 @@
       pdf: RefPrépa,
       taskStage: [
         "Élaboration du designe du site",
-        "Création de la page d’accueil et du formualire de contac",
+        "Création de la page d’accueil et du formualire de contact",
       ],
     },
   ];

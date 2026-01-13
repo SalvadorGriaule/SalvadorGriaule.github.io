@@ -109,7 +109,9 @@
             right="h-1/7 w-[3px] bg-gray-800 dark:bg-gray-800 absolute -right-[17px] top-[45%] rounded-r-lg"
           >
             {#if isVid.phone}
-              <video class="pl-0.5 scale-[442.5%] h-[530px]" src={phoneSrc} muted autoplay loop><track kind="captions" /> </video>
+            <div class="w-[1200px] h-[800px] flex justify-center">
+                <video class="-translate-x-2/5 w-full h-full" src={phoneSrc} muted autoplay loop><track kind="captions" /> </video>
+            </div>
             {:else}
               <img src={phoneSrc} alt={titre + " " + Device.SmartPhone} />
             {/if}
@@ -129,7 +131,7 @@
             inner="rounded-lg overflow-hidden h-full bg-white dark:bg-gray-800"
             div="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[8px] rounded-t-xl h-full max-w-7/8"
           >
-            {#if isVid.phone}
+            {#if isVid.desktop}
               <video src={desktopSrc} muted autoplay loop
                 ><track kind="captions" />
               </video>

@@ -50,7 +50,11 @@
         <div class="w-5 h-5">
           <img src={elem.svg} alt="" />
         </div>
-        <a href={elem.link.link} class="text-white">{elem.link.text}</a>
+        {#if elem.link.link == ""}
+          <p class="text-white">{elem.link.text}</p>
+        {:else}
+          <a href={elem.link.link} class="text-white">{elem.link.text}</a>
+        {/if}
       </div>
     {/each}
   </div>
