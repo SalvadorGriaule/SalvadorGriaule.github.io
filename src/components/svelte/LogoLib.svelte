@@ -63,11 +63,8 @@
   ];
 
   const getByNameClass = (name: string, tabClass: Logo[]) => {
-    if (tabClass[0].name == name) {
-      return tabClass[0];
-    } else {
-      return getByNameClass(name, tabClass.slice(1));
-    }
+    if (tabClass[0].name == name) return tabClass[0];    
+    return getByNameClass(name, tabClass.slice(1));
   };
 
   let {
