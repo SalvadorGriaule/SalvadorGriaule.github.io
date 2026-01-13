@@ -184,7 +184,7 @@
           {/each}
         </div>
       </div>
-      <div class="ml-2">
+      <div class="ml-4 2xl:w-[61%]">
         <RightCVScroll {activeRight} />
       </div>
     </div>
