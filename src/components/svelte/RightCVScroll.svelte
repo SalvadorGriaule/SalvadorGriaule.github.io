@@ -26,7 +26,7 @@
         opacity: sense ? 0 : 1,
         duration: 500,
         easing: "linear",
-        delay: sense ? 0 : 250
+        delay: sense ? 0 : 320
       });
       anime({
         targets: leftDiv,
@@ -34,7 +34,7 @@
         opacity: sense ? 1 : 0,
         duration: 500,
         easing: "linear",
-        delay: sense ? 250 : 0
+        delay: sense ? 320 : 0
       });
     }
   });
