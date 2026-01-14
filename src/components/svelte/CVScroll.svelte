@@ -185,7 +185,7 @@
         </div>
       </div>
       <div class="ml-4 2xl:w-[61%]">
-        <RightCVScroll {activeRight} />
+        <RightCVScroll {activeRight} currentActiv={indActive}/>
       </div>
     </div>
     <a href={CV}>CV complet</a>

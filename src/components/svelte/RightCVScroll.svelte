@@ -1,53 +1,52 @@
 <script lang="ts">
   import type { entrerCV } from "./type";
-  import PDFFile from "@assets/Pdf-file.svg"
+  import anime from "animejs";
+  import { Previous } from "runed";
+  import EntrerCV from "./EntrerCV.svelte";
 
-  let { activeRight }: { activeRight: entrerCV | null } = $props();
+  let {
+    activeRight,
+    currentActiv,
+  }: { activeRight: entrerCV | null; currentActiv: number } = $props();
+  const previous = new Previous(() => activeRight);
+  const previousActiv = new Previous(() => currentActiv);
+
+  let leftDiv: HTMLDivElement | null = $state(null);
+  let rightDiv: HTMLDivElement | null = $state(null);
+
+  let activeRightL: entrerCV | null = $state(activeRight);
+  let activeRightR: entrerCV | null = $state(activeRight);
+  $effect(() => {
+    if (previousActiv.current) {
+      const sense = previousActiv.current - currentActiv == 1;
+      sense ? activeRightL = activeRight : activeRightR = activeRight
+      anime({
+        targets: rightDiv,
+        translateX: sense ? "-250px" : "0px",
+        opacity: sense ? 0 : 1,
+        duration: 500,
+        easing: "linear",
+        delay: sense ? 0 : 250
+      });
+      anime({
+        targets: leftDiv,
+        translateX: sense ? "0px" : "250px",
+        opacity: sense ? 1 : 0,
+        duration: 500,
+        easing: "linear",
+        delay: sense ? 250 : 0
+      });
+    }
+  });
 </script>
 
-{#if activeRight}
-  <div
-    class="p-4 shadow-[inset_0px_0px_25px_-3px_rgba(255,207,152,0.3)] bg-sky-950/10 w-full h-full rounded-2xl"
-  >
-    <div class="flex">
-      <div class="mb-4">
-        <h3 class="text-lg">{activeRight.date}</h3>
-        <h2 class="lg:text-xl">{activeRight.titre}</h2>
-        <p>
-          {activeRight.centre.nom}
-        </p>
-        <div class="flex items-center space-x-1">
-          <p>Fiche programme : </p>
-          <a class="text-white font-semibold bg-red-600 p-1 rounded-4xl " href={activeRight.pdf}><div class="flex"><div class="w-8 p-1 bg-white rounded-full"><img src="{PDFFile.src}" alt=""></div><p class="mx-1 font-bold">PDF</p></div> </a>
-        </div>
-      </div>
-      <div>
-        <div class="w-28 h-28 flex justify-center items-center">
-          <img src={activeRight.centre.image} alt={activeRight.centre.nom} />
-        </div>
-      </div>
+<div class="w-full h-full relative overflow-hidden">
+  {#if activeRight}
+    <div bind:this={leftDiv} class="absolute w-full h-full">
+      <EntrerCV activeRight={activeRightL} />
     </div>
-    <div class="flex">
-      <div>
-        <div>
-          <h2 class="text-xl">
-            {activeRight.stage.nom}
-          </h2>
-          {activeRight.duréeStage}
-        </div>
-        <div>
-          {#each activeRight.taskStage as elem}
-            <p>- {elem}</p>
-          {/each}
-        </div>
-      </div>
-      <div class="w-72 h-52 flex justify-center items-center">
-        {#if activeRight.stage.image}
-          <img src={activeRight.stage.image} alt={activeRight.stage.nom} />
-        {:else}
-          <p>{activeRight.stage.nom}</p>
-        {/if}
-      </div>
-    </div>
+  {/if}
+  <div bind:this={rightDiv} class="absolute w-full h-full">
+    <EntrerCV activeRight={activeRightR} />
   </div>
-{/if}
+</div>
