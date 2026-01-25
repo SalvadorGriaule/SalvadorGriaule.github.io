@@ -11,30 +11,42 @@
   const previous = new Previous(() => activeRight);
   const previousActiv = new Previous(() => currentActiv);
 
-  let leftDiv: HTMLDivElement | null = $state(null);
-  let rightDiv: HTMLDivElement | null = $state(null);
+  let refDiv: HTMLDivElement | null = $state(null);
+  let supportDiv: HTMLDivElement | null = $state(null);
+  let sense = $state(false);
+  const sensePrevious = new Previous(() => sense);
 
-  let activeRightL: entrerCV | null = $state(activeRight);
   let activeRightR: entrerCV | null = $state(activeRight);
+  let activeRightS: entrerCV | null = $state(activeRight);
   $effect(() => {
-    if (previousActiv.current) {
-      const sense = previousActiv.current - currentActiv == 1;
-      sense ? activeRightL = activeRight : activeRightR = activeRight
+    if (previousActiv.current && activeRight?.titre != previous.current?.titre) {
+      console.log(activeRight,previous.current);
+      
+      sense = previousActiv.current - currentActiv == 1;
+      sense ? (activeRightR = activeRight) : (activeRightS = activeRight);
+      if (supportDiv && refDiv && sensePrevious.current != sense) {
+        supportDiv.style.transform = `translateX(${!sense ? "-250" : "0"}px) scale(${!sense ? "0.8" : "1"}`;
+        supportDiv.style.opacity = `${sense ? "1" : "0"}`;
+        refDiv.style.transform = `translateX(${sense ? "250" : "0"}px) scale(${sense ? "0.8" : "1"})`;
+        refDiv.style.opacity = `${!sense ? "1" : "0"}`;
+      }
       anime({
-        targets: rightDiv,
+        targets: supportDiv,
         translateX: sense ? "-250px" : "0px",
         opacity: sense ? 0 : 1,
+        scale: sense ? 0.8 : 1,
         duration: 500,
         easing: "linear",
-        delay: sense ? 0 : 320
+        delay: sense ? 0 : 320,
       });
       anime({
-        targets: leftDiv,
+        targets: refDiv,
         translateX: sense ? "0px" : "250px",
         opacity: sense ? 1 : 0,
+        scale: sense ? 1 : 0.8,
         duration: 500,
         easing: "linear",
-        delay: sense ? 320 : 0
+        delay: sense ? 320 : 0,
       });
     }
   });
@@ -42,11 +54,11 @@
 
 <div class="w-full h-full relative overflow-hidden">
   {#if activeRight}
-    <div bind:this={leftDiv} class="absolute w-full h-full">
-      <EntrerCV activeRight={activeRightL} />
+    <div bind:this={refDiv} class="absolute w-full h-full">
+      <EntrerCV activeRight={activeRightR} />
     </div>
   {/if}
-  <div bind:this={rightDiv} class="absolute w-full h-full">
-    <EntrerCV activeRight={activeRightR} />
+  <div bind:this={supportDiv} class="absolute w-full h-full">
+    <EntrerCV activeRight={activeRightS} />
   </div>
 </div>

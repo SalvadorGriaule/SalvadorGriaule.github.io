@@ -62,14 +62,14 @@
 
   let cvPoint: null | HTMLElement[] = $state([]);
   let activPoint: boolean[] = $state([]);
-  let indActive = $derived(activPoint.filter((elem) => elem == true).length);
+  let indActive = $derived((activPoint.filter((elem) => elem == true).length));
   let hWhiteBar = $state(0);
   let progressHWB: null | HTMLElement = $state(null);
-  let activeRight: null | entrerCV = $state(null);
+  let activeRight: entrerCV = $state(entrer[0]);
   const progress = (point: HTMLElement, reverse: boolean) => {
     const animePoint = {
       targets: point,
-      borderColor: reverse ? "#fffff" : "#05df72",
+      borderColor: indActive == 0 ? "#05df72" : reverse ? "#fffff" : "#05df72",
     };
     const animeBar = {
       targets: progressHWB,
@@ -110,7 +110,7 @@
             (i * heightParent) / 3.5 < offTopCV - 32 ? true : false;
           if (pre != activPoint[i]) {
             progress(cvPoint[i], !activPoint[i]);
-            activeRight = entrer[indActive - 1];
+            activeRight = indActive == 0 ? entrer[0] : entrer[indActive - 1];
           }
         }
       }
