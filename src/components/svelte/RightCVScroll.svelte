@@ -20,8 +20,6 @@
   let activeRightS: entrerCV | null = $state(activeRight);
   $effect(() => {
     if (previousActiv.current && activeRight?.titre != previous.current?.titre) {
-      console.log(activeRight,previous.current);
-      
       sense = previousActiv.current - currentActiv == 1;
       sense ? (activeRightR = activeRight) : (activeRightS = activeRight);
       if (supportDiv && refDiv && sensePrevious.current != sense) {

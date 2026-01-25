@@ -20,18 +20,20 @@
 
   const entrer: entrerCV[] = [
     {
-      titre: "Formation développeur full-stack (niveau bac + 3)",
+      titre: "Formation développeur full-stack",
       centre: { nom: "Ceppic - isneauville", image: Ceppic.src },
       stage: { nom: "en recherche" },
       date: "2025 - 2026",
+      niveau: 3,
       pdf: RefFullStack,
       taskStage:[]
     },
     {
-      titre: "Formation développeur web et web mobile (niveau bac + 2)",
+      titre: "Formation développeur web et web mobile",
       centre: { nom: "Ceppic - isneauville", image: Ceppic.src },
       stage: { nom: "Yzel conseils", image: Yzel.src },
       date: "2024 - 2025",
+      niveau: 2,
       duréeStage: "2 mois",
       pdf: RefDevWeb,
       taskStage: [
@@ -49,6 +51,7 @@
       stage: { nom: "Yzel conseils", image: Yzel.src },
       date: "2023 - 2024",
       duréeStage: "2 semaines",
+      niveau:0,
       pdf: RefPrépa,
       taskStage: [
         "Élaboration du designe du site",
@@ -66,6 +69,8 @@
   let hWhiteBar = $state(0);
   let progressHWB: null | HTMLElement = $state(null);
   let activeRight: entrerCV = $state(entrer[0]);
+  
+
   const progress = (point: HTMLElement, reverse: boolean) => {
     const animePoint = {
       targets: point,
@@ -142,7 +147,7 @@
               bind:this={cvPoint[i]}
               class="border-white relative rounded-full border-2 bg-gradient-to-bl from-zinc-400 to-zinc-600 w-4 h-4"
             ></div>
-            <div class="relative left-6 -top-[21px]">
+            <div class="relative left-6 -top-[21px] hidden lg:block">
               <h3 class="text-md -mb-1.5">{elem.date}</h3>
               <h2 class="font-semibold text-xl">
                 {elem.titre}
@@ -184,7 +189,7 @@
           {/each}
         </div>
       </div>
-      <div class="ml-4 2xl:w-[61%]">
+      <div class="ml-4 lg:w-1/2 2xl:w-[61%]">
         <RightCVScroll {activeRight} currentActiv={indActive}/>
       </div>
     </div>

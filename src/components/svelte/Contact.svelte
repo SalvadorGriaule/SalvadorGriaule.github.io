@@ -1,13 +1,17 @@
 <script lang="ts">
-
+    import SvgGitHub from "@assets/github.svg";
+    import SvgLinkedin from "@assets/linkedin-svgrepo-com.svg";
+    import SvgMail from "@assets/mail-svgrepo-com.svg";
 </script>
-<section class="w-full flex justify-center mt-8">
-    <div class="bg-linear-to-br flex flex-col items-center from-neutral-300/30 to-neutral-500/30 py-2 px-4 w-11/12 rounded-2xl">
-        <h4 class="text-3xl font-semibold pb-2 w-full text-center">Contact</h4>
-        <div class="bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-2xl w-full">
-            <div class="w-full flex justify-center space-x-1.5">
-                
-            </div>
-        </div>
-    </div>
-</section>
+
+<div>
+    <a href="https://github.com/SalvadorGriaule">
+        <img src={SvgGitHub.src} alt="Logo GitHub">
+    </a>
+    <a href="">
+        <img src={SvgLinkedin.src} alt="Logo Linkedin">
+    </a>
+    <a href="">
+        <img src={SvgMail.src} alt="Logo Mail">
+    </a>
+</div>

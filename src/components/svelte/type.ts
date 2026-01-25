@@ -17,6 +17,7 @@ type entrerCV = {
   centre: NameAndImg;
   stage: NameAndImg;
   date: string;
+  niveau: number;
   duréeStage?: string;
   pdf?: string;
   taskStage: string[];
