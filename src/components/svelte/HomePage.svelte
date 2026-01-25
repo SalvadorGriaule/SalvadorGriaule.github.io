@@ -146,6 +146,7 @@
       <CVScroll heightParent={heightScrollCV} scrollY={y} />
     </div>
   </main>
+  <Footer />
 </div>
 
 <style>
