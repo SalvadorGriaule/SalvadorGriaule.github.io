@@ -6,6 +6,7 @@
   import type { entrerCV } from "./type";
 
   import RightCVScroll from "./RightCVScroll.svelte";
+  import HorizontalPoint from "./HorizontalPoint.svelte";
   import Ceppic from "@assets/logo-ceppic-white.svg";
   import Yzel from "@assets/logoRecadre.svg";
 
@@ -134,9 +135,10 @@
       <h2 class="text-3xl font-semibold mb-2">CV</h2>
       <PDFbtn link={CV} text="CV complet"/>
     </div>
-    <div class="flex">
+    <div class="flex flex-col h-[80vh] lg:flex-row lg:h-fit">
+      <HorizontalPoint nb={entrer.length} activeP={indActive}/>
       <div
-        class="flex rounded-2xl bg-gradient-to-br from-sky-700 to-sky-800 p-2 lg:w-1/2 2xl:w-[38%]"
+        class="hidden rounded-2xl bg-gradient-to-br from-sky-700 to-sky-800 p-2 lg:flex lg:w-1/2 2xl:w-[38%]"
       >
         <div class="relative flex flex-col mt-2 ml-2">
           <div
@@ -150,7 +152,7 @@
               bind:this={cvPoint[i]}
               class="border-white relative rounded-full border-2 bg-gradient-to-bl from-zinc-400 to-zinc-600 w-4 h-4"
             ></div>
-            <div class="relative left-6 -top-[21px] hidden lg:block">
+            <div class="relative left-6 -top-[21px] lg:block">
               <h3 class="text-md -mb-1.5">{elem.date}</h3>
               <h2 class="font-semibold text-xl">
                 {elem.titre}
@@ -192,7 +194,7 @@
           {/each}
         </div>
       </div>
-      <div class="ml-4 lg:w-1/2 2xl:w-[61%]">
+      <div class="ml-4 w-full h-full lg:w-1/2 2xl:w-[61%]">
         <RightCVScroll {activeRight} currentActiv={indActive} />
       </div>
     </div>
