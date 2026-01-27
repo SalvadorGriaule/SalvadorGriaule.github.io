@@ -11,6 +11,7 @@
   const previous = new Previous(() => activeRight);
   const previousActiv = new Previous(() => currentActiv);
 
+  $inspect(previous.current);
   let refDiv: HTMLDivElement | null = $state(null);
   let supportDiv: HTMLDivElement | null = $state(null);
   let sense = $state(false);
@@ -19,9 +20,20 @@
   let activeRightR: entrerCV | null = $state(activeRight);
   let activeRightS: entrerCV | null = $state(activeRight);
   $effect(() => {
-    if (previousActiv.current && activeRight?.titre != previous.current?.titre) {
+    if (
+      previousActiv.current &&
+      activeRight?.titre != previous.current?.titre
+    ) {
       sense = previousActiv.current - currentActiv == 1;
-      sense ? (activeRightR = activeRight) : (activeRightS = activeRight);
+
+      if (sense) {
+        activeRightR = activeRight;
+        activeRightS = previous.current;
+      } else {
+        activeRightS = activeRight;
+        activeRightR = previous.current;
+      }
+
       if (supportDiv && refDiv && sensePrevious.current != sense) {
         supportDiv.style.transform = `translateX(${!sense ? "-250" : "0"}px) scale(${!sense ? "0.8" : "1"}`;
         supportDiv.style.opacity = `${sense ? "1" : "0"}`;

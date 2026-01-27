@@ -14,6 +14,7 @@
   import RefPrépa from "@public/pdf/i0201-se-preparer-a-entrer-en-formation-dans-le-numerique_v2-1.pdf";
   import RefDevWeb from "@public/pdf/i5202-developpeur-web-web-mobile-1.pdf";
   import RefFullStack from "@public/pdf/i6201-concepteur-developpeur-web-full-stack.pdf";
+    import PDFbtn from "./PDFbtn.svelte";
 
   let { heightParent, scrollY }: { heightParent?: number; scrollY?: number } =
     $props();
@@ -26,7 +27,7 @@
       date: "2025 - 2026",
       niveau: 3,
       pdf: RefFullStack,
-      taskStage:[]
+      taskStage: [],
     },
     {
       titre: "Formation développeur web et web mobile",
@@ -51,7 +52,7 @@
       stage: { nom: "Yzel conseils", image: Yzel.src },
       date: "2023 - 2024",
       duréeStage: "2 semaines",
-      niveau:0,
+      niveau: 0,
       pdf: RefPrépa,
       taskStage: [
         "Élaboration du designe du site",
@@ -65,11 +66,10 @@
 
   let cvPoint: null | HTMLElement[] = $state([]);
   let activPoint: boolean[] = $state([]);
-  let indActive = $derived((activPoint.filter((elem) => elem == true).length));
+  let indActive = $derived(activPoint.filter((elem) => elem == true).length);
   let hWhiteBar = $state(0);
   let progressHWB: null | HTMLElement = $state(null);
   let activeRight: entrerCV = $state(entrer[0]);
-  
 
   const progress = (point: HTMLElement, reverse: boolean) => {
     const animePoint = {
@@ -130,7 +130,10 @@
   <div
     class="w-11/12 flex flex-col bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-2xl p-2"
   >
-    <h2 class="text-3xl font-semibold mb-2">CV</h2>
+    <div class="w-full flex justify-between mx-1 my-2">
+      <h2 class="text-3xl font-semibold mb-2">CV</h2>
+      <PDFbtn link={CV} text="CV complet"/>
+    </div>
     <div class="flex">
       <div
         class="flex rounded-2xl bg-gradient-to-br from-sky-700 to-sky-800 p-2 lg:w-1/2 2xl:w-[38%]"
@@ -190,9 +193,8 @@
         </div>
       </div>
       <div class="ml-4 lg:w-1/2 2xl:w-[61%]">
-        <RightCVScroll {activeRight} currentActiv={indActive}/>
+        <RightCVScroll {activeRight} currentActiv={indActive} />
       </div>
     </div>
-    <a href={CV}>CV complet</a>
   </div>
 </section>

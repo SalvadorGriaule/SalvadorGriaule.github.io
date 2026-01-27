@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { entrerCV } from "./type";
-    import PDFFile from "@assets/Pdf-file.svg";
+    import PDFbtn from "./PDFbtn.svelte";
 
     let { activeRight }:{ activeRight: entrerCV | null } = $props();
 </script>
@@ -18,16 +18,7 @@
         </p>
         <div class="flex items-center space-x-1.5 mt-2">
           <p>Fiche programme :</p>
-          <a
-            class="text-white font-semibold bg-red-600 p-1 rounded-4xl"
-            href={activeRight.pdf}
-            ><div class="flex">
-              <div class="w-8 p-1 bg-white rounded-full">
-                <img src={PDFFile.src} alt="" />
-              </div>
-              <p class="mx-1 font-bold">PDF</p>
-            </div>
-          </a>
+          <PDFbtn link={activeRight.pdf} />     
         </div>
       </div>
       <div>
