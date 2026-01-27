@@ -4,6 +4,7 @@
   import { onMount } from "svelte";
   import { watch } from "runed";
   import type { entrerCV } from "./type";
+  import { progress } from "@assets/ts/progresBar";
 
   import RightCVScroll from "./RightCVScroll.svelte";
   import HorizontalPoint from "./HorizontalPoint.svelte";
@@ -15,7 +16,7 @@
   import RefPrépa from "@public/pdf/i0201-se-preparer-a-entrer-en-formation-dans-le-numerique_v2-1.pdf";
   import RefDevWeb from "@public/pdf/i5202-developpeur-web-web-mobile-1.pdf";
   import RefFullStack from "@public/pdf/i6201-concepteur-developpeur-web-full-stack.pdf";
-    import PDFbtn from "./PDFbtn.svelte";
+  import PDFbtn from "./PDFbtn.svelte";
 
   let { heightParent, scrollY }: { heightParent?: number; scrollY?: number } =
     $props();
@@ -72,7 +73,7 @@
   let progressHWB: null | HTMLElement = $state(null);
   let activeRight: entrerCV = $state(entrer[0]);
 
-  const progress = (point: HTMLElement, reverse: boolean) => {
+  const progressBar = (point: HTMLElement, reverse: boolean) => {
     const animePoint = {
       targets: point,
       borderColor: indActive == 0 ? "#05df72" : reverse ? "#fffff" : "#05df72",
@@ -81,15 +82,7 @@
       targets: progressHWB,
       height: indActive >= 2 ? (indActive - 1) * (hWhiteBar / 2) : 0,
     };
-    let animeSense = reverse ? [animePoint, animeBar] : [animeBar, animePoint];
-
-    let tl = anime
-      .timeline({
-        easing: "easeOutQuint",
-        duration: 600,
-      })
-      .add(animeSense[0])
-      .add(animeSense[1], reverse ? "-=200" : "-=80");
+    progress(animePoint, animeBar, reverse);
   };
 
   const resizeHWB = () => {
@@ -115,7 +108,7 @@
           activPoint[i] =
             (i * heightParent) / 3.5 < offTopCV - 32 ? true : false;
           if (pre != activPoint[i]) {
-            progress(cvPoint[i], !activPoint[i]);
+            progressBar(cvPoint[i], !activPoint[i]);
             activeRight = indActive == 0 ? entrer[0] : entrer[indActive - 1];
           }
         }
@@ -133,10 +126,12 @@
   >
     <div class="w-full flex justify-between mx-1 my-2">
       <h2 class="text-3xl font-semibold mb-2">CV</h2>
-      <PDFbtn link={CV} text="CV complet"/>
+      <PDFbtn link={CV} text="CV complet" />
     </div>
     <div class="flex flex-col h-[80vh] lg:flex-row lg:h-fit">
-      <HorizontalPoint nb={entrer.length} activeP={indActive}/>
+      <div class="block lg:hidden">
+        <HorizontalPoint nb={entrer.length} activeP={indActive} />
+      </div>
       <div
         class="hidden rounded-2xl bg-gradient-to-br from-sky-700 to-sky-800 p-2 lg:flex lg:w-1/2 2xl:w-[38%]"
       >

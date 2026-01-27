@@ -11,7 +11,6 @@
   const previous = new Previous(() => activeRight);
   const previousActiv = new Previous(() => currentActiv);
 
-  $inspect(previous.current);
   let refDiv: HTMLDivElement | null = $state(null);
   let supportDiv: HTMLDivElement | null = $state(null);
   let sense = $state(false);
