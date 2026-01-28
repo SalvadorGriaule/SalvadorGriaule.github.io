@@ -189,7 +189,7 @@
           {/each}
         </div>
       </div>
-      <div class="ml-4 w-full h-full lg:w-1/2 2xl:w-[61%]">
+      <div class="mt-4 w-full h-full lg:mt-0 lg:ml-4 lg:w-1/2 2xl:w-[61%]">
         <RightCVScroll {activeRight} currentActiv={indActive} />
       </div>
     </div>
