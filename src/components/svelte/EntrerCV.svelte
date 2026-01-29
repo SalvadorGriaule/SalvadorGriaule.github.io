@@ -9,10 +9,13 @@
   <div
     class="p-4 shadow-[inset_0px_0px_25px_-3px_rgba(255,207,152,0.3)] bg-sky-950/10 w-full h-full rounded-2xl text-white"
   >
-    <div class="flex items-center">
+    <div class="flex items-center justify-between">
       <div class="mb-4">
         <h3 class="text-lg">{activeRight.date}</h3>
-        <h2 class="lg:text-xl">{activeRight.titre}</h2>
+        <h2 class="text-2xl font-semibold lg:text-xl">{activeRight.titre}</h2>
+        {#if activeRight.niveau > 0}
+          <p class="text-lg">(niveau bac + {activeRight.niveau})</p>
+        {/if}
         <p>
           {activeRight.centre.nom}
         </p>
@@ -22,7 +25,7 @@
         </div>
       </div>
       <div>
-        <div class="w-28 h-28 flex justify-center items-center">
+        <div class="mr-6 scale-130 lg:w-28 lg:h-28 flex justify-center items-center">
           <img src={activeRight.centre.image} alt={activeRight.centre.nom} />
         </div>
       </div>
@@ -30,7 +33,7 @@
     <div class="flex">
       <div>
         <div>
-          <h2 class="text-xl">
+          <h2 class="text-2xl font-semibold lg:text-xl">
             {activeRight.stage.nom}
           </h2>
           {activeRight.duréeStage}
@@ -48,6 +51,9 @@
           <p>{activeRight.stage.nom}</p>
         {/if}
       </div>
+    </div>
+    <div>
+      
     </div>
   </div>
 {/if}
