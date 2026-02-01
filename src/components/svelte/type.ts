@@ -61,9 +61,8 @@ interface ProjetInfo {
   lien: LinkSlice[];
   device: Device[];
   descritption: string;
-  isVid?: { desktop: boolean; phone: boolean };
-  desktopSrc?: string;
-  phoneSrc?: string;
+  desktopSrc:{vid?:string,img?:string};
+  phoneSrc?:{vid?:string,img?:string};
 }
 
 export { LinkType, Device };

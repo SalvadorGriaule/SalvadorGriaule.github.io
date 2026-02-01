@@ -36,7 +36,6 @@
     titre,
     desktopSrc = "",
     phoneSrc = "",
-    isVid = { phone: false, desktop: false },
     lien,
     description,
     techUse,
@@ -44,8 +43,8 @@
     dateUpdate,
   }: {
     titre: string;
-    desktopSrc?: string;
-    phoneSrc?: string;
+    desktopSrc?: {vid:string,img:string};
+    phoneSrc?: {vid:string,img:string};
     lien: LinkSlice[];
     description: string;
     techUse: string[];
@@ -108,12 +107,12 @@
             leftBot="h-1/7 w-[3px] bg-gray-800 dark:bg-gray-800 absolute -left-[17px] top-[45%] rounded-l-lg"
             right="h-1/7 w-[3px] bg-gray-800 dark:bg-gray-800 absolute -right-[17px] top-[45%] rounded-r-lg"
           >
-            {#if isVid.phone}
+            {#if phoneSrc.vid}
             <div class="w-[1200px] h-[800px] flex justify-center">
-                <video class="-translate-x-2/5 w-full h-full" src={phoneSrc} muted autoplay loop><track kind="captions" /> </video>
+                <video class="-translate-x-2/5 w-full h-full" src={phoneSrc.vid} muted autoplay loop><track kind="captions" /> </video>
             </div>
-            {:else}
-              <img src={phoneSrc} alt={titre + " " + Device.SmartPhone} />
+            {:else if phoneSrc.img}
+              <img src={phoneSrc.img} alt={titre + " " + Device.SmartPhone} />
             {/if}
           </DefaultMockup>
         </div>
@@ -131,12 +130,12 @@
             inner="rounded-lg overflow-hidden h-full bg-white dark:bg-gray-800"
             div="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[8px] rounded-t-xl h-full max-w-7/8"
           >
-            {#if isVid.desktop}
-              <video src={desktopSrc} muted autoplay loop
+            {#if desktopSrc.vid}
+              <video src={desktopSrc.vid} muted autoplay loop
                 ><track kind="captions" />
               </video>
-            {:else}
-              <img src={desktopSrc} alt={titre + " " + Device.Laptop} />
+            {:else if desktopSrc.img}
+              <img src={desktopSrc.img} alt={titre + " " + Device.Laptop} />
             {/if}
           </Laptop>
         </div>

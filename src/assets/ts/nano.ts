@@ -40,8 +40,8 @@ const linearColor = [
 const projet: ProjetInfo[] = [
   {
     titre: "Yzel conseils",
-    desktopSrc: YzelDesktop,
-    phoneSrc: YzelPhone,
+    desktopSrc: {vid:YzelDesktop},
+    phoneSrc: {vid:YzelPhone},
     lien: [
       {
         link: "",
@@ -51,12 +51,11 @@ const projet: ProjetInfo[] = [
     descritption: "ici",
     techUse: ["svelte", "tailwindcss", "ts","node"],
     device: [Device.SmartPhone, Device.Laptop],
-    isVid: { desktop: true, phone: true },
   },
   {
     titre: "SoMuchWater",
-    desktopSrc: SMWLaptop.src,
-    phoneSrc: SMWPhone.src,
+    desktopSrc: {img:SMWLaptop.src},
+    phoneSrc: {img:SMWPhone.src},
     lien: [
       {
         link: "https://github.com/SalvadorGriaule/SoMuchWater",
@@ -69,8 +68,8 @@ const projet: ProjetInfo[] = [
   },
   {
     titre: "Lecteur",
-    desktopSrc: LecteurDesktop.src,
-    phoneSrc: LecteurPhone.src,
+    desktopSrc: {img:LecteurDesktop.src},
+    phoneSrc: {img:LecteurPhone.src},
     lien: [
       {
         link: "https://github.com/SalvadorGriaule/LecteurV2",
@@ -83,7 +82,7 @@ const projet: ProjetInfo[] = [
   },
   {
     titre: "pacman",
-    desktopSrc: PacManDesktop.src,
+    desktopSrc: {img:PacManDesktop.src},
     lien: [
       {
         link: "https://github.com/SalvadorGriaule/PacMan-",

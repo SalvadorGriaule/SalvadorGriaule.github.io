@@ -4,64 +4,19 @@
   import { onMount } from "svelte";
   import { watch } from "runed";
   import type { entrerCV } from "./type";
+  import { entrer } from "@assets/ts/entreCV";
   import { progress } from "@assets/ts/progresBar";
 
   import RightCVScroll from "./RightCVScroll.svelte";
   import HorizontalPoint from "./HorizontalPoint.svelte";
-  import Ceppic from "@assets/logo-ceppic-white.svg";
-  import Yzel from "@assets/logoRecadre.svg";
+  
 
   // pdf
   import CV from "@public/pdf/CV.pdf";
-  import RefPrépa from "@public/pdf/i0201-se-preparer-a-entrer-en-formation-dans-le-numerique_v2-1.pdf";
-  import RefDevWeb from "@public/pdf/i5202-developpeur-web-web-mobile-1.pdf";
-  import RefFullStack from "@public/pdf/i6201-concepteur-developpeur-web-full-stack.pdf";
   import PDFbtn from "./PDFbtn.svelte";
 
   let { heightParent, scrollY }: { heightParent?: number; scrollY?: number } =
     $props();
-
-  const entrer: entrerCV[] = [
-    {
-      titre: "Formation développeur full-stack",
-      centre: { nom: "Ceppic - isneauville", image: Ceppic.src },
-      stage: { nom: "en recherche" },
-      date: "2025 - 2026",
-      niveau: 3,
-      pdf: RefFullStack,
-      taskStage: [],
-    },
-    {
-      titre: "Formation développeur web et web mobile",
-      centre: { nom: "Ceppic - isneauville", image: Ceppic.src },
-      stage: { nom: "Yzel conseils", image: Yzel.src },
-      date: "2024 - 2025",
-      niveau: 2,
-      duréeStage: "2 mois",
-      pdf: RefDevWeb,
-      taskStage: [
-        "Gestion des inscriptions et des authentification",
-        "Développement d’un service d’envoi de mail polyvalent",
-        "Messagerie interne avec pièce joint",
-        "Gestion dynamique de rendez-vous entre client et employer",
-        "Page d’accueil dynamique au scroll",
-        "Développement d’une partie administrateur",
-      ],
-    },
-    {
-      titre: "Se préparer au métiers de l'informatique et du numérique",
-      centre: { nom: "Ceppic - isneauville", image: Ceppic.src },
-      stage: { nom: "Yzel conseils", image: Yzel.src },
-      date: "2023 - 2024",
-      duréeStage: "2 semaines",
-      niveau: 0,
-      pdf: RefPrépa,
-      taskStage: [
-        "Élaboration du designe du site",
-        "Création de la page d’accueil et du formualire de contact",
-      ],
-    },
-  ];
 
   let sectionCV: null | HTMLElement = $state(null);
   let offTopCV: null | number = $state(null);
@@ -92,6 +47,7 @@
       progressHWB.style.height =
         (indActive >= 2 ? (indActive - 1) * (hWhiteBar / 2) : 0) + "px";
   };
+  
 
   onMount(() => {
     activPoint = Array(cvPoint.length).fill(false);
