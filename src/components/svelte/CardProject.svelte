@@ -34,8 +34,8 @@
 
   const {
     titre,
-    desktopSrc = "",
-    phoneSrc = "",
+    desktopSrc,
+    phoneSrc,
     lien,
     description,
     techUse,
@@ -43,14 +43,13 @@
     dateUpdate,
   }: {
     titre: string;
-    desktopSrc?: {vid:string,img:string};
-    phoneSrc?: {vid:string,img:string};
+    desktopSrc?: {vid?:string,img?:string};
+    phoneSrc?: {vid?:string,img?:string};
     lien: LinkSlice[];
     description: string;
     techUse: string[];
     devices: Device[];
     dateUpdate?: Date;
-    isVid?: { desktop: boolean; phone: boolean };
   } = $props();
 
   let timeAgo = $derived(dateUpdate ? ago(dateUpdate) : null);
@@ -76,6 +75,7 @@
 </script>
 
 <div
+  id={titre.replaceAll(" ","_")}
   class="card w-11/12 p-2 bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md m-2 backdrop-blur-md relative"
 >
   <h2 class="text-5xl duration-150 mb-4 md:-mb-6">{titre}</h2>
@@ -91,7 +91,7 @@
       bind:this={carousel}
       class="flex justify-center relative w-full h-[420px] xl:h-[480px] 2xl:h-[650px] duration-150"
     >
-      {#if devices.includes(Device.SmartPhone)}
+      {#if devices.includes(Device.SmartPhone) && phoneSrc}
         <div
           class="z-20 absolute min-w-[180px] w-1/6 self-center duration-150 {devices.includes(
             Device.Laptop
@@ -117,7 +117,7 @@
           </DefaultMockup>
         </div>
       {/if}
-      {#if devices.includes(Device.Laptop)}
+      {#if devices.includes(Device.Laptop) && desktopSrc}
         <div
           class="z-10 absolute self-center w-4/5 duration-150 {devices.includes(
             Device.SmartPhone

@@ -1,4 +1,4 @@
-import { type LibInfo, type ProjetInfo, LinkType, Device } from "@svelte/type";
+import { type LibInfo, LinkType } from "@svelte/type";
 import { atom, map, computed } from "nanostores";
 
 import ImgOfUploader from "@public/img/ImgCardUploader.png";
@@ -7,13 +7,6 @@ import BtnCarousel from "@public/img/BtnCarousel.webm";
 import PWInput from "@public/img/PasswordInput.png";
 import MultiSelect from "@public/img/MultiSelact.png";
 import VidBurger from "@public/img/BurgerMenu.webm";
-import SMWPhone from "@public/img/SoMuchWaterPhone.png";
-import SMWLaptop from "@public/img/SoMuchWaterDesktop.png";
-import LecteurPhone from "@public/img/LecteurV2.png";
-import LecteurDesktop from "@public/img/LecteurV2Desktop.png";
-import PacManDesktop from "@public/img/PacManWishDesktop.png";
-import YzelDesktop from "@public/vidéo/ShotCutYzelDesktop.mp4";
-import YzelPhone from "@public/vidéo/ShotCutYzelPhone.mp4";
 
 const currentSelect = atom<null | number>(null);
 const currentTags = atom<"all" | "react" | "svelte" | "vuejs" | "ts">("all");
@@ -35,69 +28,6 @@ const linearColor = [
   "oklch(70.7% 0.165 254.624)",
   "oklch(62.3% 0.214 259.815)",
   "oklch(54.6% 0.245 262.881)",
-];
-
-const projet: ProjetInfo[] = [
-  {
-    titre: "Yzel conseils",
-    desktopSrc: {vid:YzelDesktop},
-    phoneSrc: {vid:YzelPhone},
-    lien: [
-      {
-        link: "",
-        type: LinkType.Soon,
-      },
-    ],
-    descritption: "ici",
-    techUse: ["svelte", "tailwindcss", "ts","node"],
-    device: [Device.SmartPhone, Device.Laptop],
-  },
-  {
-    titre: "SoMuchWater",
-    desktopSrc: {img:SMWLaptop.src},
-    phoneSrc: {img:SMWPhone.src},
-    lien: [
-      {
-        link: "https://github.com/SalvadorGriaule/SoMuchWater",
-        type: LinkType.GitHub,
-      },
-    ],
-    descritption: "ici",
-    techUse: ["nuxt", "fastapi", "ts", "tailwindcss", "julia"],
-    device: [Device.SmartPhone, Device.Laptop],
-  },
-  {
-    titre: "Lecteur",
-    desktopSrc: {img:LecteurDesktop.src},
-    phoneSrc: {img:LecteurPhone.src},
-    lien: [
-      {
-        link: "https://github.com/SalvadorGriaule/LecteurV2",
-        type: LinkType.GitHub,
-      },
-    ],
-    descritption: "ici",
-    techUse: ["js"],
-    device: [Device.SmartPhone, Device.Laptop],
-  },
-  {
-    titre: "pacman",
-    desktopSrc: {img:PacManDesktop.src},
-    lien: [
-      {
-        link: "https://github.com/SalvadorGriaule/PacMan-",
-        type: LinkType.GitHub,
-      },
-      {
-        link: "/demo/pacman",
-        type: LinkType.PlayIt,
-      },
-    ],
-    descritption: "ici",
-    techUse: ["js"],
-    device: [Device.Laptop],
-    date: new Date("August 19, 2020 23:15:30"),
-  },
 ];
 
 const lib = new Map<number, LibInfo>([
@@ -234,6 +164,5 @@ export {
   currentVisible,
   inSlot,
   linearColor,
-  lib,
-  projet,
+  lib
 };

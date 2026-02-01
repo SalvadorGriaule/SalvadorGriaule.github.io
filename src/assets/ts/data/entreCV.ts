@@ -33,6 +33,7 @@ export const entrer: entrerCV[] = [
             "Page d’accueil dynamique au scroll",
             "Développement d’une partie administrateur",
         ],
+        idProj:0
     },
     {
         titre: "Se préparer au métiers de l'informatique et du numérique",
@@ -46,5 +47,6 @@ export const entrer: entrerCV[] = [
             "Élaboration du designe du site",
             "Création de la page d’accueil et du formualire de contact",
         ],
+        idProj:0
     },
 ];

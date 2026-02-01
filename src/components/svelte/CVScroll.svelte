@@ -4,7 +4,7 @@
   import { onMount } from "svelte";
   import { watch } from "runed";
   import type { entrerCV } from "./type";
-  import { entrer } from "@assets/ts/entreCV";
+  import { entrer } from "@assets/ts/data/entreCV";
   import { progress } from "@assets/ts/progresBar";
 
   import RightCVScroll from "./RightCVScroll.svelte";

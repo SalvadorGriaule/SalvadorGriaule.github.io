@@ -8,11 +8,10 @@
   import CardProject from "./CardProject.svelte";
   import HomeLib from "./HomeLib.svelte";
   import CVScroll from "./CVScroll.svelte";
-  import Contact from "./Contact.svelte";
   import Footer from "./Footer.svelte";
 
   // import type
-  import { projet } from "@assets/ts/nano.ts";
+  import { projet } from "@assets/ts/data/projetData";
   import { onMount } from "svelte";
 
   const nom = "MORALES";
@@ -128,10 +127,9 @@
             lien={p.lien}
             devices={p.device}
             techUse={p.techUse}
-            desktopSrc={p.desktopSrc ? p.desktopSrc : undefined}
-            phoneSrc={p.phoneSrc ? p.phoneSrc : undefined}
+            desktopSrc={p.desktopSrc}
+            phoneSrc={p.phoneSrc}
             dateUpdate={p.date}
-            isVid={p.isVid}
           />
         {/each}
       </div>

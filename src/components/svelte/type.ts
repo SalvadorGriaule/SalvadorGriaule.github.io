@@ -20,6 +20,7 @@ type entrerCV = {
   niveau: number;
   duréeStage?: string;
   pdf?: string;
+  idProj?:number;
   taskStage: string[];
 };
 
