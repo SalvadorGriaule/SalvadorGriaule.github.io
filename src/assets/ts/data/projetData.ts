@@ -6,7 +6,7 @@ import LecteurPhone from "@public/img/LecteurV2.png";
 import LecteurDesktop from "@public/img/LecteurV2Desktop.png";
 import PacManDesktop from "@public/img/PacManWishDesktop.png";
 import YzelDesktop from "@public/vidéo/ShotCutYzelDesktop.mp4";
-import YzelPhone from "@public/vidéo/ShotCutYzelPhone.mp4";
+import YzelPhone from "@public/vidéo/Phone.webm";
 import ImgYzelDesktop from "@public/img/Yzel_Conseil.png";
 import ImgYzelPhone from "@public/img/Phone_Yzel_Conseil.png";
 
