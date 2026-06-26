@@ -31,7 +31,7 @@ const { title, description, fw, linkSlice, id } = Astro.props;
   >
     {
       fw.length > 1 && (
-        <div class="absolute top-[86.5%] right-2 ml-2 bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md p-2 backdrop-blur-md md:ml-5 md:right-auto md:left-12 md:top-1/2 md:-translate-1/2">
+        <div class="absolute z-50 top-[86.5%] right-2 ml-2 bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md p-2 backdrop-blur-md md:ml-5 md:right-auto md:left-12 md:top-1/2 md:-translate-1/2">
           <div class="switch relative flex items-center bg-linear-to-br from-neutral-700/60 to-neutral-800/40 rounded-md p-1 md:flex-col">
             <div class="switcher absolute top-1.5 w-[52px] h-[52px] rounded-md bg-linear-to-br from-neutral-300/40 to-neutral-400/30 md:top-2 md:w-24 md:h-24 md:-translate-x-1/2" />
             {fw.map((elem) => (

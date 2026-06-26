@@ -7,6 +7,7 @@ import BtnCarousel from "@public/img/BtnCarousel.webm";
 import PWInput from "@public/img/PasswordInput.png";
 import MultiSelect from "@public/img/MultiSelact.png";
 import VidBurger from "@public/img/BurgerMenu.webm";
+import DiagonalCarousel from "@public/img/dia.webm"
 
 const currentSelect = atom<null | number>(null);
 const currentTags = atom<"all" | "react" | "svelte" | "vuejs" | "ts">("all");
@@ -156,6 +157,29 @@ const lib = new Map<number, LibInfo>([
       media: { type: "vidéo", link: VidBurger, widthMedia: 24 },
     },
   ],
+  [6,
+    {
+      id: 6,
+      titre: "DiagonaleCarousel",
+      logo: ["react", "svelte"],
+      description: "Carousel avec mouvement en diagonal",
+      linkBox: [
+        [
+          {
+            type: LinkType.GitHub,
+            link: ''
+          }
+        ],
+        [
+          {
+            type: LinkType.GitHub,
+            link: ''
+          }
+        ]
+      ],
+      media: { type: "vidéo", link: DiagonalCarousel}
+    }
+  ]
 ]);
 
 export {

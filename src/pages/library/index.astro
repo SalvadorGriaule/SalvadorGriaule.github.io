@@ -5,6 +5,7 @@ import ShowCardLibrary from "../../layouts/ShowCardLibrary.astro";
 import LibraryPage from "@svelte/Page/LibraryPage.svelte";
 import HeaderNav from "@svelte/HeaderNav.svelte";
 // import react
+import DiagonaleCard from "src/components/react/CardLibrary/DiagonalReactCard";
 import CircleReact from "../../components/react/CardLibrary/CircleReactCard";
 // import ts vanilla
 import CardTimedCarousel from "src/components/CardTimedCarousel.astro";
@@ -14,11 +15,11 @@ import CircleCard from "@svelte/CardLibrary/CircleCard.svelte";
 import UploaderCard from "@svelte/CardLibrary/UploaderCard.svelte";
 import CardPassWordInput from "@svelte/CardLibrary/CardPassWordInput.svelte";
 import CardMultiSelect from "@svelte/CardLibrary/CardMultiSelect.svelte";
+import DiagonalSvelt from "@svelte/CardLibrary/DiagonaleCarouselCard.svelte";
 // import vue
 import UploaderCardVue from "@vue/CardLibrary/UploaderCard.vue";
 // import module
-import { lib } from "@assets/ts/nano"
-
+import { lib } from "@assets/ts/nano";
 ---
 
 <Layout>
@@ -109,6 +110,22 @@ import { lib } from "@assets/ts/nano"
         </div>
       </ShowCardLibrary>
     </div>
+    <div id="Card6" class="showcard w-screen hidden">
+      <ShowCardLibrary
+        id={6}
+        title={lib.get(6)!.titre}
+        description={lib.get(6)!.description}
+        fw={lib.get(6)!.logo}
+        linkSlice={lib.get(6)!.linkBox}
+      >
+        <div class="react w-full h-[50vh] block">
+          <DiagonaleCard client:load />
+        </div>
+        <div class="svelte w-full h-[50vh] hidden">
+          <DiagonalSvelt client:load />
+        </div>
+      </ShowCardLibrary>
+    </div>
   </div>
 
   <script>
@@ -136,7 +153,7 @@ import { lib } from "@assets/ts/nano"
       for (let elem of showcard) {
         makeVisible(
           val == Number(elem.id.replace("Card", "")),
-          document.getElementById(elem.id)
+          document.getElementById(elem.id),
         );
       }
     });

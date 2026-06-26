@@ -11,7 +11,7 @@
     id,
   }: {
     titre: string;
-    logo: ("svelte" | "vuejs" | "react")[];
+    logo: ("svelte" | "vuejs" | "react" | "ts")[];
     id: number;
     media: { type: "image" | "vidéo"; link: string; widthMedia?: number };
   } = $props();
