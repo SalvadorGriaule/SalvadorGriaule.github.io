@@ -1,5 +1,4 @@
 <script lang="ts">
-  import anime from "animejs";
   import { breakPointAdd } from "@assets/ts/breakPoint";
   import { onMount } from "svelte";
   import { watch } from "runed";
@@ -10,7 +9,6 @@
   import RightCVScroll from "./RightCVScroll.svelte";
   import HorizontalPoint from "./HorizontalPoint.svelte";
   
-
   // pdf
   import CV from "@public/pdf/CV.pdf";
   import PDFbtn from "./PDFbtn.svelte";

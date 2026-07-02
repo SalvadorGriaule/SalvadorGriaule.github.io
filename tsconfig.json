@@ -10,6 +10,7 @@
       "@public/*": ["./public/*"],
       "@svelte/*": ["./src/components/svelte/*"],
       "@vue/*":["./src/components/vue/*"],
+      "@react/*":["./src/components/react/*"],
       "@assets/*":["./src/assets/*"]
     }
   }

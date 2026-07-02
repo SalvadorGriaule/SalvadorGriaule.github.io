@@ -5,8 +5,9 @@ import ShowCardLibrary from "../../layouts/ShowCardLibrary.astro";
 import LibraryPage from "@svelte/Page/LibraryPage.svelte";
 import HeaderNav from "@svelte/HeaderNav.svelte";
 // import react
-import DiagonaleCard from "src/components/react/CardLibrary/DiagonalReactCard";
-import CircleReact from "../../components/react/CardLibrary/CircleReactCard";
+import DiagonaleCard from "@react/CardLibrary/DiagonalReactCard";
+import CircleReact from "@react/CardLibrary/CircleReactCard";
+import PasswordCard from "@react/CardLibrary/PasswordCard";
 // import ts vanilla
 import CardTimedCarousel from "src/components/CardTimedCarousel.astro";
 import CardMenuBurger from "src/components/CardMenuBurger.astro";
@@ -68,6 +69,9 @@ import { lib } from "@assets/ts/nano";
       >
         <div class="svelte w-full h-full block">
           <CardPassWordInput client:load />
+        </div>
+        <div class="react w-full h-full hidden">
+          <PasswordCard client:load />
         </div>
       </ShowCardLibrary>
     </div>

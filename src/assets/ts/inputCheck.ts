@@ -76,7 +76,7 @@ function ifName(input: string) {
 }
 
 function inputMinL(input: string) {
-    return input.length > 8
+    return input.length > 11
 }
 
 function ifNumCheck(input: string) {
@@ -156,6 +156,12 @@ function ifStrSecure(input: string){
     return ![noChev(input),noEndJs(input),noSpace(input)].includes(false)
 }
 
+const validationPW = (rule: any[], input: string) => {
+    const test = rule.map((elem) => elem.fn(input))
+    const disabled = test.every((elem) => elem == true)
+    return { test, disabled: !disabled }
+};
+
 const testList = {
     tel: ifTel,
     check: ifCheck,
@@ -172,8 +178,9 @@ const testList = {
     specChar: ifSpecChar,
     oneUpper: iFOneUpper,
     maxL: inputMaxL,
+    minL: inputMinL,
     strSecure: ifStrSecure
 }
 
 
-export { testList, checkHoraire, checkingAll, inputCheck, fullNumCheck, nameCheck, emailCheck, sameCheck, inputMinL, selectCheck }
+export { testList, checkHoraire, checkingAll, inputCheck, fullNumCheck, nameCheck, emailCheck, sameCheck, inputMinL, selectCheck ,validationPW}

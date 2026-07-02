@@ -88,15 +88,20 @@ const lib = new Map<number, LibInfo>([
     {
       id: 2,
       titre: "Password input",
-      logo: ["svelte"],
+      logo: ["svelte", "react"],
       description: "Composant de champs pour password interactive",
       linkBox: [
         [
           {
             type: LinkType.GitHub,
             link: "https://github.com/SalvadorGriaule/PasswordInput",
-          },
-        ],
+          }
+        ], [
+          {
+            type: LinkType.Soon,
+            link: ""
+          }
+        ]
       ],
       media: { type: "image", link: PWInput.src },
     },
@@ -149,7 +154,7 @@ const lib = new Map<number, LibInfo>([
       linkBox: [
         [
           {
-            type: LinkType.GitHub,
+            type: LinkType.Soon,
             link: "",
           },
         ],
@@ -166,18 +171,18 @@ const lib = new Map<number, LibInfo>([
       linkBox: [
         [
           {
-            type: LinkType.GitHub,
+            type: LinkType.Soon,
             link: ''
           }
         ],
         [
           {
-            type: LinkType.GitHub,
+            type: LinkType.Soon,
             link: ''
           }
         ]
       ],
-      media: { type: "vidéo", link: DiagonalCarousel}
+      media: { type: "vidéo", link: DiagonalCarousel, widthMedia: 22 }
     }
   ]
 ]);
