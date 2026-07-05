@@ -1,25 +1,21 @@
 ---
-import type { LinkSlice } from "@svelte/type";
+import type { LibInfo } from "@svelte/type";
 import LogoLib from "@svelte/LogoLib.svelte";
 import LinkBox from "@svelte/LinkBox.svelte";
 
 interface Props {
-  id: number;
-  title: string;
-  description: string;
-  fw: ("svelte" | "vuejs" | "react" | "ts")[];
-  linkSlice: LinkSlice[][];
+  props: LibInfo
 }
 
-const { title, description, fw, linkSlice, id } = Astro.props;
+const { props } = Astro.props;
 ---
 
 <section
-  id={"lib" + id}
+  id={"lib" + props.id}
   class="h-fit bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md m-2 p-2 backdrop-blur-md"
 >
   <div class="flex justify-between items-center mb-1">
-    <h3 class="text-2xl font-semibold">{title}</h3>
+    <h3 class="text-2xl font-semibold">{props.titre}</h3>
     <button
       class="return flex justify-center items-center bg-red-800 border border-red-500 p-2 rounded-2xl text-white hover:bg-red-200 hover:text-red-800 duration-100"
     >
@@ -30,11 +26,11 @@ const { title, description, fw, linkSlice, id } = Astro.props;
     class="relative flex flex-col justify-center items-center w-full bg-linear-to-br from-neutral-900/70 to-neutral-950/30 rounded-md py-10 md:p-10"
   >
     {
-      fw.length > 1 && (
+      props.logo.length > 1 && (
         <div class="absolute z-50 top-[86.5%] right-2 ml-2 bg-linear-to-br from-neutral-300/30 to-neutral-500/30 rounded-md p-2 backdrop-blur-md md:ml-5 md:right-auto md:left-12 md:top-1/2 md:-translate-1/2">
           <div class="switch relative flex items-center bg-linear-to-br from-neutral-700/60 to-neutral-800/40 rounded-md p-1 md:flex-col">
             <div class="switcher absolute top-1.5 w-[52px] h-[52px] rounded-md bg-linear-to-br from-neutral-300/40 to-neutral-400/30 md:top-2 md:w-24 md:h-24 md:-translate-x-1/2" />
-            {fw.map((elem) => (
+            {props.logo.map((elem) => (
               <div data-fw={elem} class="fw md:h-24">
                 <LogoLib
                   name={elem}
@@ -53,7 +49,7 @@ const { title, description, fw, linkSlice, id } = Astro.props;
   </div>
   <div class="flex flex-col md:items-center md:flex-row">
     <p class="text-xl p-2 md:w-3/5 md:p-0">
-      {description}
+      {props.description}
     </p>
     <div
       class="p-2 mt-2 flex flex-col items-start md:border-s-2 md:border-black md:w-2/5"
@@ -61,14 +57,14 @@ const { title, description, fw, linkSlice, id } = Astro.props;
       <h5 class="text-2xl">Compatible avec</h5>
       <div class="flex flex-col justify-center my-3 space-y-2">
         {
-          fw.map((item, i) => (
+          props.logo.map((item, i) => (
             <div class="flex items-center space-x-2">
               <LogoLib
                 name={item}
                 mode="no-link"
                 classL={"h-[2.5em] w-[2.5em] mx-2.5"}
               />
-              <LinkBox tabLink={linkSlice[i]} spanLink={false} />
+              <LinkBox tabLink={props.linkBox[i]} spanLink={false} />
             </div>
           ))
         }

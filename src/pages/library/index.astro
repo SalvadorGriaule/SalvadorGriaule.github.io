@@ -8,6 +8,7 @@ import HeaderNav from "@svelte/HeaderNav.svelte";
 import DiagonaleCard from "@react/CardLibrary/DiagonalReactCard";
 import CircleReact from "@react/CardLibrary/CircleReactCard";
 import PasswordCard from "@react/CardLibrary/PasswordCard";
+import FormEnablerCard from "@react/CardLibrary/FormEnablerCard";
 // import ts vanilla
 import CardTimedCarousel from "src/components/CardTimedCarousel.astro";
 import CardMenuBurger from "src/components/CardMenuBurger.astro";
@@ -17,6 +18,7 @@ import UploaderCard from "@svelte/CardLibrary/UploaderCard.svelte";
 import CardPassWordInput from "@svelte/CardLibrary/CardPassWordInput.svelte";
 import CardMultiSelect from "@svelte/CardLibrary/CardMultiSelect.svelte";
 import DiagonalSvelt from "@svelte/CardLibrary/DiagonaleCarouselCard.svelte";
+import FormEnblerSvelte from "@svelte/CardLibrary/CardFormEnabler.svelte";
 // import vue
 import UploaderCardVue from "@vue/CardLibrary/UploaderCard.vue";
 // import module
@@ -28,13 +30,7 @@ import { lib } from "@assets/ts/nano";
     <HeaderNav />
     <LibraryPage client:load lib={lib} />
     <div id="Card0" class="showcard w-screen hidden">
-      <ShowCardLibrary
-        id={0}
-        title={lib.get(0)!.titre}
-        description={lib.get(0)!.description}
-        fw={lib.get(0)!.logo}
-        linkSlice={lib.get(0)!.linkBox}
-      >
+      <ShowCardLibrary props={lib.get(0)!}>
         <div class="svelte w-full h-full block">
           <CircleCard client:load />
         </div>
@@ -44,13 +40,7 @@ import { lib } from "@assets/ts/nano";
       </ShowCardLibrary>
     </div>
     <div id="Card1" class="showcard w-screen hidden">
-      <ShowCardLibrary
-        id={1}
-        title={lib.get(1)!.titre}
-        description={lib.get(1)!.description}
-        fw={lib.get(1)!.logo}
-        linkSlice={lib.get(1)!.linkBox}
-      >
+      <ShowCardLibrary props={lib.get(1)!}>
         <div class="svelte w-full h-full block">
           <UploaderCard client:load />
         </div>
@@ -60,13 +50,7 @@ import { lib } from "@assets/ts/nano";
       </ShowCardLibrary>
     </div>
     <div id="Card2" class="showcard w-screen hidden">
-      <ShowCardLibrary
-        id={2}
-        title={lib.get(2)!.titre}
-        description={lib.get(2)!.description}
-        fw={lib.get(2)!.logo}
-        linkSlice={lib.get(2)!.linkBox}
-      >
+      <ShowCardLibrary props={lib.get(2)!}>
         <div class="svelte w-full h-full block">
           <CardPassWordInput client:load />
         </div>
@@ -76,57 +60,43 @@ import { lib } from "@assets/ts/nano";
       </ShowCardLibrary>
     </div>
     <div id="Card3" class="showcard w-screen hidden">
-      <ShowCardLibrary
-        id={3}
-        title={lib.get(3)!.titre}
-        description={lib.get(3)!.description}
-        fw={lib.get(3)!.logo}
-        linkSlice={lib.get(3)!.linkBox}
-      >
+      <ShowCardLibrary props={lib.get(3)!}>
         <div class="ts w-full h-[50vh] block">
           <CardTimedCarousel />
         </div>
       </ShowCardLibrary>
     </div>
     <div id="Card4" class="showcard w-screen hidden">
-      <ShowCardLibrary
-        id={4}
-        title={lib.get(4)!.titre}
-        description={lib.get(4)!.description}
-        fw={lib.get(4)!.logo}
-        linkSlice={lib.get(4)!.linkBox}
-      >
+      <ShowCardLibrary props={lib.get(4)!}>
         <div class="svelte w-full h-[50vh] block">
           <CardMultiSelect client:load />
         </div>
       </ShowCardLibrary>
     </div>
     <div id="Card5" class="showcard w-screen hidden">
-      <ShowCardLibrary
-        id={5}
-        title={lib.get(5)!.titre}
-        description={lib.get(5)!.description}
-        fw={lib.get(5)!.logo}
-        linkSlice={lib.get(5)!.linkBox}
-      >
+      <ShowCardLibrary props={lib.get(5)!}>
         <div class="ts w-full h-[50vh] block">
           <CardMenuBurger />
         </div>
       </ShowCardLibrary>
     </div>
     <div id="Card6" class="showcard w-screen hidden">
-      <ShowCardLibrary
-        id={6}
-        title={lib.get(6)!.titre}
-        description={lib.get(6)!.description}
-        fw={lib.get(6)!.logo}
-        linkSlice={lib.get(6)!.linkBox}
-      >
+      <ShowCardLibrary props={lib.get(6)!}>
         <div class="react w-full h-[50vh] block">
           <DiagonaleCard client:load />
         </div>
         <div class="svelte w-full h-[50vh] hidden">
           <DiagonalSvelt client:load />
+        </div>
+      </ShowCardLibrary>
+    </div>
+    <div id="Card7" class="showcard w-screen hidden">
+      <ShowCardLibrary props={lib.get(7)!}>
+        <div class="svelte w-full h-[50vh] block">
+          <FormEnblerSvelte client:load />
+        </div>
+        <div class="react w-full h-[50vh] hidden">
+          <FormEnablerCard client:load />
         </div>
       </ShowCardLibrary>
     </div>

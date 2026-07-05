@@ -184,7 +184,24 @@ const lib = new Map<number, LibInfo>([
       ],
       media: { type: "vidéo", link: DiagonalCarousel, widthMedia: 22 }
     }
-  ]
+  ], [7, {
+    id: 7,
+    titre: "Moteur de formulaire",
+    logo: ["svelte", "react"],
+    description: "Moteur de formulaire",
+    linkBox: [
+      [{
+        type: LinkType.Soon,
+        link: ""
+      }], [
+        {
+          type: LinkType.Soon,
+          link: ""
+        }
+      ]
+    ],
+    media: { type: "image", link: "" }
+  }]
 ]);
 
 export {

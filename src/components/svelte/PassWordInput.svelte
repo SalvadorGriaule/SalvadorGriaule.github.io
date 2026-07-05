@@ -88,7 +88,7 @@
             id="pw"
             type={ifVisible ? "text" : "password"}
             name="Password"
-            class="p-1.5 placeholder:text-center w-full"
+            class="py-1.5 pl-2 w-full"
             placeholder={!changeMode ? "Mot de passe" : "Nouveau mot de passe"}
             required
         />

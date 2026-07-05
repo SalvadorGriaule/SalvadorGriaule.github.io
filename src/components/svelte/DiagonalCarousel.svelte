@@ -14,7 +14,7 @@
         slides,
         distance = 65,
         navBtn = false,
-        classNameWH = "w-130 h-130",
+        classNameWH = "w-105 h-105 lg:w-130 lg:h-130",
         classNamePrin,
     }: DiagonalCarouselProps = $props();
 

@@ -24,7 +24,7 @@ function RGPDCheck({ RGPDText }: { RGPDText: () => JSX.Element }) {
                 </p>
             </div>
             {switcher && (
-                <div className="flex justify-center absolute z-100 left-0 top-0 w-full h-screen bg-[rgba(0,0,0,0.55)] backdrop-blur-sm">
+                <div className="flex justify-center absolute z-100 left-0 top-0 w-full h-screen bg-[rgba(0,0,0,0.55)]">
                     <div className="bg-white mt-28 w-[92.5%] h-[66vh] ml-[2.5%] p-2 py-1 overflow-hidden rounded-md shadow-lg shadow-zinc-700 lg:h-[70vh] lg:w-[70%] xl:w-1/2">
                         <div className="w-full px-.5 flex justify-end">
                             <button

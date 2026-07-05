@@ -72,7 +72,7 @@ function ifEmail(input: string) {
 }
 
 function ifName(input: string) {
-    return inputCheck(input, /[^a-zA-ZéàèçÉÀÈßÇ\s-]/)
+    return inputCheck(input, /^[a-zA-ZÀ-ÿ][a-zA-ZÀ-ÿ\s'-]{1,49}(?<!\s)$/,true)
 }
 
 function inputMinL(input: string) {
@@ -112,7 +112,7 @@ function selectCheck(input: string, select: string[]) {
 }
 
 function ifTel(input: string) {
-    let without = input.replaceAll(" ", "")
+    let without = input ? input.replaceAll(" ", "") : ""
     if (ifNumCheck(without)) return without.length == 10
     return false
 }
@@ -162,6 +162,10 @@ const validationPW = (rule: any[], input: string) => {
     return { test, disabled: !disabled }
 };
 
+const checkAll = (tab:boolean[]) => {
+    return !(tab.find((elem) => elem == false) === undefined)
+}
+
 const testList = {
     tel: ifTel,
     check: ifCheck,
@@ -183,4 +187,4 @@ const testList = {
 }
 
 
-export { testList, checkHoraire, checkingAll, inputCheck, fullNumCheck, nameCheck, emailCheck, sameCheck, inputMinL, selectCheck ,validationPW}
+export { testList, checkHoraire, checkingAll, checkAll, inputCheck, sameCheck ,validationPW}

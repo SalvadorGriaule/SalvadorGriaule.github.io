@@ -37,14 +37,14 @@ export default function FormEnabler({ formEntry, nameSubmit = "" }: { formEntry:
             <ValidatorDispatchContext value={dispatch} >
                 {[...formEntry].map((elem, i) => {
                     if (elem.includes("password")) return (
-                        <PassWordInput key={i} mode={elem.split("_")[0]} context={ValidatorDispatchContext}/>
-                    ) 
+                        <PassWordInput key={i} mode={elem.split("_")[0]} context={ValidatorDispatchContext} />
+                    )
                     if (elem == "checkboxRGPD") return (
-                        <RGPDCheck RGPDText={FalseRGPD}/>
+                        <RGPDCheck RGPDText={FalseRGPD} />
                     )
                     return (< Input key={i} inputType={elem} />)
                 })}
-                <input type="submit" name={nameSubmit} value="Envoyer" disabled={isEnable} className="p-2 bg-green-600 disabled:bg-slate-600 rounded-2xl text-white" />
+                <input type="submit" name={nameSubmit} value="Envoyer" disabled={isEnable} className="p-2 bg-green-600 disabled:bg-slate-400 disabled:text-black duration-150 rounded-2xl text-white" />
             </ValidatorDispatchContext>
         </ValidatorContext>
     )

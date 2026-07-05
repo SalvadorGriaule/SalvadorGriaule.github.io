@@ -66,5 +66,7 @@ interface ProjetInfo {
   phoneSrc?:{vid?:string,img?:string};
 }
 
+type InputType = "nom" | "prenom" | "tel" | "email"
+
 export { LinkType, Device };
-export type { LinkSlice, OngletFunc, LibInfo, fwf, Tech, ProjetInfo, entrerCV };
+export type { InputType, LinkSlice, OngletFunc, LibInfo, fwf, Tech, ProjetInfo, entrerCV };
