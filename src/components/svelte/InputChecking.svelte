@@ -67,9 +67,9 @@
     if (defaultVal) value = defaultVal;
 
     let styleCheck = $derived.by(() => {
-        if (!value) return "border-zinc-500";
-        if (check) return "border-green-600";
-        return "border-red-600";
+        if (!value) return "border-zinc-500 focus:outline-zinc-500 focus-visible:outline-zinc-500";
+        if (check) return "border-green-600 focus:outline-green-600 focus-visible:outline-green-600";
+        return "border-red-600 focus:outline-red-600 focus-visible:outline-red-600";
     });
 
     const styleInput =
@@ -92,7 +92,7 @@
         bind:value
         type={selectInput.type}
         {name}
-        class="{styleCheck} {styleInput}"
+        class="{styleCheck} {styleInput} focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-offset-0"
         placeholder={!placeholder ? selectInput.placeholder : placeholder}
         autocomplete={searchMode ? "off" : "on"}
         {disabled}

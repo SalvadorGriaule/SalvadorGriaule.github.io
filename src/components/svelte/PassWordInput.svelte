@@ -36,32 +36,42 @@
     let passwordInput: string = $state("");
     let outCheck: boolean[] = $state(Array(allCheck.length).fill(false));
     let checking: string = $derived(checkingAll([...outCheck], passwordInput));
-    
+
     let widthCheckDiv = $state(0);
     let heightCheckDiv: 120 | 82 = $derived(widthCheckDiv < 470 ? 120 : 82);
 
-    let ifVisible = $state(false);
-    
-    const onclick = () => {
-        ifVisible = !ifVisible;
-    };
+    let isVisible = $state(false);
+    let isUnfold = $state(false);
+    let wrapper: HTMLDivElement | null = $state(null)
+    let activeElement: Element | null | undefined = $state(null);
 
-    const onfocus = () => {
+    const unfold = () => {
         anime({
             targets: divCheck,
             height: `${heightCheckDiv}px`,
             duration: 250,
             easing: "easeInQuad",
         });
+        isUnfold = true;
     };
 
-    const onfocusout = () => {
+    const fold = () => {
         anime({
             targets: divCheck,
             height: `0px`,
             duration: 250,
             easing: "easeInQuad",
         });
+        isUnfold = false;
+    };
+
+    const onclick = () => {
+        isVisible = !isVisible;
+        if (!isUnfold) unfold();
+    };
+
+    const onfocus = () => {
+        if (!isUnfold) unfold();
     };
 
     const oninput = (
@@ -69,8 +79,15 @@
             currentTarget: EventTarget & HTMLInputElement;
         },
     ) => {
-        passwordInput = e.currentTarget.value
+        passwordInput = e.currentTarget.value;
     };
+
+    $effect(() => {
+        if (!wrapper?.contains(activeElement ?? null)) {
+            
+            fold();
+        }
+    });
 
     $effect(() => {
         greatPW = checking;
@@ -79,24 +96,25 @@
     });
 </script>
 
-<div class="w-full">
+<svelte:document bind:activeElement />
+<div class="w-full" bind:this={wrapper}>
     <div class="{checking} relative flex rounded-xl overflow-hidden border">
         <input
-            {onfocusout}
             {onfocus}
             {oninput}
             id="pw"
-            type={ifVisible ? "text" : "password"}
+            type={isVisible ? "text" : "password"}
             name="Password"
-            class="py-1.5 pl-2 w-full"
+            class="py-1.5 pl-2 w-full focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-0"
             placeholder={!changeMode ? "Mot de passe" : "Nouveau mot de passe"}
             required
         />
         <button
             {onclick}
+            id="eyeCk"
             class="absolute justify-center items-center right-4 w-6 h-9"
         >
-            <Eye etat={ifVisible} />
+            <Eye etat={isVisible} />
         </button>
     </div>
 
@@ -119,7 +137,7 @@
                     </div>
                     <p
                         class={check.fn(passwordInput)
-                            ? "text-green-600"
+                            ? "text-green-600 "
                             : "text-slate-600"}
                     >
                         {@html check.msg}

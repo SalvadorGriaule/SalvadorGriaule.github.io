@@ -17,9 +17,9 @@ function basicState(state: number) {
         case 0:
             return "border-zinc-500"
         case 1:
-            return "border-green-600"
+            return "border-green-600 focus:outline-green-600"
         default:
-            return "border-red-600"
+            return "border-red-600 focus:outline-red-600"
     }
 }
 
