@@ -36,42 +36,34 @@
     let passwordInput: string = $state("");
     let outCheck: boolean[] = $state(Array(allCheck.length).fill(false));
     let checking: string = $derived(checkingAll([...outCheck], passwordInput));
+    
+    $inspect(outCheck);
 
     let widthCheckDiv = $state(0);
     let heightCheckDiv: 120 | 82 = $derived(widthCheckDiv < 470 ? 120 : 82);
 
     let isVisible = $state(false);
     let isUnfold = $state(false);
-    let wrapper: HTMLDivElement | null = $state(null)
+    let wrapper: HTMLDivElement | null = $state(null);
     let activeElement: Element | null | undefined = $state(null);
 
-    const unfold = () => {
+    const folder = (sens: "fold" | "unfold") => {
         anime({
             targets: divCheck,
-            height: `${heightCheckDiv}px`,
+            height: sens == "unfold" ? `${heightCheckDiv}px` : `0px`,
             duration: 250,
             easing: "easeInQuad",
         });
-        isUnfold = true;
-    };
-
-    const fold = () => {
-        anime({
-            targets: divCheck,
-            height: `0px`,
-            duration: 250,
-            easing: "easeInQuad",
-        });
-        isUnfold = false;
+        isUnfold = sens == "unfold";
     };
 
     const onclick = () => {
         isVisible = !isVisible;
-        if (!isUnfold) unfold();
+        if (!isUnfold) folder("unfold");
     };
 
     const onfocus = () => {
-        if (!isUnfold) unfold();
+        if (!isUnfold) folder("unfold");
     };
 
     const oninput = (
@@ -84,16 +76,17 @@
 
     $effect(() => {
         if (!wrapper?.contains(activeElement ?? null)) {
-            
-            fold();
+            folder("fold");
         }
     });
 
     $effect(() => {
         greatPW = checking;
-        boolPW = checking == "border-green-600";
+        boolPW = checking == "border-green-600 focus:outline-green-600";
         Password = passwordInput;
     });
+
+    $inspect(Password,boolPW)
 </script>
 
 <svelte:document bind:activeElement />
@@ -121,7 +114,7 @@
     <div
         bind:this={divCheck}
         bind:clientWidth={widthCheckDiv}
-        class="justify-start' h-0 flex overflow-hidden"
+        class="justify-start h-0 flex overflow-hidden"
     >
         <div
             class="flex flex-col flex-wrap ml-2 my-1"
