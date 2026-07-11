@@ -35,9 +35,16 @@
 
     let passwordInput: string = $state("");
     let outCheck: boolean[] = $state(Array(allCheck.length).fill(false));
-    let checking: string = $derived(checkingAll([...outCheck], passwordInput));
-    
-    $inspect(outCheck);
+    let checking = $derived(checkingAll([...outCheck], passwordInput));
+    let outline: string = $derived.by(() => {
+        switch (checking) {
+            case "border-green-600 focus:outline-green-600":
+                return "outline-green-600";
+            case "border-red-600 focus:outline-red-600":
+                return "outline-red-600";
+        }
+        return "outline-zinc-500";
+    });
 
     let widthCheckDiv = $state(0);
     let heightCheckDiv: 120 | 82 = $derived(widthCheckDiv < 470 ? 120 : 82);
@@ -85,17 +92,18 @@
         boolPW = checking == "border-green-600 focus:outline-green-600";
         Password = passwordInput;
     });
-
-    $inspect(Password,boolPW)
 </script>
 
 <svelte:document bind:activeElement />
 <div class="w-full" bind:this={wrapper}>
-    <div class="{checking} relative flex rounded-xl overflow-hidden border">
+    <div
+        style:outline-width={isUnfold ? "1px" : ""}
+        style:outline-style={isUnfold ? "solid" : ""}
+        class="{checking} {outline} relative flex rounded-xl overflow-hidden border"
+    >
         <input
             {onfocus}
             {oninput}
-            id="pw"
             type={isVisible ? "text" : "password"}
             name="Password"
             class="py-1.5 pl-2 w-full focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-0"
@@ -104,7 +112,6 @@
         />
         <button
             {onclick}
-            id="eyeCk"
             class="absolute justify-center items-center right-4 w-6 h-9"
         >
             <Eye etat={isVisible} />

@@ -11,7 +11,7 @@
 
 </script>
 
-<div class="w-full flex flex-col items-center space-y-2">
+<div class="w-4/5 lg:w-full flex flex-col items-center space-y-2">
   <button class="p-2 rounded-2xl text-xl bg-gray-400" {onclick}> 
     Mettre une image par default : <span class="{defaultImage ? 'text-green-700' : "text-red-700"} font-bold">{defaultImage ? "Oui" : "Non"}</span>
   </button>

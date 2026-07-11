@@ -16,7 +16,7 @@ export default function CircleCard() {
   }, []);
 
   return (
-    <main className="flex justify-center items-center flex-col">
+    <main className="flex justify-center items-center flex-col w-full">
       <CarouselCircle urlArr={imgHolder} dim={dim} currentImg={current} />
       <div className="mt-5 space-x-2">
         {imgHolder.map((elem, i) => {

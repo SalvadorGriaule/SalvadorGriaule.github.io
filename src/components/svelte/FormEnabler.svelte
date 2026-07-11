@@ -12,7 +12,6 @@
     }: { formEntry: Set<InputSet>; nameSubmit?: string } = $props();
 
     let validationArr: boolean[] = $state(Array(formEntry.size).fill(false));
-    $inspect(validationArr,"va")
 </script>
 
 {#each formEntry as entry, i}

@@ -1,5 +1,5 @@
 import { type LibInfo, LinkType } from "@svelte/type";
-import { atom, map, computed } from "nanostores";
+import { atom, map, computed, onSet } from "nanostores";
 
 import ImgOfUploader from "@public/img/ImgCardUploader.png";
 import CarouselGif from "@public/img/CircleCarCut.webm";

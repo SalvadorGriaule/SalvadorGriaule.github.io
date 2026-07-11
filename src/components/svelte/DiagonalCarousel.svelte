@@ -50,7 +50,6 @@
     let container: HTMLDivElement[] = $state([]);
 
     const navigateCarousel = (sens: "down" | "up") => {
-        console.log("sens", sens);
         if (locked || phase != "idle") return;
         locked = true;
 

@@ -13,8 +13,6 @@
             disaTamp = disabled
         }
     });
-
-    $inspect(disabled)
 </script>
 
 <input

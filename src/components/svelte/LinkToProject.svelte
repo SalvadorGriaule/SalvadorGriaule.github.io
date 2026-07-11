@@ -5,7 +5,6 @@
     let {projetLink}:{projetLink:number} = $props()
 
     let linkPCV:ProjetInfo = projet[projetLink];
-    $inspect(linkPCV)
 </script>
 
 <a class="h-full" href={"#" + linkPCV.titre.replaceAll(" ","_")}>

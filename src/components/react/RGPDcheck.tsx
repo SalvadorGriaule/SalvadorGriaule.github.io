@@ -11,7 +11,6 @@ function RGPDCheck({ RGPDText }: { RGPDText: () => JSX.Element }) {
     }, [])
     const dispatch = useContext(ValidatorDispatchContext)
     const handleChange = useCallback((input: React.ChangeEvent) => {
-        console.log(input.target.checked, input.type);
         setEntry(input.target.checked)
         if (dispatch) dispatch({ name: "checkboxRGPD", isValid: !testList.check(input.target.checked) })
     }, [entry])

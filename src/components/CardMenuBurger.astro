@@ -32,6 +32,7 @@ import Burger from "@assets/menuBurger.svg";
 <script>
   import { getNav, navDeskToMob, animeBurger } from "@assets/ts/burgerMenu";
   import { currentVisible, inSlot } from "@assets/ts/nano";
+  import { undefined } from "astro:schema";
 
   const btnBurger = document.getElementById("burger");
   const card = document.getElementById("cardBurger");
@@ -39,6 +40,7 @@ import Burger from "@assets/menuBurger.svg";
   const border = document.querySelectorAll(".resBorder");
 
   let bool = false;
+  let menuBurger: HTMLElement | undefined;
 
   const resCB: MutationCallback = (mut) => {
     let wid = trueH?.clientWidth;
@@ -55,9 +57,11 @@ import Burger from "@assets/menuBurger.svg";
 
   obsResize.observe(trueH, { attributes: true, attributeFilter: ["style"] });
 
-  btnBurger.addEventListener("mousedown", () => {     
-    animeBurger(!bool, menuBurger);
-    bool = !bool;
+  btnBurger.addEventListener("mousedown", () => {
+    if (menuBurger) {
+      animeBurger(!bool, menuBurger);
+      bool = !bool;
+    }
   });
 
   currentVisible.listen((val) => {
@@ -88,20 +92,19 @@ import Burger from "@assets/menuBurger.svg";
           westEast == "west"
             ? wTrueH + (initPos - e.screenX) * 2 + "px"
             : wTrueH - (initPos - e.screenX) * 2 + "px";
-      
     });
 
     card.addEventListener("mouseup", () => {
       resize = false;
       wTrueH = trueH?.clientWidth;
       westEast = null;
-      card.style.cursor = "default"
+      card.style.cursor = "default";
     });
 
-    const menuBurger = navDeskToMob(
+    menuBurger = navDeskToMob(
       getNav(trueH.querySelector("nav")),
       trueH,
-      270
+      270,
     );
   });
 </script>

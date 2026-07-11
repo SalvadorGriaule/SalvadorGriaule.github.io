@@ -4,7 +4,6 @@
   import LinkToProject from "./LinkToProject.svelte";
 
   let { activeRight }: { activeRight: entrerCV | null } = $props();
-  $inspect(activeRight?.idProj);
 </script>
 
 {#if activeRight}

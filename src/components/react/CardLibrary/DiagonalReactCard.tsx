@@ -8,7 +8,7 @@ export default function DiagonaleCard() {
     const imgHolder = [ImgHolder1, ImgHolder2, ImgHolder3];
 
     return (
-        <main className="flex justify-center items-center flex-col">
+        <main className="flex w-full justify-center items-center flex-col">
             <DiagonalCarousela slides={imgHolder}/>
 
         </main>

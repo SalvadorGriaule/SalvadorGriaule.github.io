@@ -1,4 +1,4 @@
 @import "tailwindcss";
-@source inline("{focus:,focus-visible:}outline-green-600");
-@source inline("{focus:,focus-visible:}outline-red-600");
-@source inline("{focus:,focus-visible:}outline-zinc-500");
+@source inline("{focus:,focus-visible:,}outline-green-600");
+@source inline("{focus:,focus-visible:,}outline-red-600");
+@source inline("{focus:,focus-visible:,}outline-zinc-500");

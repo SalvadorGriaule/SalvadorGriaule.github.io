@@ -40,7 +40,7 @@ export default function FormEnabler({ formEntry, nameSubmit = "" }: { formEntry:
                         <PassWordInput key={i} mode={elem.split("_")[0]} context={ValidatorDispatchContext} />
                     )
                     if (elem == "checkboxRGPD") return (
-                        <RGPDCheck RGPDText={FalseRGPD} />
+                        <RGPDCheck key={i} RGPDText={FalseRGPD} />
                     )
                     return (< Input key={i} inputType={elem} />)
                 })}

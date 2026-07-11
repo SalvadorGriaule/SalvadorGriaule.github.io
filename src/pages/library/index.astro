@@ -31,7 +31,7 @@ import { lib } from "@assets/ts/nano";
     <LibraryPage client:load lib={lib} />
     <div id="Card0" class="showcard w-screen hidden">
       <ShowCardLibrary props={lib.get(0)!}>
-        <div class="svelte w-full h-full block">
+        <div class="svelte w-full h-full flex justify-center">
           <CircleCard client:load />
         </div>
         <div class="react w-full h-full hidden">
@@ -41,7 +41,7 @@ import { lib } from "@assets/ts/nano";
     </div>
     <div id="Card1" class="showcard w-screen hidden">
       <ShowCardLibrary props={lib.get(1)!}>
-        <div class="svelte w-full h-full block">
+        <div class="svelte w-full h-full flex justify-center">
           <UploaderCard client:load />
         </div>
         <div class="vuejs w-full h-full hidden">
@@ -51,7 +51,7 @@ import { lib } from "@assets/ts/nano";
     </div>
     <div id="Card2" class="showcard w-screen hidden">
       <ShowCardLibrary props={lib.get(2)!}>
-        <div class="svelte w-full h-full block">
+        <div class="svelte w-full h-full flex justify-center">
           <CardPassWordInput client:load />
         </div>
         <div class="react w-full h-full hidden">
@@ -61,28 +61,28 @@ import { lib } from "@assets/ts/nano";
     </div>
     <div id="Card3" class="showcard w-screen hidden">
       <ShowCardLibrary props={lib.get(3)!}>
-        <div class="ts w-full h-[50vh] block">
+        <div class="ts w-full h-[50vh] flex justify-center">
           <CardTimedCarousel />
         </div>
       </ShowCardLibrary>
     </div>
     <div id="Card4" class="showcard w-screen hidden">
       <ShowCardLibrary props={lib.get(4)!}>
-        <div class="svelte w-full h-[50vh] block">
+        <div class="svelte w-full h-[50vh] flex justify-center">
           <CardMultiSelect client:load />
         </div>
       </ShowCardLibrary>
     </div>
     <div id="Card5" class="showcard w-screen hidden">
       <ShowCardLibrary props={lib.get(5)!}>
-        <div class="ts w-full h-[50vh] block">
+        <div class="ts w-full h-[50vh] flex justify-center">
           <CardMenuBurger />
         </div>
       </ShowCardLibrary>
     </div>
     <div id="Card6" class="showcard w-screen hidden">
       <ShowCardLibrary props={lib.get(6)!}>
-        <div class="react w-full h-[50vh] block">
+        <div class="react w-full h-[50vh] flex justify-center">
           <DiagonaleCard client:load />
         </div>
         <div class="svelte w-full h-[50vh] hidden">
@@ -92,7 +92,7 @@ import { lib } from "@assets/ts/nano";
     </div>
     <div id="Card7" class="showcard w-screen hidden">
       <ShowCardLibrary props={lib.get(7)!}>
-        <div class="svelte w-full h-[50vh] block">
+        <div class="svelte w-full h-[50vh] flex justify-center">
           <FormEnblerSvelte client:load />
         </div>
         <div class="react w-full h-[50vh] hidden">
@@ -110,7 +110,7 @@ import { lib } from "@assets/ts/nano";
 
     const callbackVis: MutationCallback = (mut) => {
       for (let elem of mut) {
-        if (elem.target.classList.contains("block"))
+        if (elem.target.classList.contains("flex"))
           currentVisible.set({
             id: Number(elem.target.id.replace("Card", "")),
             cardSection: document.getElementById(elem.target.id),

@@ -22,7 +22,7 @@ export default function PassWordInput({ mode, context }: {
     const dispatch = useContext(context)
 
     const animeFocus = (sens: "focus" | "blur") => {
-        console.log(sens == "focus", critDiv.current?.style.height);
+       
         anime({
             targets: critDiv.current,
             duration: 400,
@@ -50,10 +50,6 @@ export default function PassWordInput({ mode, context }: {
         setCritMsg(valid.test);
         if (dispatch) dispatch({ name: mode + "_password", isValid: valid.disabled })
     }, []);
-
-    useEffect(() => {
-        console.log(critMsg);
-    })
 
     return (
         <div className="flex flex-col w-full space-y-1.5">

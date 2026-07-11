@@ -26,7 +26,6 @@
   let ago = (date: Date) => {
     const now = new Date();
     const diff = Number();
-    console.log(diff);
   };
 
   let carousel: HTMLDivElement;

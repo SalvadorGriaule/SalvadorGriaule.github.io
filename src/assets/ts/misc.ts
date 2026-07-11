@@ -1,10 +1,10 @@
 const makeVisible = (bool: boolean, div: Element | null | undefined) => {
   if (div && bool) {
-    div.classList.add("block");
+    div.classList.add("flex");
     div.classList.remove("hidden");
   } else if (div) {
     div.classList.add("hidden");
-    div.classList.remove("block");
+    div.classList.remove("flex");
   }
 };
 
