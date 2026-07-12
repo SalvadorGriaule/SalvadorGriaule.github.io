@@ -20,7 +20,7 @@ type entrerCV = {
   niveau: number;
   duréeStage?: string;
   pdf?: string;
-  idProj?:number;
+  idProj?: number;
   taskStage: string[];
 };
 
@@ -62,11 +62,11 @@ interface ProjetInfo {
   lien: LinkSlice[];
   device: Device[];
   descritption: string;
-  desktopSrc:{vid?:string,img?:string};
-  phoneSrc?:{vid?:string,img?:string};
+  desktopSrc: { vid?: string, img?: string };
+  phoneSrc?: { vid?: string, img?: string };
 }
 
-type InputType = "nom" | "prenom" | "tel" | "email"
+type InputType = "nom" | "prenom" | "tel" | "email" | "RGPD"
 
 export { LinkType, Device };
 export type { InputType, LinkSlice, OngletFunc, LibInfo, fwf, Tech, ProjetInfo, entrerCV };
