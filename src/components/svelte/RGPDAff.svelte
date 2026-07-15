@@ -4,16 +4,16 @@
     const onclick = () => {
         rgpdAff.rgpdAff = false;
     };
-    console.log(rgpdAff.rgpdAff);
+
 </script>
 
 <div
     id="RGPDPage"
     style:display={rgpdAff.rgpdAff ? "flex" : "none"}
-    class="justify-center absolute z-[100] left-0 top-0 w-full h-full bg-[rgba(0,0,0,0.55)] backdrop-blur-sm"
+    class="justify-center absolute z-100 left-0 top-0 w-full h-full bg-[rgba(0,0,0,0.55)] backdrop-blur-sm"
 >
     <div
-        class=" bg-white mt-28 w-[92.5%] h-[75vh] ml-[2.5%] px-2 py-1 overflow-hidden rounded-md shadow-lg shadow-zinc-700 lg:h-[52vh] lg:w-[45%]"
+        class=" bg-white mt-28 w-[92.5%] h-2/3 ml-[2.5%] px-2 py-1 overflow-hidden rounded-md shadow-lg shadow-zinc-700 lg:w-3/4"
     >
         <button class="flex justify-end h-6 w-full pt-1 pr-1" {onclick}>
             <div class="w-6">
@@ -25,7 +25,7 @@
                 Réglement général sur la protection des données
             </h2>
             <p
-                class="h-[60vh] overflow-y-scroll lg:h-96 xl:text-lg border-cyan-600 border-2 p-2 overflow-hidden rounded"
+                class=" overflow-y-scroll h-80 xl:text-lg border-cyan-600 border-2 p-2 overflow-hidden rounded"
             >
                 Les informations recueillies sur ce formulaire sont enregistrées
                 dans un fichier informatisé par <span class="text-cyan-600"

@@ -5,12 +5,6 @@ import { ValidatorContext, ValidatorDispatchContext } from "./context/ContextAut
 import PassWordInput from "./PasswordInput";
 import RGPDCheck from "./RGPDcheck";
 
-function FalseRGPD() {
-    return (
-        <p>Ceci est une fause RGPD</p>
-    )
-}
-
 export default function FormEnabler({ formEntry, nameSubmit = "" }: { formEntry: Set<InputType>, nameSubmit?: string }) {
     const [validationMap, setValidationMap] = useState(() => {
         const map = new Map<InputType, boolean>();
@@ -40,7 +34,7 @@ export default function FormEnabler({ formEntry, nameSubmit = "" }: { formEntry:
                         <PassWordInput key={i} mode={elem.split("_")[0]} context={ValidatorDispatchContext} />
                     )
                     if (elem == "checkboxRGPD") return (
-                        <RGPDCheck key={i} RGPDText={FalseRGPD} />
+                        <RGPDCheck key={i} />
                     )
                     return (< Input key={i} inputType={elem} />)
                 })}

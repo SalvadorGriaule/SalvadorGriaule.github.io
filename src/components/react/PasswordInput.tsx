@@ -1,5 +1,5 @@
 import { validationPW } from "@assets/ts/inputCheck";
-import { useCallback, useContext, useEffect, useRef, useState, type ActionDispatch } from "react";
+import { useCallback, useContext, useRef, useState, type ActionDispatch } from "react";
 import CheckSvg from "./SvgComponents/CheckSvg";
 import Eye from "./Eye";
 import anime from "animejs";
