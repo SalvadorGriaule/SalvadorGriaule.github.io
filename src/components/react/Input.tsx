@@ -14,20 +14,20 @@ export default function Input({ inputType, defaultVal = "" }: { inputType: Input
 
         const isValid = useMemo(
             () => {
-                const test = current.fn(entry)
+                const test = entry ? current.fn(entry) : undefined
                 if (dispatch) dispatch({ name: inputType, isValid: test == undefined ? true : !test })
                 switch (test) {
                     case true:
-                        return "border-green-600"
+                        return "border-green-600 focus:outline-green-600 focus-visible:outline-green-600"
                     case false:
-                        return "border-red-600"
+                        return "border-red-600 focus:outline-red-600 focus-visible:outline-red-600"
                     default:
-                        return "border-zinc-600"
+                        return "border-zinc-500 focus:outline-zinc-500 focus-visible:outline-zinc-500"
                 }
             }, [entry]
         )
         return (
-            <input className={"border p-2 rounded-2xl w-full " + isValid} type={current.type} name={current.name} placeholder={current.placeholder} onChange={handleChange} />
+            <input className={"border p-2 rounded-2xl w-full focus-visible:outline-1 focus-visible:outline-solid focus-visible:outline-offset-0 " + isValid} type={current.type} name={current.name} placeholder={current.placeholder} onChange={handleChange} />
         )
     }
     return (<p>

@@ -1,16 +1,17 @@
 import { type InputType } from "./module/type";
 import Input from "./Input";
-import { useMemo, useCallback, useState } from "react";
+import { useMemo, useCallback, useState, useEffect } from "react";
 import { ValidatorContext, ValidatorDispatchContext } from "./context/ContextAuth";
 import PassWordInput from "./PasswordInput";
 import RGPDCheck from "./RGPDcheck";
 
 export default function FormEnabler({ formEntry, nameSubmit = "" }: { formEntry: Set<InputType>, nameSubmit?: string }) {
     const [validationMap, setValidationMap] = useState(() => {
-        const map = new Map<InputType, boolean>();
-        formEntry.forEach(elem => map.set(elem, true));
+        const map = new Map<InputType, boolean | undefined>();
+        formEntry.forEach(elem => map.set(elem, undefined));
         return map;
     });
+    useEffect(() => console.log(validationMap));
 
     const dispatch = useCallback((action: { name: InputType, isValid: boolean }) => {
         setValidationMap(prev => {
@@ -25,6 +26,10 @@ export default function FormEnabler({ formEntry, nameSubmit = "" }: { formEntry:
         () => ![...validationMap.values()].every((elem) => elem === false),
         [validationMap]
     );
+
+    useEffect(() => {
+        if(document) console.log("fe",document.activeElement);
+    })
 
     return (
         <ValidatorContext value={validationMap}>

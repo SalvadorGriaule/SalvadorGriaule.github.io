@@ -3,7 +3,10 @@ import type { PassCheck, TypeOpt } from "./type";
 
 export const mapOpt: Map<string, TypeOpt> = new Map([
     ["email", { name: "email", type: "email", fn: testList.email, placeholder: "E-mail" }],
-    ["checkboxRGPD", { name: "checkboxRGPD", type: "checkbox", fn: testList.check }]
+    ["checkboxRGPD", { name: "checkboxRGPD", type: "checkbox", fn: testList.check }],
+    ["prenom", { name: "prenom", type: "text", fn: testList.name, placeholder: "Prenom" }],
+    ["nom", { name: "nom", type: "text", fn: testList.name, placeholder: "Nom" }],
+    ["tel", { name: "tel", type: "text", fn: testList.tel, placeholder: "Téléphone" }]
 ])
 
 export const allCheck: PassCheck[] = [
