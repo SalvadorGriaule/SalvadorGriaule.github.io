@@ -201,7 +201,21 @@ const lib = new Map<number, LibInfo>([
       ]
     ],
     media: { type: "image", link: "" }
-  }]
+  }], [8,
+    {
+      id: 8,
+      titre: "Différenciateur d'image",
+      logo: ["svelte"],
+      description: "Différenciateur d'image",
+      linkBox: [
+        [{
+          type: LinkType.Soon,
+          link: ""
+        }]
+      ],
+      media: { type: "image", link: "" }
+    }
+  ]
 ]);
 
 export {

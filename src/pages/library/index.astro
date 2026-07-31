@@ -19,10 +19,12 @@ import CardPassWordInput from "@svelte/CardLibrary/CardPassWordInput.svelte";
 import CardMultiSelect from "@svelte/CardLibrary/CardMultiSelect.svelte";
 import DiagonalSvelt from "@svelte/CardLibrary/DiagonaleCarouselCard.svelte";
 import FormEnblerSvelte from "@svelte/CardLibrary/CardFormEnabler.svelte";
+import Card2DiffImg from "@svelte/CardLibrary/Card2DiffImg.svelte";
 // import vue
 import UploaderCardVue from "@vue/CardLibrary/UploaderCard.vue";
 // import module
 import { lib } from "@assets/ts/nano";
+import Diff2ImgAstroComponent from "@svelte/Diff2Img.svelte";
 ---
 
 <Layout>
@@ -97,6 +99,13 @@ import { lib } from "@assets/ts/nano";
         </div>
         <div class="react w-full h-[50vh] hidden">
           <FormEnablerCard client:load />
+        </div>
+      </ShowCardLibrary>
+    </div>
+    <div id="Card8" class="showcard w-screen hidden">
+      <ShowCardLibrary props={lib.get(8)!}>
+        <div class="svelte w-full h-[50vh] flex justify-center">
+          <Card2DiffImg client:load />
         </div>
       </ShowCardLibrary>
     </div>
