@@ -14,43 +14,61 @@
     let currentImg = $state(0);
     let btnCar: HTMLDivElement[] = $state([]);
     let carousel: null | HTMLDivElement = $state(null);
+    let carouselWidth = $state(0)
+    let cycle: boolean = $state(true);
+
+    const inResize = () => {
+        if (carousel)
+            carousel.scrollLeft = currentImg * carousel.children[0].offsetWidth;
+    };
+
+    const progNav = () => {
+        anime({
+            targets: btnCar[currentImg],
+            width: "100%",
+            duration: 3400,
+            easing: "linear",
+            complete: function () {
+                currentImg++;
+                btnCar[currentImg - 1].style.width = "0%";
+                if (carousel && currentImg == srcArr.length) {
+                    currentImg = 0;
+                    carousel.scrollLeft = 0;
+                } else {
+                    if (carousel)
+                        carousel.scrollBy({
+                            left: carousel.children[0].offsetWidth,
+                            behavior: "smooth",
+                        });
+                }
+                cycle = true
+            },
+        });
+        cycle = false;
+    };
+
+    $effect(() => {
+        if(cycle && carouselWidth > 0){
+            progNav()
+        } else if (cycle && carouselWidth == 0) {
+            onclick(0);
+        }
+    }) 
 
     const onclick = (num: number) => {
-        if (carousel){
-            carousel.scrollLeft = num * (carousel.children[0].offsetWidth)
-            if(currentImg != num){
-                anime.remove(btnCar[currentImg])
+        if (carousel) {
+            carousel.scrollLeft = num * carousel.children[0].offsetWidth;
+            if (currentImg != num) {
+                anime.remove(btnCar[currentImg]);
                 btnCar[currentImg].style.width = "0%";
                 currentImg = num;
-                
+                cycle = true;
             }
-
         }
     };
 
     onMount(() => {
-        setInterval(() => {
-            anime({
-                targets: btnCar[currentImg],
-                width: "100%",
-                duration: 3400,
-                easing: "linear",
-                complete: function () {
-                    currentImg++;
-                    btnCar[currentImg - 1].style.width = "0%";
-                    if (carousel && currentImg == srcArr.length) {
-                        currentImg = 0;
-                        carousel.scrollLeft = 0;
-                    } else {
-                        if (carousel)
-                            carousel.scrollBy({
-                                left: carousel.children[0].offsetWidth,
-                                behavior: "smooth",
-                            });
-                    }
-                },
-            });
-        }, 3410);
+        breakPointAdd(inResize);
     });
 </script>
 
@@ -59,6 +77,7 @@
 >
     <div
         bind:this={carousel}
+        bind:clientWidth={carouselWidth}
         class="flex overflow-hidden scroll-smooth snap-mandatory snap-always snap-x"
     >
         {#each srcArr as elem, i}

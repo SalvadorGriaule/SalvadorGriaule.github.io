@@ -5,7 +5,7 @@ let currentImg = 0;
 const initNav = (target: HTMLElement, carousel: HTMLElement) => {
     const tabDiv = document.createElement("div");
     tabDiv.className = "flex h-3 w-full mt-2";
-    let itemLenght = `${100 / carousel.children.length - 0.5}%`  
+    let itemLenght = `${100 / carousel.children.length - 0.5}%`
     for (let i = 0; i < carousel.children.length; i++) {
         let j = i;
         const div = document.createElement("div");
@@ -50,7 +50,7 @@ const toScrollClick = (pos: number, carousel: HTMLElement) => {
     if (currentImg != pos) {
         const btnCar = document.querySelectorAll(".btnCar");
         anime.remove(btnCar[currentImg].children[0])
-        btnCar[currentImg].children[0].style.width = "0%";
+        if (btnCar[currentImg] && btnCar[currentImg]?.children[0]) btnCar[currentImg].children[0].style.width = "0%";
         currentImg = pos;
         progNav(btnCar, carousel);
     }

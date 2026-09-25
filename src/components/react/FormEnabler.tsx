@@ -11,7 +11,6 @@ export default function FormEnabler({ formEntry, nameSubmit = "" }: { formEntry:
         formEntry.forEach(elem => map.set(elem, undefined));
         return map;
     });
-    useEffect(() => console.log(validationMap));
 
     const dispatch = useCallback((action: { name: InputType, isValid: boolean }) => {
         setValidationMap(prev => {
@@ -26,10 +25,6 @@ export default function FormEnabler({ formEntry, nameSubmit = "" }: { formEntry:
         () => ![...validationMap.values()].every((elem) => elem === false),
         [validationMap]
     );
-
-    useEffect(() => {
-        if(document) console.log("fe",document.activeElement);
-    })
 
     return (
         <ValidatorContext value={validationMap}>

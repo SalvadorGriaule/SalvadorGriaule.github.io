@@ -113,7 +113,7 @@ const lib = new Map<number, LibInfo>([
     {
       id: 3,
       titre: "Carousel à bouton",
-      logo: ["ts"],
+      logo: ["ts", "svelte"],
       description: "Carousel à bouton",
       linkBox: [
         [
@@ -121,7 +121,7 @@ const lib = new Map<number, LibInfo>([
             type: LinkType.GitHub,
             link: "https://github.com/SalvadorGriaule/CarouselBtn",
           },
-        ],
+        ], [{ type: LinkType.Soon }]
       ],
       media: { type: "vidéo", link: BtnCarousel, widthMedia: 19 },
     },

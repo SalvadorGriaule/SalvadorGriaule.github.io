@@ -20,11 +20,11 @@ import CardMultiSelect from "@svelte/CardLibrary/CardMultiSelect.svelte";
 import DiagonalSvelt from "@svelte/CardLibrary/DiagonaleCarouselCard.svelte";
 import FormEnblerSvelte from "@svelte/CardLibrary/CardFormEnabler.svelte";
 import Card2DiffImg from "@svelte/CardLibrary/Card2DiffImg.svelte";
+import CardSvelteTimedCar from "@svelte/CardLibrary/CardSvelteTimedCar.svelte"
 // import vue
 import UploaderCardVue from "@vue/CardLibrary/UploaderCard.vue";
 // import module
 import { lib } from "@assets/ts/nano";
-import Diff2ImgAstroComponent from "@svelte/Diff2Img.svelte";
 ---
 
 <Layout>
@@ -36,7 +36,7 @@ import Diff2ImgAstroComponent from "@svelte/Diff2Img.svelte";
         <div class="svelte w-full h-full flex justify-center">
           <CircleCard client:load />
         </div>
-        <div class="react w-full h-full hidden">
+        <div class="react w-full h-full flex justify-center">
           <CircleReact client:load />
         </div>
       </ShowCardLibrary>
@@ -46,7 +46,7 @@ import Diff2ImgAstroComponent from "@svelte/Diff2Img.svelte";
         <div class="svelte w-full h-full flex justify-center">
           <UploaderCard client:load />
         </div>
-        <div class="vuejs w-full h-full hidden">
+        <div class="vuejs w-full h-full flex justify-center">
           <UploaderCardVue client:load />
         </div>
       </ShowCardLibrary>
@@ -56,7 +56,7 @@ import Diff2ImgAstroComponent from "@svelte/Diff2Img.svelte";
         <div class="svelte w-full h-full flex justify-center">
           <CardPassWordInput client:load />
         </div>
-        <div class="react w-full h-full hidden">
+        <div class="react w-full h-full flex justify-center">
           <PasswordCard client:load />
         </div>
       </ShowCardLibrary>
@@ -65,6 +65,9 @@ import Diff2ImgAstroComponent from "@svelte/Diff2Img.svelte";
       <ShowCardLibrary props={lib.get(3)!}>
         <div class="ts w-full h-[50vh] flex justify-center">
           <CardTimedCarousel />
+        </div>
+        <div class="svelte w-full h-[50vh] flex justify-center">
+          <CardSvelteTimedCar client:load/>
         </div>
       </ShowCardLibrary>
     </div>
@@ -87,7 +90,7 @@ import Diff2ImgAstroComponent from "@svelte/Diff2Img.svelte";
         <div class="react w-full h-[50vh] flex justify-center">
           <DiagonaleCard client:load />
         </div>
-        <div class="svelte w-full h-[50vh] hidden">
+        <div class="svelte w-full h-[50vh] flex justify-center">
           <DiagonalSvelt client:load />
         </div>
       </ShowCardLibrary>
@@ -97,7 +100,7 @@ import Diff2ImgAstroComponent from "@svelte/Diff2Img.svelte";
         <div class="svelte w-full h-[50vh] flex justify-center">
           <FormEnblerSvelte client:load />
         </div>
-        <div class="react w-full h-[50vh] hidden">
+        <div class="react w-full h-[50vh] flex justify-center">
           <FormEnablerCard client:load />
         </div>
       </ShowCardLibrary>

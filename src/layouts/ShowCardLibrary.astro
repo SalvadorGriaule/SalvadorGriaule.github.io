@@ -4,7 +4,7 @@ import LogoLib from "@svelte/LogoLib.svelte";
 import LinkBox from "@svelte/LinkBox.svelte";
 
 interface Props {
-  props: LibInfo
+  props: LibInfo;
 }
 
 const { props } = Astro.props;
@@ -74,7 +74,7 @@ const { props } = Astro.props;
 </section>
 <script>
   import { currentSelect, currentVisible } from "@assets/ts/nano";
-  import { makeVisible } from "@assets/ts/misc";
+  import { compOpe } from "@assets/ts/misc";
   import { breakPointAdd } from "@assets/ts/breakPoint";
   import anime from "animejs";
 
@@ -86,6 +86,7 @@ const { props } = Astro.props;
       const slotCard = cardId.querySelector(".slotCard");
       const switcher = cardId.querySelector(".switcher");
       const switchDiv = cardId.querySelector(".switch");
+      const idLib = Number(cardId.id.replace("lib", ""));
       let currentFw = 0;
 
       const switcherResize = () => {
@@ -106,17 +107,19 @@ const { props } = Astro.props;
         currentSelect.set(null);
       });
 
-      if (switchFw.length != 0) {
+      if (switchFw.length != 0 && slotCard) {
         currentVisible.listen((val) => {
           breakPointAdd(switcherResize);
-          console.log(val);
         });
-
         let i = 0;
         for (let btnFw of switchFw) {
           const fw = btnFw.dataset.fw;
           let j = i;
           btnFw.addEventListener("click", () => {
+            for (let slot of slotCard.children) {
+              slot.remove();
+            }
+
             anime({
               targets: switcher,
               easing: "easeInOutQuint",
@@ -124,13 +127,25 @@ const { props } = Astro.props;
               translateY: window.visualViewport.width > 748 ? j * 90 + "px" : 0,
               duration: 500,
             });
-            for (let slot of slotCard.children) {
-              makeVisible(slot.classList.contains(fw), slot);
-            }
+            if (compOpe.mount(fw, idLib)?.comp)
+              slotCard.append(compOpe.mount(fw, idLib).comp);
             currentFw = j;
           });
           i++;
         }
+
+        for (let slot of slotCard.children) {
+          compOpe.add(slot, idLib);
+        }
+        const lenSlot = slotCard.children.length
+        for (let i = 0; i < lenSlot; i++) {
+          console.log("rem", slotCard.children.length, i);
+          slotCard.children[0].remove()
+        }
+
+        console.log(switchFw.item(0).dataset.fw, idLib, compOpe.list());
+
+        slotCard.append(compOpe.mount(switchFw.item(0).dataset.fw, idLib).comp);
       }
     }
   });
